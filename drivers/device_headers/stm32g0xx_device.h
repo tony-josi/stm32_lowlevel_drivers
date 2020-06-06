@@ -23,6 +23,8 @@
 #define IOPORT_BUS_BASE_ADDR			(0x50000000UL)	/*!< IOPORT base address */
 
 /* IOPORT_BUS Peripherals */
+
+/* GPIOs */
 #define GPIOA_BASE_ADDR					(IOPORT_BUS_BASE_ADDR + 0x00000000UL)	/*!< GPIOA base address */
 #define GPIOB_BASE_ADDR					(IOPORT_BUS_BASE_ADDR + 0x00000400UL)	/*!< GPIOB base address */
 #define GPIOC_BASE_ADDR					(IOPORT_BUS_BASE_ADDR + 0x00000800UL)	/*!< GPIOC base address */
