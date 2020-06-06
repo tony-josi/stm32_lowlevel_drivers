@@ -22,6 +22,14 @@
 #define AHB_BASE_ADDR                   (0x40020000UL)	/*!< AHB base address */
 #define IOPORT_BUS_BASE_ADDR            (0x50000000UL)	/*!< IOPORT base address */
 
+/* AHB Peripherals */
+#define DMA_BASE_ADDR                   (0x40020000UL) /*!< DMA base address */
+#define DMA_MUX_BASE_ADDR               (0x40020800UL) /*!< DMA MUX base address */
+#define RCC_BASE_ADDR                   (0x40021000UL) /*!< RCC base address */
+#define EXTI_BASE_ADDR                  (0x40021800UL) /*!< EXTI base address */
+#define FLASH_AHB_BASE_ADDR             (0x40022000UL) /*!< FLASH base address */
+#define CRC_BASE_ADDR                   (0x40023000UL) /*!< CRC base address */
+
 /* IOPORT_BUS Peripherals */
 
 /* GPIOs */
