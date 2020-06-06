@@ -1,8 +1,6 @@
 Debug/*
-Drivers/*
 .settings/*
 .cproject
 .mxproject
 .project
-stm32_led_blink.launch
 
