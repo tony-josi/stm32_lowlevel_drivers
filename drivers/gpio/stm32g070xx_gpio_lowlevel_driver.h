@@ -10,4 +10,28 @@
  *  @bug            No known bugs.
  */
 
+#ifndef __STM32070XX_GPIO_LOWLEVEL_DRIVER_H
+#define __STM32070XX_GPIO_LOWLEVEL_DRIVER_H
 
+#include "stm32g0xx_device.h"
+
+typedef struct {
+
+	uint8_t pin;
+	uint8_t mode;
+	uint8_t pullup_pulldown;
+	uint8_t op_speed;
+	uint8_t alternate_func;
+
+} GPIO_InitConfig_t;
+
+
+typedef struct {
+
+	GPIO_RegDef_Type    *GPIO_regdef;                         /*!< GPIO Register definition pointer */
+	GPIO_InitConfig_t    GPIO_InitFields;                     /*!< GPIO initialization fields */
+
+} GPIO_Handle_t;
+
+
+#endif /* __STM32070XX_GPIO_LOWLEVEL_DRIVER_H */

@@ -10,4 +10,6 @@
  *  @bug            No known bugs.
  */
 
+#include "stm32g070xx_gpio_lowlevel_driver.h"
+
 
