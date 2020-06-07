@@ -85,9 +85,10 @@ typedef struct {
   __VL uint32_t ODR;         /*!< GPIO port output data register,        Address offset: 0x14      */
   __VL uint32_t BSRR;        /*!< GPIO port bit set/reset  register,     Address offset: 0x18      */
   __VL uint32_t LCKR;        /*!< GPIO port configuration lock register, Address offset: 0x1C      */
-  __VL uint32_t AFR[2];      /*!< GPIO alternate function registers,     Address offset: 0x20-0x24;
-                                  AFR[0] -> AFRL (Alternate function low register)
-                                  AFR[1] -> AFRH (Alternate function high register)                */
+  __VL uint32_t AFR[2];      /*!< GPIO alternate function registers, AFRL, AFRH
+                                  AFR[0] -> (Alternate function low register), Address offset: 0x20
+                                  AFR[1] -> (Alternate function high register),
+                                  Address offset: 0x24                                             */
   __VL uint32_t BRR;         /*!< GPIO Bit Reset register,               Address offset: 0x28      */
 
 } GPIO_Reg_Type;
