@@ -16,17 +16,24 @@
 #include <stdint.h>
 #include "stm32g0xx_device_types.h"
 
+/* Core memory address */
+/* ------------------- */
+
 #define FLASH_BASE_ADDR                 (0x08000000UL)	/*!< FLASH base address */
 #define ROM_BASE_ADDR                   (0x1FFF0000UL)	/*!< ROM base address */
 #define SRAM_BASE_ADDR                  (0x20000000UL)	/*!< SRAM base address */
 
 /* Peripheral Bus */
+/* -------------- */
+
 #define APB1_BASE_ADDR                  (0x40000000UL)	/*!< APB1 base address */
 #define APB2_BASE_ADDR                  (0x40010000UL)	/*!< APB1 base address */
 #define AHB_BASE_ADDR                   (0x40020000UL)	/*!< AHB base address */
 #define IOPORT_BUS_BASE_ADDR            (0x50000000UL)	/*!< IOPORT base address */
 
 /* AHB Peripherals */
+/* --------------- */
+
 #define DMA_BASE_ADDR                   (AHB_BASE_ADDR + 0x00000000UL) /*!< DMA base address */
 #define DMA_MUX_BASE_ADDR               (AHB_BASE_ADDR + 0x00000800UL) /*!< DMA MUX base address */
 #define RCC_BASE_ADDR                   (AHB_BASE_ADDR + 0x00001000UL) /*!< RCC base address */
@@ -35,6 +42,8 @@
 #define CRC_BASE_ADDR                   (AHB_BASE_ADDR + 0x00003000UL) /*!< CRC base address */
 
 /* APB1 Peripherals */
+/* ---------------- */
+
 #define TIM3_BASE_ADDR                  (APB1_BASE_ADDR + 0x00000400UL) /*!< TIM3 base address */
 #define TIM6_MUX_BASE_ADDR              (APB1_BASE_ADDR + 0x00001000UL) /*!< TIM6 MUX base address */
 #define TIM7_BASE_ADDR                  (APB1_BASE_ADDR + 0x00001400UL) /*!< TIM7 base address */
@@ -52,6 +61,8 @@
 #define TAMP_BASE_ADDR                  (APB1_BASE_ADDR + 0x0000B000UL) /*!< TAMP base address */
 
 /* APB2 Peripherals */
+/* ---------------- */
+
 #define SYSCFG_BASE_ADDR                (APB2_BASE_ADDR + 0x00000000UL) /*!< SYSCFG base address */
 #define SYSCFG_ITLINE_BASE_ADDR         (APB2_BASE_ADDR + 0x00000080UL) /*!< SYSCFG ITLINE base address */
 #define ADC_BASE_ADDR                   (APB2_BASE_ADDR + 0x00002400UL) /*!< ADC base address */
@@ -64,13 +75,17 @@
 #define DBG_BASE_ADDR                   (APB2_BASE_ADDR + 0x00005800UL) /*!< DBG base address */
 
 /* IOPORT_BUS Peripherals, GPIOs */
+/* ----------------------------- */
+
 #define GPIOA_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000000UL)	/*!< GPIOA base address */
 #define GPIOB_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000400UL)	/*!< GPIOB base address */
 #define GPIOC_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000800UL)	/*!< GPIOC base address */
 #define GPIOD_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000C00UL)	/*!< GPIOD base address */
 #define GPIOF_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00001400UL)	/*!< GPIOF base address */
 
+
 /* Peripheral register structures */
+/* ------------------------------ */
 
 /**
   * @brief General Purpose Input Output
@@ -91,7 +106,51 @@ typedef struct {
                                   Address offset: 0x24                                             */
   __VL uint32_t BRR;         /*!< GPIO Bit Reset register,               Address offset: 0x28      */
 
-} GPIO_Reg_Type;
+} GPIO_RegDef_Type;
+
+/**
+  * @brief Reset and Clock Control
+  */
+typedef struct {
+
+  __VL uint32_t CR;          /*!< Clock Sources Control Register,                                     Address offset: 0x00 */
+  __VL uint32_t ICSCR;       /*!< Internal Clock Sources Calibration Register,                        Address offset: 0x04 */
+  __VL uint32_t CFGR;        /*!< Regulated Domain Clocks Configuration Register,                     Address offset: 0x08 */
+  __VL uint32_t PLLCFGR;     /*!< System PLL configuration Register,                                  Address offset: 0x0C */
+  __VL uint32_t RSRVD0;      /*!< Reserved,                                                           Address offset: 0x10 */
+  __VL uint32_t RSRVD1;      /*!< Reserved,                                                           Address offset: 0x14 */
+  __VL uint32_t CIER;        /*!< Clock Interrupt Enable Register,                                    Address offset: 0x18 */
+  __VL uint32_t CIFR;        /*!< Clock Interrupt Flag Register,                                      Address offset: 0x1C */
+  __VL uint32_t CICR;        /*!< Clock Interrupt Clear Register,                                     Address offset: 0x20 */
+  __VL uint32_t IOPRSTR;     /*!< IO port reset register,                                             Address offset: 0x24 */
+  __VL uint32_t AHBRSTR;     /*!< AHB peripherals reset register,                                     Address offset: 0x28 */
+  __VL uint32_t APBRSTR1;    /*!< APB peripherals reset register 1,                                   Address offset: 0x2C */
+  __VL uint32_t APBRSTR2;    /*!< APB peripherals reset register 2,                                   Address offset: 0x30 */
+  __VL uint32_t IOPENR;      /*!< IO port enable register,                                            Address offset: 0x34 */
+  __VL uint32_t AHBENR;      /*!< AHB peripherals clock enable register,                              Address offset: 0x38 */
+  __VL uint32_t APBENR1;     /*!< APB peripherals clock enable register1,                             Address offset: 0x3C */
+  __VL uint32_t APBENR2;     /*!< APB peripherals clock enable register2,                             Address offset: 0x40 */
+  __VL uint32_t IOPSMENR;    /*!< IO port clocks enable in sleep mode register,                       Address offset: 0x44 */
+  __VL uint32_t AHBSMENR;    /*!< AHB peripheral clocks enable in sleep mode register,                Address offset: 0x48 */
+  __VL uint32_t APBSMENR1;   /*!< APB peripheral clocks enable in sleep mode register1,               Address offset: 0x4C */
+  __VL uint32_t APBSMENR2;   /*!< APB peripheral clocks enable in sleep mode register2,               Address offset: 0x50 */
+  __VL uint32_t CCIPR;       /*!< Peripherals Independent Clocks Configuration Register,              Address offset: 0x54 */
+  __VL uint32_t RSRVD2;      /*!< Reserved,                                                           Address offset: 0x58 */
+  __VL uint32_t BDCR;        /*!< Backup Domain Control Register,                                     Address offset: 0x5C */
+  __VL uint32_t CSR;         /*!< Unregulated Domain Clock Control and Status Register,               Address offset: 0x60 */
+
+} RCC_RegDef_Type;
+
+
+/* GPIOs pointed to respective register locations */
+/* ---------------------------------------------- */
+
+#define GPIO_A                        ((GPIO_RegDef_Type *) GPIOA_BASE_ADDR)   /*!< GPIOA #GPIO_RegDef_Type pointer */
+#define GPIO_B                        ((GPIO_RegDef_Type *) GPIOB_BASE_ADDR)   /*!< GPIOB #GPIO_RegDef_Type pointer */
+#define GPIO_C                        ((GPIO_RegDef_Type *) GPIOC_BASE_ADDR)   /*!< GPIOC #GPIO_RegDef_Type pointer */
+#define GPIO_D                        ((GPIO_RegDef_Type *) GPIOD_BASE_ADDR)   /*!< GPIOD #GPIO_RegDef_Type pointer */
+#define GPIO_F                        ((GPIO_RegDef_Type *) GPIOF_BASE_ADDR)   /*!< GPIOF #GPIO_RegDef_Type pointer */
+
 
 
 #endif /* __STM32G0XX_DEVICE_H */
