@@ -13,6 +13,9 @@
 #ifndef __STM32G0XX_DEVICE_H
 #define __STM32G0XX_DEVICE_H
 
+#include <stdint.h>
+#include "stm32g0xx_device_types.h"
+
 #define FLASH_BASE_ADDR                 (0x08000000UL)	/*!< FLASH base address */
 #define ROM_BASE_ADDR                   (0x1FFF0000UL)	/*!< ROM base address */
 #define SRAM_BASE_ADDR                  (0x20000000UL)	/*!< SRAM base address */
@@ -66,5 +69,28 @@
 #define GPIOC_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000800UL)	/*!< GPIOC base address */
 #define GPIOD_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000C00UL)	/*!< GPIOD base address */
 #define GPIOF_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00001400UL)	/*!< GPIOF base address */
+
+/* Peripheral register structures */
+
+/**
+  * @brief General Purpose Input Output
+  */
+typedef struct {
+
+  __VL uint32_t MODER;       /*!< GPIO port mode register,               Address offset: 0x00      */
+  __VL uint32_t OTYPER;      /*!< GPIO port output type register,        Address offset: 0x04      */
+  __VL uint32_t OSPEEDR;     /*!< GPIO port output speed register,       Address offset: 0x08      */
+  __VL uint32_t PUPDR;       /*!< GPIO port pull-up/pull-down register,  Address offset: 0x0C      */
+  __VL uint32_t IDR;         /*!< GPIO port input data register,         Address offset: 0x10      */
+  __VL uint32_t ODR;         /*!< GPIO port output data register,        Address offset: 0x14      */
+  __VL uint32_t BSRR;        /*!< GPIO port bit set/reset  register,     Address offset: 0x18      */
+  __VL uint32_t LCKR;        /*!< GPIO port configuration lock register, Address offset: 0x1C      */
+  __VL uint32_t AFR[2];      /*!< GPIO alternate function registers,     Address offset: 0x20-0x24;
+                                  AFR[0] -> AFRL (Alternate function low register)
+                                  AFR[1] -> AFRH (Alternate function high register)                */
+  __VL uint32_t BRR;         /*!< GPIO Bit Reset register,               Address offset: 0x28      */
+
+} GPIO_Reg_Type;
+
 
 #endif /* __STM32G0XX_DEVICE_H */
