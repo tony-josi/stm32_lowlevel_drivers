@@ -164,11 +164,11 @@ typedef struct {
  * @addtogroup Peripheral_Clock_Enable
  * @brief GPIO Peripheral Clock enable
  */
-#define GPIO_A_PCLK_EN               ((RCC->IOPENR) |= (1 << 0))              /*!< GPIO A Peripheral Clock enable */
-#define GPIO_B_PCLK_EN               ((RCC->IOPENR) |= (1 << 1))              /*!< GPIO B Peripheral Clock enable */
-#define GPIO_C_PCLK_EN               ((RCC->IOPENR) |= (1 << 2))              /*!< GPIO C Peripheral Clock enable */
-#define GPIO_D_PCLK_EN               ((RCC->IOPENR) |= (1 << 3))              /*!< GPIO D Peripheral Clock enable */
-#define GPIO_F_PCLK_EN               ((RCC->IOPENR) |= (1 << 5))              /*!< GPIO F Peripheral Clock enable */
+#define GPIO_A_PCLK_EN               ((RCC->IOPENR) |= (1 << 0))               /*!< GPIO A Peripheral Clock enable */
+#define GPIO_B_PCLK_EN               ((RCC->IOPENR) |= (1 << 1))               /*!< GPIO B Peripheral Clock enable */
+#define GPIO_C_PCLK_EN               ((RCC->IOPENR) |= (1 << 2))               /*!< GPIO C Peripheral Clock enable */
+#define GPIO_D_PCLK_EN               ((RCC->IOPENR) |= (1 << 3))               /*!< GPIO D Peripheral Clock enable */
+#define GPIO_F_PCLK_EN               ((RCC->IOPENR) |= (1 << 5))               /*!< GPIO F Peripheral Clock enable */
 
 /**
  * @addtogroup Peripheral_Clock_Enable
@@ -207,40 +207,40 @@ typedef struct {
  * @addtogroup Peripheral_Clock_Disable
  * @brief GPIO Peripheral Clock disable
  */
-#define GPIO_A_PCLK_DI               ((RCC->IOPENR) &= (1 << 0))              /*!< GPIO A Peripheral Clock enable */
-#define GPIO_B_PCLK_DI               ((RCC->IOPENR) &= (1 << 1))              /*!< GPIO B Peripheral Clock enable */
-#define GPIO_C_PCLK_DI               ((RCC->IOPENR) &= (1 << 2))              /*!< GPIO C Peripheral Clock disable */
-#define GPIO_D_PCLK_DI               ((RCC->IOPENR) &= (1 << 3))              /*!< GPIO D Peripheral Clock disable */
-#define GPIO_F_PCLK_DI               ((RCC->IOPENR) &= (1 << 5))              /*!< GPIO F Peripheral Clock disable */
+#define GPIO_A_PCLK_DI               ((RCC->IOPENR) &= ~(1 << 0))              /*!< GPIO A Peripheral Clock enable */
+#define GPIO_B_PCLK_DI               ((RCC->IOPENR) &= ~(1 << 1))              /*!< GPIO B Peripheral Clock enable */
+#define GPIO_C_PCLK_DI               ((RCC->IOPENR) &= ~(1 << 2))              /*!< GPIO C Peripheral Clock disable */
+#define GPIO_D_PCLK_DI               ((RCC->IOPENR) &= ~(1 << 3))              /*!< GPIO D Peripheral Clock disable */
+#define GPIO_F_PCLK_DI               ((RCC->IOPENR) &= ~(1 << 5))              /*!< GPIO F Peripheral Clock disable */
 
 /**
  * @addtogroup Peripheral_Clock_Disable
  * @brief I2C Peripheral Clock disable
  */
-#define I2C1_PCLK_DI                 ((RCC->APBENR1) &= (1 << 21))             /*!< I2C1 Peripheral Clock disable */
-#define I2C2_PCLK_DI                 ((RCC->APBENR1) &= (1 << 22))             /*!< I2C2 Peripheral Clock disable */
+#define I2C1_PCLK_DI                 ((RCC->APBENR1) &= ~(1 << 21))            /*!< I2C1 Peripheral Clock disable */
+#define I2C2_PCLK_DI                 ((RCC->APBENR1) &= ~(1 << 22))            /*!< I2C2 Peripheral Clock disable */
 
 /**
  * @addtogroup Peripheral_Clock_Disable
  * @brief USART Peripheral Clock disable
  */
-#define USART1_PCLK_DI               ((RCC->APBENR2) &= (1 << 14))             /*!< USART1 Peripheral Clock disable */
-#define USART2_PCLK_DI               ((RCC->APBENR1) &= (1 << 17))             /*!< USART2 Peripheral Clock disable */
-#define USART3_PCLK_DI               ((RCC->APBENR1) &= (1 << 18))             /*!< USART3 Peripheral Clock disable */
-#define USART4_PCLK_DI               ((RCC->APBENR1) &= (1 << 19))             /*!< USART4 Peripheral Clock disable */
+#define USART1_PCLK_DI               ((RCC->APBENR2) &= ~(1 << 14))            /*!< USART1 Peripheral Clock disable */
+#define USART2_PCLK_DI               ((RCC->APBENR1) &= ~(1 << 17))            /*!< USART2 Peripheral Clock disable */
+#define USART3_PCLK_DI               ((RCC->APBENR1) &= ~(1 << 18))            /*!< USART3 Peripheral Clock disable */
+#define USART4_PCLK_DI               ((RCC->APBENR1) &= ~(1 << 19))            /*!< USART4 Peripheral Clock disable */
 
 /**
  * @addtogroup Peripheral_Clock_Disable
  * @brief SPI Peripheral Clock disable
  */
-#define SPI1_PCLK_DI                 ((RCC->APBENR2) &= (1 << 12))             /*!< SPI1 Peripheral Clock disable */
-#define SPI2_PCLK_DI                 ((RCC->APBENR1) &= (1 << 14))             /*!< SPI2 Peripheral Clock disable */
+#define SPI1_PCLK_DI                 ((RCC->APBENR2) &= ~(1 << 12))            /*!< SPI1 Peripheral Clock disable */
+#define SPI2_PCLK_DI                 ((RCC->APBENR1) &= ~(1 << 14))            /*!< SPI2 Peripheral Clock disable */
 
 /**
  * @addtogroup Peripheral_Clock_Disable
  * @brief SYSCFG Peripheral Clock disable
  */
-#define SYSCFG_PCLK_DI               ((RCC->APBENR2) &= (1 << 0))              /*!< SYSCFG Peripheral Clock disable */
+#define SYSCFG_PCLK_DI               ((RCC->APBENR2) &= ~(1 << 0))             /*!< SYSCFG Peripheral Clock disable */
 
 
 
