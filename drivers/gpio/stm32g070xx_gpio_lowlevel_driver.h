@@ -48,49 +48,49 @@ typedef struct __GPIO_Handle_t {
  * @brief GPIO Initialize
  *
  */
-Drv_Status_t LL_HAL_GPIO_Init(void);
+Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO);
 
 /**
  * @brief GPIO DeInitialize
  *
  */
-Drv_Status_t LL_HAL_GPIO_Deinit(void);
+Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx);
 
 /**
  * @brief GPIO Peripheral CLK Control
  *
  */
-Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(void);
+Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable);
 
 /**
  * @brief GPIO Read input pin
  *
  */
-Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(void);
+Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t *op_data);
 
 /**
  * @brief GPIO Read input port
  *
  */
-Drv_Status_t LL_HAL_GPIO_Read_IP_Port(void);
+Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_data);
 
 /**
  * @brief GPIO Write output pin
  *
  */
-Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(void);
+Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t ip_data);
 
 /**
  * @brief GPIO Write output port
  *
  */
-Drv_Status_t LL_HAL_GPIO_Write_OP_Port(void);
+Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_data);
 
 /**
  * @brief GPIO toggle a pin
  *
  */
-Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(void);
+Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin);
 
 /**
  * @brief GPIO IRQ configure
