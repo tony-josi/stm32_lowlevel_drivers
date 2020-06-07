@@ -28,7 +28,7 @@ typedef struct __GPIO_InitConfig_t {
 	uint8_t              pullup_pulldown;                     /*!< GPIO Pull-up/Pull-down @GPIO_Register_CFG */
 	uint8_t              op_speed;                            /*!< GPIO Output speed @GPIO_Register_CFG */
 	uint8_t              op_type;                             /*!< GPIO Output type @GPIO_Register_CFG */
-	uint8_t              alternate_func;                      /*!< GPIO Alternate function */
+	uint8_t              alternate_func_mode;                 /*!< GPIO Alternate function */
 
 } GPIO_InitConfig_t;
 
@@ -83,6 +83,18 @@ typedef struct __GPIO_Handle_t {
  */
 #define  GPIO_OP_PUSH_PULL                  (0x00000000u)   /*!< Push - Pull activation               */
 #define  GPIO_OP_OPEN_DRAIN                 (0x00000001u)   /*!< Open Drain activation                */
+
+/**
+ * @brief GPIOs Alternate Function mode register
+ */
+#define  GPIO_AF_0                          (0u)            /*!< GPIO alternate function 0            */
+#define  GPIO_AF_1                          (1u)            /*!< GPIO alternate function 1            */
+#define  GPIO_AF_2                          (2u)            /*!< GPIO alternate function 2            */
+#define  GPIO_AF_3                          (3u)            /*!< GPIO alternate function 3            */
+#define  GPIO_AF_4                          (4u)            /*!< GPIO alternate function 4            */
+#define  GPIO_AF_5                          (5u)            /*!< GPIO alternate function 5            */
+#define  GPIO_AF_6                          (6u)            /*!< GPIO alternate function 6            */
+#define  GPIO_AF_7                          (7u)            /*!< GPIO alternate function 7            */
 
 /**
  * @brief GPIOs Pin CFG Macros

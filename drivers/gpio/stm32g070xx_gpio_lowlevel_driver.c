@@ -32,8 +32,15 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
 
 		if(hGPIO->GPIO_InitFields.mode == GPIO_MODE_AF) {
 
+			if(hGPIO->GPIO_InitFields.alternate_func_mode <= GPIO_AF_7) {
 
+				reg_buff = hGPIO->GPIO_regdef->AFR[(hGPIO->GPIO_InitFields.pin / 8)];
+				reg_buff &= ~((0xFU) << ((hGPIO->GPIO_InitFields.pin % 8) * 4));
+				reg_buff |= ((hGPIO->GPIO_InitFields.alternate_func_mode) << ((hGPIO->GPIO_InitFields.pin % 8) * 4));
+				hGPIO->GPIO_regdef->AFR[(hGPIO->GPIO_InitFields.pin / 8)] = reg_buff;
 
+			} else
+				return DRV_ERROR;
 		}
 
 	} else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
