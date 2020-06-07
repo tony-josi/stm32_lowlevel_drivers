@@ -117,8 +117,8 @@ typedef struct {
   __VL uint32_t ICSCR;       /*!< Internal Clock Sources Calibration Register,                        Address offset: 0x04 */
   __VL uint32_t CFGR;        /*!< Regulated Domain Clocks Configuration Register,                     Address offset: 0x08 */
   __VL uint32_t PLLCFGR;     /*!< System PLL configuration Register,                                  Address offset: 0x0C */
-  __VL uint32_t RSRVD0;      /*!< Reserved,                                                           Address offset: 0x10 */
-  __VL uint32_t RSRVD1;      /*!< Reserved,                                                           Address offset: 0x14 */
+       uint32_t RSRVD0;      /*!< Reserved,                                                           Address offset: 0x10 */
+       uint32_t RSRVD1;      /*!< Reserved,                                                           Address offset: 0x14 */
   __VL uint32_t CIER;        /*!< Clock Interrupt Enable Register,                                    Address offset: 0x18 */
   __VL uint32_t CIFR;        /*!< Clock Interrupt Flag Register,                                      Address offset: 0x1C */
   __VL uint32_t CICR;        /*!< Clock Interrupt Clear Register,                                     Address offset: 0x20 */
@@ -135,7 +135,7 @@ typedef struct {
   __VL uint32_t APBSMENR1;   /*!< APB peripheral clocks enable in sleep mode register1,               Address offset: 0x4C */
   __VL uint32_t APBSMENR2;   /*!< APB peripheral clocks enable in sleep mode register2,               Address offset: 0x50 */
   __VL uint32_t CCIPR;       /*!< Peripherals Independent Clocks Configuration Register,              Address offset: 0x54 */
-  __VL uint32_t RSRVD2;      /*!< Reserved,                                                           Address offset: 0x58 */
+       uint32_t RSRVD2;      /*!< Reserved,                                                           Address offset: 0x58 */
   __VL uint32_t BDCR;        /*!< Backup Domain Control Register,                                     Address offset: 0x5C */
   __VL uint32_t CSR;         /*!< Unregulated Domain Clock Control and Status Register,               Address offset: 0x60 */
 
