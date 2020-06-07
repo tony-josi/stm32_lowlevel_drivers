@@ -23,7 +23,7 @@
  */
 typedef struct __GPIO_InitConfig_t {
 
-	uint8_t              pin;                                 /*!< GPIO Pin */
+	uint8_t              pin;                                 /*!< GPIO Pin @GPIO_Register_CFG */
 	uint8_t              mode;                                /*!< GPIO mode  @GPIO_Register_CFG */
 	uint8_t              pullup_pulldown;                     /*!< GPIO Pull-up/Pull-down @GPIO_Register_CFG */
 	uint8_t              op_speed;                            /*!< GPIO Output speed @GPIO_Register_CFG */
@@ -50,22 +50,19 @@ typedef struct __GPIO_Handle_t {
 /**
  * @addtogroup GPIO_Register_CFG
  * @brief GPIOs Mode Register CFG Macros
+ *
+ * @{
+ *
  */
 #define GPIO_MODE_IN                        (0x00000000u)   /*!< Input Floating Mode                   */
-#define GPIO_MODE_OUT_PP                    (0x00000001u)   /*!< Output Push Pull Mode                 */
-#define GPIO_MODE_OUT_OD                    (0x00000011u)   /*!< Output Open Drain Mode                */
-#define GPIO_MODE_AF_PP                     (0x00000002u)   /*!< Alternate Function Push Pull Mode     */
-#define GPIO_MODE_AF_OD                     (0x00000012u)   /*!< Alternate Function Open Drain Mode    */
+#define GPIO_MODE_OUT                       (0x00000001u)   /*!< Output Push Pull Mode                 */
+#define GPIO_MODE_AF                        (0x00000002u)   /*!< Alternate Function Push Pull Mode     */
 #define GPIO_MODE_ANALOG                    (0x00000003u)   /*!< Analog Mode  */
-#define GPIO_MODE_IT_RT                     (0x10110000u)   /*!< External Interrupt Mode with Rising edge trigger detection          */
-#define GPIO_MODE_IT_FT                     (0x10210000u)   /*!< External Interrupt Mode with Falling edge trigger detection         */
-#define GPIO_MODE_IT_RFT                    (0x10310000u)   /*!< External Interrupt Mode with Rising/Falling edge trigger detection  */
-#define GPIO_MODE_EVT_RT                    (0x10120000u)   /*!< External Event Mode with Rising edge trigger detection               */
-#define GPIO_MODE_EVT_FT                    (0x10220000u)   /*!< External Event Mode with Falling edge trigger detection              */
-#define GPIO_MODE_EVT_RFT                   (0x10320000u)   /*!< External Event Mode with Rising/Falling edge trigger detection       */
+#define GPIO_MODE_IT_RT                     (0x00000004u)   /*!< External Interrupt Mode with Rising edge trigger detection          */
+#define GPIO_MODE_IT_FT                     (0x00000005u)   /*!< External Interrupt Mode with Falling edge trigger detection         */
+#define GPIO_MODE_IT_RFT                    (0x00000006u)   /*!< External Interrupt Mode with Rising/Falling edge trigger detection  */
 
 /**
- * @addtogroup GPIO_Register_CFG
  * @brief GPIOs Output speed Register CFG Macros
  */
 #define GPIO_SPEED_LOW                      (0x00000000u)  /*!< Low speed       */
@@ -74,12 +71,36 @@ typedef struct __GPIO_Handle_t {
 #define GPIO_SPEED_VERY_HIGH                (0x00000003u)  /*!< Very high speed */
 
 /**
- * @addtogroup GPIO_Register_CFG
  * @brief GPIOs Pull-up/Pull-down Register CFG Macros
  */
 #define  GPIO_NOPULL                        (0x00000000u)   /*!< No Pull-up or Pull-down activation  */
 #define  GPIO_PULLUP                        (0x00000001u)   /*!< Pull-up activation                  */
 #define  GPIO_PULLDOWN                      (0x00000002u)   /*!< Pull-down activation                */
+
+
+/**
+ * @brief GPIOs Pin CFG Macros
+ */
+#define GPIO_PIN_0                          (0u)
+#define GPIO_PIN_1                          (1u)
+#define GPIO_PIN_2                          (2u)
+#define GPIO_PIN_3                          (3u)
+#define GPIO_PIN_4                          (4u)
+#define GPIO_PIN_5                          (5u)
+#define GPIO_PIN_6                          (6u)
+#define GPIO_PIN_7                          (7u)
+#define GPIO_PIN_8                          (8u)
+#define GPIO_PIN_9                          (9u)
+#define GPIO_PIN_10                         (10u)
+#define GPIO_PIN_11                         (11u)
+#define GPIO_PIN_12                         (12u)
+#define GPIO_PIN_13                         (13u)
+#define GPIO_PIN_14                         (14u)
+#define GPIO_PIN_15                         (15u)
+
+/**
+ * @}
+ */
 
 /**
  * @brief GPIO Initialize
