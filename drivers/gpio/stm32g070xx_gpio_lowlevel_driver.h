@@ -14,8 +14,14 @@
 #define __STM32070XX_GPIO_LOWLEVEL_DRIVER_H
 
 #include "stm32g0xx_device.h"
+#include "stm32g070xx_driver_def.h"
 
-typedef struct {
+/**
+ * @struct  __GPIO_InitConfig_t
+ * @brief   GPIO Initialization configuration structure
+ *
+ */
+typedef struct __GPIO_InitConfig_t {
 
 	uint8_t pin;
 	uint8_t mode;
@@ -25,13 +31,79 @@ typedef struct {
 
 } GPIO_InitConfig_t;
 
-
-typedef struct {
+/**
+ * @struct  __GPIO_Handle_t
+ * @brief   GPIO Handle
+ *
+ * This structure contains field to handle GPIOs
+ */
+typedef struct __GPIO_Handle_t {
 
 	GPIO_RegDef_Type    *GPIO_regdef;                         /*!< GPIO Register definition pointer */
 	GPIO_InitConfig_t    GPIO_InitFields;                     /*!< GPIO initialization fields */
 
 } GPIO_Handle_t;
+
+/**
+ * @brief GPIO Initialize
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Init(void);
+
+/**
+ * @brief GPIO DeInitialize
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Deinit(void);
+
+/**
+ * @brief GPIO Peripheral CLK Control
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(void);
+
+/**
+ * @brief GPIO Read input pin
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(void);
+
+/**
+ * @brief GPIO Read input port
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Read_IP_Port(void);
+
+/**
+ * @brief GPIO Write output pin
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(void);
+
+/**
+ * @brief GPIO Write output port
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Write_OP_Port(void);
+
+/**
+ * @brief GPIO toggle a pin
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(void);
+
+/**
+ * @brief GPIO IRQ configure
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_IRQ_Config(void);
+
+/**
+ * @brief GPIO Handle IRQ
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_IRQ_Handling(void);
+
 
 
 #endif /* __STM32070XX_GPIO_LOWLEVEL_DRIVER_H */
