@@ -26,13 +26,55 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
 	if(hGPIO->GPIO_InitFields.mode <= GPIO_MODE_ANALOG) {
 
 		reg_buff = hGPIO->GPIO_regdef->MODER;
-		reg_buff &= ~((3UL) << (hGPIO->GPIO_InitFields.pin * 2));
+		reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
 		reg_buff |= ((hGPIO->GPIO_InitFields.mode) << (hGPIO->GPIO_InitFields.pin * 2));
 		hGPIO->GPIO_regdef->MODER = reg_buff;
+
+		if(hGPIO->GPIO_InitFields.mode == GPIO_MODE_AF) {
+
+
+
+		}
 
 	} else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
 
 		// TODO
+
+	} else {
+
+		return DRV_ERROR;
+	}
+
+	if(hGPIO->GPIO_InitFields.op_speed <= GPIO_SPEED_VERY_HIGH) {
+
+		reg_buff = hGPIO->GPIO_regdef->OSPEEDR;
+		reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
+		reg_buff |= ((hGPIO->GPIO_InitFields.op_speed) << (hGPIO->GPIO_InitFields.pin * 2));
+		hGPIO->GPIO_regdef->OSPEEDR = reg_buff;
+
+	} else {
+
+		return DRV_ERROR;
+	}
+
+	if(hGPIO->GPIO_InitFields.pullup_pulldown <= GPIO_PULLDOWN) {
+
+		reg_buff = hGPIO->GPIO_regdef->PUPDR;
+		reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
+		reg_buff |= ((hGPIO->GPIO_InitFields.pullup_pulldown) << (hGPIO->GPIO_InitFields.pin * 2));
+		hGPIO->GPIO_regdef->PUPDR = reg_buff;
+
+	} else {
+
+		return DRV_ERROR;
+	}
+
+	if(hGPIO->GPIO_InitFields.op_type <= GPIO_OP_OPEN_DRAIN) {
+
+		reg_buff = hGPIO->GPIO_regdef->OTYPER;
+		reg_buff &= ~((1U) << (hGPIO->GPIO_InitFields.pin));
+		reg_buff |= ((hGPIO->GPIO_InitFields.op_type) << (hGPIO->GPIO_InitFields.pin));
+		hGPIO->GPIO_regdef->OTYPER = reg_buff;
 
 	} else {
 
