@@ -23,11 +23,11 @@
  */
 typedef struct __GPIO_InitConfig_t {
 
-	uint8_t pin;
-	uint8_t mode;
-	uint8_t pullup_pulldown;
-	uint8_t op_speed;
-	uint8_t alternate_func;
+	uint8_t              pin;
+	uint8_t              mode;
+	uint8_t              pullup_pulldown;
+	uint8_t              op_speed;
+	uint8_t              alternate_func;
 
 } GPIO_InitConfig_t;
 
