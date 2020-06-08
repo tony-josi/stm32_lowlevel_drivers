@@ -181,7 +181,7 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint
 
   drv_assert_param(pGPIOx);
 
-  *op_data = (pGPIOx->IDR & (1 << Pin));
+  *op_data = (uint8_t) (pGPIOx->IDR & (1 << Pin));
 
   return DRV_OK;
 
@@ -194,6 +194,10 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint
  */
 Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_data) {
 
+  drv_assert_param(pGPIOx);
+
+  *op_data = (uint16_t) (pGPIOx->IDR & 0xFFFF);
+
   return DRV_OK;
 
 }
@@ -204,6 +208,19 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_dat
  *
  */
 Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t ip_data) {
+
+  drv_assert_param(pGPIOx);
+
+  if(ip_data == SET) {
+
+    pGPIOx->ODR |= (1 << Pin);
+
+  } else if (ip_data == RESET) {
+
+    pGPIOx->ODR &= ~(1 << Pin);
+
+  } else
+    return DRV_ERROR;
 
   return DRV_OK;
 
