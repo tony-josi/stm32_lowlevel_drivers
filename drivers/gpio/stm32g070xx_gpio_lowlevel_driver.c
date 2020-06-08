@@ -273,5 +273,3 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Handling(void) {
   return DRV_OK;
 
 }
-
-
