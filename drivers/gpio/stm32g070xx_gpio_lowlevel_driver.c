@@ -102,6 +102,19 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
  */
 Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx) {
 
+	if(pGPIOx == GPIO_A)
+		GPIO_A_RESET;
+	else if(pGPIOx == GPIO_B)
+		GPIO_B_RESET;
+	else if(pGPIOx == GPIO_C)
+		GPIO_C_RESET;
+	else if(pGPIOx == GPIO_D)
+		GPIO_D_RESET;
+	else if(pGPIOx == GPIO_F)
+		GPIO_F_RESET;
+	else
+		return DRV_ERROR;
+
 	return DRV_OK;
 
 }
