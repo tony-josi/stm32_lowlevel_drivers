@@ -102,6 +102,8 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
  */
 Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx) {
 
+  drv_assert_param(pGPIOx);
+
   if(pGPIOx == GPIO_A)
     GPIO_A_RESET;
   else if(pGPIOx == GPIO_B)
@@ -176,6 +178,10 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
  *
  */
 Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t *op_data) {
+
+  drv_assert_param(pGPIOx);
+
+  *op_data = (pGPIOx->IDR & (1 << Pin));
 
   return DRV_OK;
 
