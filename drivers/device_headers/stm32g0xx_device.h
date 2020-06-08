@@ -154,7 +154,7 @@ typedef struct {
 /* RCC macro pointed to respective register locations */
 /* -------------------------------------------------- */
 
-#define RCC                          ((RCC_RegDef_Type *) RCC_BASE_ADDR)       /*!< RCC #RCC_RegDef_Type pointer */
+#define RCC                           ((RCC_RegDef_Type *) RCC_BASE_ADDR)      /*!< RCC #RCC_RegDef_Type pointer */
 
 
 /* GPIOs Clock enable macros */
