@@ -232,6 +232,10 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uin
  */
 Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_data) {
 
+  drv_assert_param(pGPIOx);
+
+  pGPIOx->ODR = ip_data;
+
   return DRV_OK;
 
 }
