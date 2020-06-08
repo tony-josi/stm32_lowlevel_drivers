@@ -14,10 +14,10 @@
 #ifndef __STM32G0XX_DRIVER_DEF_H
 #define __STM32G0XX_DRIVER_DEF_H
 
-#define ENABLE						(1U)
-#define DISABLE						(0U)
-#define SET						    (ENABLE)
-#define RESET						(DISABLE)
+#define ENABLE            (1U)
+#define DISABLE           (0U)
+#define SET               (ENABLE)
+#define RESET           (DISABLE)
 
 
 /**
