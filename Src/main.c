@@ -9,15 +9,14 @@
  *  @bug            No known bugs.
  */
 
-#include "stm32g0xx_device.h"
-#include "stm32g070xx_gpio_lowlevel_driver.h"
+#include "driver_tests.h"
+#include "stm32g070xx_ll_hal.h"
 
 int main(void)
 {
-	/* LL_HAL_GPIO_PCLK_Cntrl test code */
-	LL_HAL_GPIO_PCLK_Cntrl(GPIO_A, ENABLE);
-	LL_HAL_GPIO_PCLK_Cntrl(GPIO_F, ENABLE);
 
+  led_blink();
+  led_blink();
 
 	for(;;);
 }

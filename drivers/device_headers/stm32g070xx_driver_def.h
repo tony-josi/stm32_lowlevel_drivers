@@ -17,7 +17,7 @@
 #define ENABLE            (1U)
 #define DISABLE           (0U)
 #define SET               (ENABLE)
-#define RESET           (DISABLE)
+#define RESET             (DISABLE)
 
 
 /**
