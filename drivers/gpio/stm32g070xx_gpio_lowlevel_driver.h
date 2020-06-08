@@ -23,12 +23,12 @@
  */
 typedef struct __GPIO_InitConfig_t {
 
-	uint8_t              pin;                                 /*!< GPIO Pin @GPIO_Register_CFG */
-	uint8_t              mode;                                /*!< GPIO mode  @GPIO_Register_CFG */
-	uint8_t              pullup_pulldown;                     /*!< GPIO Pull-up/Pull-down @GPIO_Register_CFG */
-	uint8_t              op_speed;                            /*!< GPIO Output speed @GPIO_Register_CFG */
-	uint8_t              op_type;                             /*!< GPIO Output type @GPIO_Register_CFG */
-	uint8_t              alternate_func_mode;                 /*!< GPIO Alternate function */
+  uint8_t              pin;                                 /*!< GPIO Pin @GPIO_Register_CFG */
+  uint8_t              mode;                                /*!< GPIO mode  @GPIO_Register_CFG */
+  uint8_t              pullup_pulldown;                     /*!< GPIO Pull-up/Pull-down @GPIO_Register_CFG */
+  uint8_t              op_speed;                            /*!< GPIO Output speed @GPIO_Register_CFG */
+  uint8_t              op_type;                             /*!< GPIO Output type @GPIO_Register_CFG */
+  uint8_t              alternate_func_mode;                 /*!< GPIO Alternate function */
 
 } GPIO_InitConfig_t;
 
@@ -40,8 +40,8 @@ typedef struct __GPIO_InitConfig_t {
  */
 typedef struct __GPIO_Handle_t {
 
-	GPIO_RegDef_Type    *GPIO_regdef;                         /*!< GPIO Register definition pointer */
-	GPIO_InitConfig_t    GPIO_InitFields;                     /*!< GPIO initialization fields */
+  GPIO_RegDef_Type    *GPIO_regdef;                         /*!< GPIO Register definition pointer */
+  GPIO_InitConfig_t    GPIO_InitFields;                     /*!< GPIO initialization fields */
 
 } GPIO_Handle_t;
 
@@ -124,11 +124,11 @@ typedef struct __GPIO_Handle_t {
  * @brief GPIO Port reset
  *
  */
-#define GPIO_A_RESET						do { RCC->IOPRSTR |= (1 << 0); RCC->IOPRSTR &= ~(1 << 0); } while(0)
-#define GPIO_B_RESET						do { RCC->IOPRSTR |= (1 << 1); RCC->IOPRSTR &= ~(1 << 1); } while(0)
-#define GPIO_C_RESET						do { RCC->IOPRSTR |= (1 << 2); RCC->IOPRSTR &= ~(1 << 2); } while(0)
-#define GPIO_D_RESET						do { RCC->IOPRSTR |= (1 << 3); RCC->IOPRSTR &= ~(1 << 3); } while(0)
-#define GPIO_F_RESET						do { RCC->IOPRSTR |= (1 << 5); RCC->IOPRSTR &= ~(1 << 5); } while(0)
+#define GPIO_A_RESET            do { RCC->IOPRSTR |= (1 << 0); RCC->IOPRSTR &= ~(1 << 0); } while(0)
+#define GPIO_B_RESET            do { RCC->IOPRSTR |= (1 << 1); RCC->IOPRSTR &= ~(1 << 1); } while(0)
+#define GPIO_C_RESET            do { RCC->IOPRSTR |= (1 << 2); RCC->IOPRSTR &= ~(1 << 2); } while(0)
+#define GPIO_D_RESET            do { RCC->IOPRSTR |= (1 << 3); RCC->IOPRSTR &= ~(1 << 3); } while(0)
+#define GPIO_F_RESET            do { RCC->IOPRSTR |= (1 << 5); RCC->IOPRSTR &= ~(1 << 5); } while(0)
 
 /**
  * @brief GPIO Initialize
