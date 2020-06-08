@@ -20,79 +20,79 @@
  */
 Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
 
-	drv_assert_param(hGPIO);
-	uint32_t reg_buff = 0;
+  drv_assert_param(hGPIO);
+  uint32_t reg_buff = 0;
 
-	if(hGPIO->GPIO_InitFields.mode <= GPIO_MODE_ANALOG) {
+  if(hGPIO->GPIO_InitFields.mode <= GPIO_MODE_ANALOG) {
 
-		reg_buff = hGPIO->GPIO_regdef->MODER;
-		reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
-		reg_buff |= ((hGPIO->GPIO_InitFields.mode) << (hGPIO->GPIO_InitFields.pin * 2));
-		hGPIO->GPIO_regdef->MODER = reg_buff;
+    reg_buff = hGPIO->GPIO_regdef->MODER;
+    reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
+    reg_buff |= ((hGPIO->GPIO_InitFields.mode) << (hGPIO->GPIO_InitFields.pin * 2));
+    hGPIO->GPIO_regdef->MODER = reg_buff;
 
-		if(hGPIO->GPIO_InitFields.mode == GPIO_MODE_AF) {
+    if(hGPIO->GPIO_InitFields.mode == GPIO_MODE_AF) {
 
-			if(hGPIO->GPIO_InitFields.alternate_func_mode <= GPIO_AF_7) {
+      if(hGPIO->GPIO_InitFields.alternate_func_mode <= GPIO_AF_7) {
 
-				uint8_t AFR_index, AFR_AF_bits;
-				AFR_index = hGPIO->GPIO_InitFields.pin / 8;
-				AFR_AF_bits = hGPIO->GPIO_InitFields.pin % 8;
+        uint8_t AFR_index, AFR_AF_bits;
+        AFR_index = hGPIO->GPIO_InitFields.pin / 8;
+        AFR_AF_bits = hGPIO->GPIO_InitFields.pin % 8;
 
-				reg_buff = hGPIO->GPIO_regdef->AFR[AFR_index];
-				reg_buff &= ~((0xFU) << (AFR_AF_bits * 4));
-				reg_buff |= ((hGPIO->GPIO_InitFields.alternate_func_mode) << (AFR_AF_bits * 4));
-				hGPIO->GPIO_regdef->AFR[AFR_index] = reg_buff;
+        reg_buff = hGPIO->GPIO_regdef->AFR[AFR_index];
+        reg_buff &= ~((0xFU) << (AFR_AF_bits * 4));
+        reg_buff |= ((hGPIO->GPIO_InitFields.alternate_func_mode) << (AFR_AF_bits * 4));
+        hGPIO->GPIO_regdef->AFR[AFR_index] = reg_buff;
 
-			} else
-				return DRV_ERROR;
-		}
+      } else
+        return DRV_ERROR;
+    }
 
-	} else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
+  } else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
 
-		// TODO
+    // TODO
 
-	} else {
+  } else {
 
-		return DRV_ERROR;
-	}
+    return DRV_ERROR;
+  }
 
-	if(hGPIO->GPIO_InitFields.op_speed <= GPIO_SPEED_VERY_HIGH) {
+  if(hGPIO->GPIO_InitFields.op_speed <= GPIO_SPEED_VERY_HIGH) {
 
-		reg_buff = hGPIO->GPIO_regdef->OSPEEDR;
-		reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
-		reg_buff |= ((hGPIO->GPIO_InitFields.op_speed) << (hGPIO->GPIO_InitFields.pin * 2));
-		hGPIO->GPIO_regdef->OSPEEDR = reg_buff;
+    reg_buff = hGPIO->GPIO_regdef->OSPEEDR;
+    reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
+    reg_buff |= ((hGPIO->GPIO_InitFields.op_speed) << (hGPIO->GPIO_InitFields.pin * 2));
+    hGPIO->GPIO_regdef->OSPEEDR = reg_buff;
 
-	} else {
+  } else {
 
-		return DRV_ERROR;
-	}
+    return DRV_ERROR;
+  }
 
-	if(hGPIO->GPIO_InitFields.pullup_pulldown <= GPIO_PULLDOWN) {
+  if(hGPIO->GPIO_InitFields.pullup_pulldown <= GPIO_PULLDOWN) {
 
-		reg_buff = hGPIO->GPIO_regdef->PUPDR;
-		reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
-		reg_buff |= ((hGPIO->GPIO_InitFields.pullup_pulldown) << (hGPIO->GPIO_InitFields.pin * 2));
-		hGPIO->GPIO_regdef->PUPDR = reg_buff;
+    reg_buff = hGPIO->GPIO_regdef->PUPDR;
+    reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
+    reg_buff |= ((hGPIO->GPIO_InitFields.pullup_pulldown) << (hGPIO->GPIO_InitFields.pin * 2));
+    hGPIO->GPIO_regdef->PUPDR = reg_buff;
 
-	} else {
+  } else {
 
-		return DRV_ERROR;
-	}
+    return DRV_ERROR;
+  }
 
-	if(hGPIO->GPIO_InitFields.op_type <= GPIO_OP_OPEN_DRAIN) {
+  if(hGPIO->GPIO_InitFields.op_type <= GPIO_OP_OPEN_DRAIN) {
 
-		reg_buff = hGPIO->GPIO_regdef->OTYPER;
-		reg_buff &= ~((1U) << (hGPIO->GPIO_InitFields.pin));
-		reg_buff |= ((hGPIO->GPIO_InitFields.op_type) << (hGPIO->GPIO_InitFields.pin));
-		hGPIO->GPIO_regdef->OTYPER = reg_buff;
+    reg_buff = hGPIO->GPIO_regdef->OTYPER;
+    reg_buff &= ~((1U) << (hGPIO->GPIO_InitFields.pin));
+    reg_buff |= ((hGPIO->GPIO_InitFields.op_type) << (hGPIO->GPIO_InitFields.pin));
+    hGPIO->GPIO_regdef->OTYPER = reg_buff;
 
-	} else {
+  } else {
 
-		return DRV_ERROR;
-	}
+    return DRV_ERROR;
+  }
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -102,20 +102,20 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
  */
 Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx) {
 
-	if(pGPIOx == GPIO_A)
-		GPIO_A_RESET;
-	else if(pGPIOx == GPIO_B)
-		GPIO_B_RESET;
-	else if(pGPIOx == GPIO_C)
-		GPIO_C_RESET;
-	else if(pGPIOx == GPIO_D)
-		GPIO_D_RESET;
-	else if(pGPIOx == GPIO_F)
-		GPIO_F_RESET;
-	else
-		return DRV_ERROR;
+  if(pGPIOx == GPIO_A)
+    GPIO_A_RESET;
+  else if(pGPIOx == GPIO_B)
+    GPIO_B_RESET;
+  else if(pGPIOx == GPIO_C)
+    GPIO_C_RESET;
+  else if(pGPIOx == GPIO_D)
+    GPIO_D_RESET;
+  else if(pGPIOx == GPIO_F)
+    GPIO_F_RESET;
+  else
+    return DRV_ERROR;
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -131,42 +131,42 @@ Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx) {
  */
 Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
 
-	drv_assert_param(pGPIOx);
+  drv_assert_param(pGPIOx);
 
-	if(Enable == ENABLE) {
+  if(Enable == ENABLE) {
 
-		if(pGPIOx == GPIO_A)
-			GPIO_A_PCLK_EN;
-		else if(pGPIOx == GPIO_B)
-			GPIO_B_PCLK_EN;
-		else if(pGPIOx == GPIO_C)
-			GPIO_C_PCLK_EN;
-		else if(pGPIOx == GPIO_D)
-			GPIO_D_PCLK_EN;
-		else if(pGPIOx == GPIO_F)
-			GPIO_F_PCLK_EN;
-		else
-			return DRV_ERROR;
+    if(pGPIOx == GPIO_A)
+      GPIO_A_PCLK_EN;
+    else if(pGPIOx == GPIO_B)
+      GPIO_B_PCLK_EN;
+    else if(pGPIOx == GPIO_C)
+      GPIO_C_PCLK_EN;
+    else if(pGPIOx == GPIO_D)
+      GPIO_D_PCLK_EN;
+    else if(pGPIOx == GPIO_F)
+      GPIO_F_PCLK_EN;
+    else
+      return DRV_ERROR;
 
-	} else if (Enable == DISABLE) {
+  } else if (Enable == DISABLE) {
 
-		if(pGPIOx == GPIO_A)
-			GPIO_A_PCLK_DI;
-		else if(pGPIOx == GPIO_B)
-			GPIO_B_PCLK_DI;
-		else if(pGPIOx == GPIO_C)
-			GPIO_C_PCLK_DI;
-		else if(pGPIOx == GPIO_D)
-			GPIO_D_PCLK_DI;
-		else if(pGPIOx == GPIO_F)
-			GPIO_F_PCLK_DI;
-		else
-			return DRV_ERROR;
+    if(pGPIOx == GPIO_A)
+      GPIO_A_PCLK_DI;
+    else if(pGPIOx == GPIO_B)
+      GPIO_B_PCLK_DI;
+    else if(pGPIOx == GPIO_C)
+      GPIO_C_PCLK_DI;
+    else if(pGPIOx == GPIO_D)
+      GPIO_D_PCLK_DI;
+    else if(pGPIOx == GPIO_F)
+      GPIO_F_PCLK_DI;
+    else
+      return DRV_ERROR;
 
-	} else
-		return DRV_ERROR;
+  } else
+    return DRV_ERROR;
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -177,7 +177,7 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
  */
 Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t *op_data) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -188,7 +188,7 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint
  */
 Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_data) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -199,7 +199,7 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_dat
  */
 Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t ip_data) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -209,7 +209,7 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uin
  */
 Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_data) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -219,7 +219,7 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_dat
  */
 Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -229,7 +229,7 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Config(void) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
@@ -239,7 +239,7 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Config(void) {
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Handling(void) {
 
-	return DRV_OK;
+  return DRV_OK;
 
 }
 
