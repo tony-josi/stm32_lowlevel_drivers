@@ -16,7 +16,8 @@
 /* GPIO Test Case Declarations */
 /* --------------------------- */
 
-void led_blink();
+void led_blink__gpio__pclk__init__toggle__deinit();
+void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
 
 
 #endif /* __DRIVER_TESTS_H */

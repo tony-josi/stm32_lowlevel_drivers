@@ -180,8 +180,11 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
 Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t *op_data) {
 
   drv_assert_param(pGPIOx);
+  uint32_t idr, mask;
 
-  *op_data = (uint8_t) (pGPIOx->IDR & (1 << Pin));
+  idr = pGPIOx->IDR;
+  mask = (1 << Pin);
+  *op_data = (uint8_t) ((idr & mask) >> Pin);
 
   return DRV_OK;
 
