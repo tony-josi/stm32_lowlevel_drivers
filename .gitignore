@@ -1,6 +1,5 @@
 Debug/*
 .settings/*
-.cproject
 .mxproject
 .project
 stm32_lowlevel_drivers Debug.launch

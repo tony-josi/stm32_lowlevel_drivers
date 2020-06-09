@@ -16,7 +16,6 @@ int main(void)
 {
 
   led_blink();
-  led_blink();
 
 	for(;;);
 }

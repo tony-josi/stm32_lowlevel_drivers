@@ -12,9 +12,9 @@
 #include "stm32g070xx_ll_hal.h"
 #include "driver_tests.h"
 
-static void brute_delay() {
+static void brute_delay(uint32_t delay) {
 
-  for(uint32_t val = 0; val < 700000; val++);
+  for(uint32_t val = 0; val < (delay * 10000); val++);
 
 }
 
@@ -28,13 +28,21 @@ void led_blink() {
   led.GPIO_InitFields.op_speed = GPIO_SPEED_HIGH;
   led.GPIO_InitFields.pullup_pulldown = GPIO_NOPULL;
   led.GPIO_InitFields.op_type = GPIO_OP_PUSH_PULL;
+
   LL_HAL_GPIO_PCLK_Cntrl(GPIO_A, ENABLE);
   LL_HAL_GPIO_Init(&led);
 
-  for(uint8_t itr = 0; itr < 30; itr++) {
+  for(uint8_t itr = 0; itr < 300; itr++) {
 
     LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
-    brute_delay();
+    brute_delay(10);
+    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+    brute_delay(10);
+    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+    brute_delay(10);
+    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+
+    brute_delay(100);
 
   }
 
