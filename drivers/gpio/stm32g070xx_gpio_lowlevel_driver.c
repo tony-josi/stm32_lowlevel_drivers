@@ -47,6 +47,14 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
         return DRV_ERROR;
     }
 
+  } else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RT) {
+
+    // TODO
+
+  } else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_FT) {
+
+    // TODO
+
   } else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
 
     // TODO
