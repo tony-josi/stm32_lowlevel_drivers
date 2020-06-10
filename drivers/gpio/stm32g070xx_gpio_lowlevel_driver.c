@@ -47,20 +47,26 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
         return DRV_ERROR;
     }
 
-  } else if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_RT) {
+  } else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
 
-    EXTI->RTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
-    EXTI->FTSR1 &= ~(1 << hGPIO->GPIO_InitFields.pin);
+    if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_RT) {
 
-  } else if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_FT) {
+      EXTI->RTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
+      EXTI->FTSR1 &= ~(1 << hGPIO->GPIO_InitFields.pin);
 
-    EXTI->FTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
-    EXTI->RTSR1 &= ~(1 << hGPIO->GPIO_InitFields.pin);
+    } else if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_FT) {
 
-  } else if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_RFT) {
+      EXTI->FTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
+      EXTI->RTSR1 &= ~(1 << hGPIO->GPIO_InitFields.pin);
 
-    EXTI->FTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
-    EXTI->RTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
+    } else if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_RFT) {
+
+      EXTI->FTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
+      EXTI->RTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
+    }
+
+    /* Enable the Interrupt Mask Register */
+    EXTI->IMR1 |= (1 << hGPIO->GPIO_InitFields.pin);
 
   } else {
 
