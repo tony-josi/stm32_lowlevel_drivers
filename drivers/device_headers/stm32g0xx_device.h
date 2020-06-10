@@ -145,8 +145,8 @@ typedef struct {
 /**
   * @brief EXTI Control
   */
-typedef struct
-{
+typedef struct {
+
   __VL uint32_t RTSR1;          /*!< EXTI Rising Trigger Selection Register 1,        Address offset:   0x00 */
   __VL uint32_t FTSR1;          /*!< EXTI Falling Trigger Selection Register 1,       Address offset:   0x04 */
   __VL uint32_t SWIER1;         /*!< EXTI Software Interrupt event Register 1,        Address offset:   0x08 */
@@ -159,27 +159,51 @@ typedef struct
        uint32_t RESERVED4[4];   /*!< Reserved 4,                                                0x70 -- 0x7C */
   __VL uint32_t IMR1;           /*!< EXTI Interrupt Mask Register 1,                  Address offset:   0x80 */
   __VL uint32_t EMR1;           /*!< EXTI Event Mask Register 1,                      Address offset:   0x84 */
+
 } EXTI_RegDef_Type;
+
+
+/**
+  * @brief System configuration controller
+  */
+typedef struct {
+
+  __VL uint32_t CFGR1;          /*!< SYSCFG configuration register 1,                   Address offset: 0x00 */
+       uint32_t RESERVED0[5];   /*!< Reserved,                                                   0x04 --0x14 */
+  __VL uint32_t CFGR2;          /*!< SYSCFG configuration register 2,                   Address offset: 0x18 */
+       uint32_t RESERVED1[25];  /*!< Reserved                                                           0x1C */
+  __VL uint32_t IT_LINE_SR[32]; /*!< SYSCFG configuration IT_LINE register,             Address offset: 0x80 */
+
+} SYSCFG_RegDef_Type;
 
 
 /* GPIOs pointed to respective register locations */
 /* ---------------------------------------------- */
 
-#define GPIO_A                        ((GPIO_RegDef_Type *) GPIOA_BASE_ADDR)   /*!< GPIOA #GPIO_RegDef_Type pointer */
-#define GPIO_B                        ((GPIO_RegDef_Type *) GPIOB_BASE_ADDR)   /*!< GPIOB #GPIO_RegDef_Type pointer */
-#define GPIO_C                        ((GPIO_RegDef_Type *) GPIOC_BASE_ADDR)   /*!< GPIOC #GPIO_RegDef_Type pointer */
-#define GPIO_D                        ((GPIO_RegDef_Type *) GPIOD_BASE_ADDR)   /*!< GPIOD #GPIO_RegDef_Type pointer */
-#define GPIO_F                        ((GPIO_RegDef_Type *) GPIOF_BASE_ADDR)   /*!< GPIOF #GPIO_RegDef_Type pointer */
+#define GPIO_A                        ((GPIO_RegDef_Type *) GPIOA_BASE_ADDR)    /*!< GPIOA #GPIO_RegDef_Type pointer */
+#define GPIO_B                        ((GPIO_RegDef_Type *) GPIOB_BASE_ADDR)    /*!< GPIOB #GPIO_RegDef_Type pointer */
+#define GPIO_C                        ((GPIO_RegDef_Type *) GPIOC_BASE_ADDR)    /*!< GPIOC #GPIO_RegDef_Type pointer */
+#define GPIO_D                        ((GPIO_RegDef_Type *) GPIOD_BASE_ADDR)    /*!< GPIOD #GPIO_RegDef_Type pointer */
+#define GPIO_F                        ((GPIO_RegDef_Type *) GPIOF_BASE_ADDR)    /*!< GPIOF #GPIO_RegDef_Type pointer */
+
 
 /* RCC macro pointed to respective register locations */
 /* -------------------------------------------------- */
 
-#define RCC                           ((RCC_RegDef_Type *) RCC_BASE_ADDR)      /*!< RCC #RCC_RegDef_Type pointer */
+#define RCC                           ((RCC_RegDef_Type *) RCC_BASE_ADDR)       /*!< RCC #RCC_RegDef_Type pointer */
+
 
 /* EXTI macro pointed to respective register locations */
-/* -------------------------------------------------- */
+/* --------------------------------------------------- */
 
-#define EXTI                          ((EXTI_RegDef_Type *) EXTI_BASE_ADDR)    /*!< EXTI #EXTI_RegDef_Type pointer */
+#define EXTI                          ((EXTI_RegDef_Type *) EXTI_BASE_ADDR)     /*!< EXTI #EXTI_RegDef_Type pointer */
+
+
+/* SYSCFG macro pointed to respective register locations */
+/* ----------------------------------------------------- */
+
+#define SYSCFG                        ((SYSCFG_RegDef_Type *) SYSCFG_BASE_ADDR) /*!< EXTI #EXTI_RegDef_Type pointer */
+
 
 /* GPIOs Clock enable macros */
 /* ------------------------- */
