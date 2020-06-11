@@ -233,11 +233,11 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uin
 
   if(ip_data == SET) {
 
-    pGPIOx->ODR |= (1 << Pin);
+    pGPIOx->BSRR = (uint32_t)(1 << Pin);
 
   } else if (ip_data == RESET) {
 
-    pGPIOx->ODR &= ~(1 << Pin);
+    pGPIOx->BRR = (uint32_t)(1 << Pin);
 
   } else
     return DRV_ERROR;
@@ -268,7 +268,15 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
 
   drv_assert_param(pGPIOx);
 
-  pGPIOx->ODR ^= (1 << Pin);
+  if ((pGPIOx->ODR & (1 << Pin)) != 0x00u) {
+
+    pGPIOx->BRR = (uint32_t)(1 << Pin);
+
+  } else {
+
+    pGPIOx->BSRR = (uint32_t)(1 << Pin);
+
+  }
 
   return DRV_OK;
 

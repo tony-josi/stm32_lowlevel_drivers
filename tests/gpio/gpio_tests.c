@@ -80,8 +80,8 @@ void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit() {
     if(!LL_HAL_GPIO_Read_IP_Pin(GPIO_C, GPIO_PIN_13, &ip_val) && (ip_val == 0)) {
 
       ip_val = 1;
-      brute_delay(20);
       LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+      brute_delay(20);
 
     }
 
