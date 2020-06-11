@@ -65,6 +65,13 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
       EXTI->RTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);
     }
 
+    /* Configure EXTI external interrupt selection register */
+    uint8_t temp_EXTI_EXTICRx_idx = hGPIO->GPIO_InitFields.pin / 4;
+    uint8_t temp_EXTI_EXTICRx_shftr = (hGPIO->GPIO_InitFields.pin % 4) * 8;
+
+
+    //EXTI->EXTICR;
+
     /* Enable the Interrupt Mask Register */
     EXTI->IMR1 |= (1 << hGPIO->GPIO_InitFields.pin);
 
