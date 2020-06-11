@@ -34,13 +34,13 @@ void led_blink__gpio__pclk__init__toggle__deinit() {
 
   for(uint8_t itr = 0; itr < 300; itr++) {
 
-    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+    LL_HAL_GPIO_Write_OP_Port(GPIO_A, (1 << GPIO_PIN_5));
     brute_delay(10);
-    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+    LL_HAL_GPIO_Write_OP_Port(GPIO_A, (0 << GPIO_PIN_5));
     brute_delay(10);
-    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+    LL_HAL_GPIO_Write_OP_Port(GPIO_A, (1 << GPIO_PIN_5));
     brute_delay(10);
-    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+    LL_HAL_GPIO_Write_OP_Port(GPIO_A, (0 << GPIO_PIN_5));
 
     brute_delay(100);
 
