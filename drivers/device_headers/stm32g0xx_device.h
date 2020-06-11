@@ -300,18 +300,16 @@ typedef struct {
 #define SYSCFG_PCLK_DI               ((RCC->APBENR2) &= ~(1 << 0))             /*!< SYSCFG Peripheral Clock disable */
 
 
+/* IRQ Numbers */
+/* ----------- */
 
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * @brief IRQ Number Definition Macros
+ *
+ */
+#define EXTI0_1                      (5u)                                      /*!< EXTI line 0 & 1 interrupt */
+#define EXTI2_3                      (6u)                                      /*!< EXTI line 2 & 3 interrupt */
+#define EXTI4_15                     (7u)                                      /*!< EXTI line 4 to 15 interrupt */
 
 
 
