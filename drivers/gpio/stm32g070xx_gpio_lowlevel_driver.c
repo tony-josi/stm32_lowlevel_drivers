@@ -11,6 +11,7 @@
  */
 
 #include "stm32g070xx_gpio_lowlevel_driver.h"
+#include "stm32g070xx_exti_lowlevel_driver.h"
 
 /**
  * @brief GPIO Initialize
@@ -66,11 +67,10 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
     }
 
     /* Configure EXTI external interrupt selection register */
-    uint8_t temp_EXTI_EXTICRx_idx = hGPIO->GPIO_InitFields.pin / 4;
-    uint8_t temp_EXTI_EXTICRx_shftr = (hGPIO->GPIO_InitFields.pin % 4) * 8;
+    uint8_t temp_EXTI_EXTICRx_idx = hGPIO->GPIO_InitFields.pin / EXTI_EXTICR_REG_COUNT;
+    uint8_t temp_EXTI_EXTICRx_shftr = (hGPIO->GPIO_InitFields.pin % 4) * EXTI_EXTICR_EXTI_SEL_WIDTH;
 
-
-    //EXTI->EXTICR;
+    EXTI->EXTICR[temp_EXTI_EXTICRx_idx] =
 
     /* Enable the Interrupt Mask Register */
     EXTI->IMR1 |= (1 << hGPIO->GPIO_InitFields.pin);
