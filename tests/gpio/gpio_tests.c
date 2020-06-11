@@ -97,6 +97,18 @@ void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit() {
 }
 
 
+void gpio_it_init__gpio_init() {
+
+  GPIO_Handle_t gpit;
+  gpit.GPIO_regdef = GPIO_D;
+  gpit.GPIO_InitFields.pin = GPIO_PIN_12;
+  gpit.GPIO_InitFields.mode = GPIO_MODE_IT_RT;
+
+  LL_HAL_GPIO_PCLK_Cntrl(GPIO_A, ENABLE);
+  LL_HAL_GPIO_Init(&gpit);
+
+}
+
 
 
 

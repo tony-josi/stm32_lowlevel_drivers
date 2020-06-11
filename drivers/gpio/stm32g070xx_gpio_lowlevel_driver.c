@@ -88,9 +88,6 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
     reg_buff |= ((hGPIO->GPIO_InitFields.op_speed) << (hGPIO->GPIO_InitFields.pin * 2));
     hGPIO->GPIO_regdef->OSPEEDR = reg_buff;
 
-  } else {
-
-    return DRV_ERROR;
   }
 
   if(hGPIO->GPIO_InitFields.pullup_pulldown <= GPIO_PULLDOWN) {
@@ -100,9 +97,6 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
     reg_buff |= ((hGPIO->GPIO_InitFields.pullup_pulldown) << (hGPIO->GPIO_InitFields.pin * 2));
     hGPIO->GPIO_regdef->PUPDR = reg_buff;
 
-  } else {
-
-    return DRV_ERROR;
   }
 
   if(hGPIO->GPIO_InitFields.op_type <= GPIO_OP_OPEN_DRAIN) {
@@ -112,9 +106,6 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
     reg_buff |= ((hGPIO->GPIO_InitFields.op_type) << (hGPIO->GPIO_InitFields.pin));
     hGPIO->GPIO_regdef->OTYPER = reg_buff;
 
-  } else {
-
-    return DRV_ERROR;
   }
 
   return DRV_OK;

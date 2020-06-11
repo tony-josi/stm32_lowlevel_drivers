@@ -191,9 +191,9 @@ typedef struct {
 /* --------------------------------- */
 #define GPIO_PORT_TO_CODE(X)          ((X == GPIO_A) ? (0x00u) : \
                                        (X == GPIO_B) ? (0x01u) : \
-                                       (X == GPIO_B) ? (0x02u) : \
-                                       (X == GPIO_B) ? (0x03u) : \
-                                       (X == GPIO_B) ? (0x05u) : 0xFF)         /*!< GPIO Port to EXTI Selection code */
+                                       (X == GPIO_C) ? (0x02u) : \
+                                       (X == GPIO_D) ? (0x03u) : \
+                                       (X == GPIO_F) ? (0x05u) : 0xFF)         /*!< GPIO Port to EXTI Selection code */
 
 
 /* RCC macro pointed to respective register locations */

@@ -16,7 +16,8 @@ int main(void)
 {
 
   //led_blink__gpio__pclk__init__toggle__deinit();
-  led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
+  //led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
+  gpio_it_init__gpio_init();
 
 	for(;;);
 }
