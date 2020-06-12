@@ -188,7 +188,7 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Config(void);
  * @brief GPIO Handle IRQ
  *
  */
-Drv_Status_t LL_HAL_GPIO_IRQ_Handling(void);
+Drv_Status_t LL_HAL_GPIO_IRQ_Handler(void);
 
 
 
