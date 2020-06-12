@@ -109,6 +109,13 @@ void gpio_it_init__gpio_init() {
 
 }
 
+void EXTI4_15_IRQHandler(void)
+{
+
+  LL_HAL_GPIO_IRQ_Handler(GPIO_PIN_13);
+
+}
+
 
 
 
