@@ -21,7 +21,7 @@
 
 #define NVIC_ISER                       ((__VL uint32_t *) 0xE000E100)  /*!< Interrupt Set-Enable Register, NVIC_ISER */
 #define NVIC_ICER                       ((__VL uint32_t *) 0xE000E180)  /*!< Interrupt Clear Enable Register, NVIC_ICER */
-
+#define NVIC_IPR
 
 /* Core memory address */
 /* ------------------- */

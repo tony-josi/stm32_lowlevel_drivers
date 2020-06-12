@@ -282,10 +282,10 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
 }
 
 /**
- * @brief GPIO IRQ configure
+ * @brief GPIO IRQ Interrupt configure
  *
  */
-Drv_Status_t LL_HAL_GPIO_IRQ_Config(uint8_t IRQ_Num, uint8_t IRQ_Prio, uint8_t Enable) {
+Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
 
   if(Enable == ENABLE) {
 
@@ -303,6 +303,16 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Config(uint8_t IRQ_Num, uint8_t IRQ_Prio, uint8_t E
 
   } else
     return DRV_ERROR;
+
+  return DRV_OK;
+
+}
+
+/**
+ * @brief GPIO IRQ Priority configure
+ *
+ */
+Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) {
 
   return DRV_OK;
 
