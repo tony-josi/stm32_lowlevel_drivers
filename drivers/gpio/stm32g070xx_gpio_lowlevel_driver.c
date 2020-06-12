@@ -318,6 +318,9 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
 
     uint8_t reg_indx = IRQ_Num / NVIC_IPR_IRQ_PER_REG;
     uint8_t reg_shftr = (IRQ_Num % NVIC_IPR_IRQ_PER_REG) * NVIC_IPR_BIT_WIDTH;
+
+    /* Bit alignment and address are based on
+     * ARMv6-M Architecture Reference Manual */
     *(NVIC_IPR_BASE_ADDR + reg_indx) |= ((Priority << NVIC_IPR_PER_IRQ_SHFT) << reg_shftr);
 
   } else
@@ -331,7 +334,19 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
  * @brief GPIO Handle IRQ
  *
  */
-Drv_Status_t LL_HAL_GPIO_IRQ_Handler(void) {
+Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
+
+  if ((EXTI->RPR1 & (1 << Pin)) != 0x00u) {
+
+    EXTI->RPR1 &= (1 << Pin);  /* Each bit is cleared by writing 1 into it. */
+    /* IT action code */
+  }
+
+  if ((EXTI->FPR1 & (1 << Pin)) != 0x00u) {
+
+    EXTI->FPR1 &= (1 << Pin);  /* Each bit is cleared by writing 1 into it. */
+    /* IT action code */
+  }
 
   return DRV_OK;
 

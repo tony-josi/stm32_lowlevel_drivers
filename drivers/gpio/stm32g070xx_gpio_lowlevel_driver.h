@@ -194,7 +194,7 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority);
  * @brief GPIO Handle IRQ
  *
  */
-Drv_Status_t LL_HAL_GPIO_IRQ_Handler(void);
+Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin);
 
 
 
