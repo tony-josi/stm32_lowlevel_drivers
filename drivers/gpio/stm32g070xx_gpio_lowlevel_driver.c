@@ -289,6 +289,9 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
 
   if(Enable == ENABLE) {
 
+    /* Bit alignment and address are based on
+     * ARMv6-M Architecture Reference Manual */
+
     if(IRQ_Num <= 31)
       *NVIC_ISER |= (1 << IRQ_Num);
     else
