@@ -182,7 +182,7 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin);
  * @brief GPIO IRQ configure
  *
  */
-Drv_Status_t LL_HAL_GPIO_IRQ_Config(void);
+Drv_Status_t LL_HAL_GPIO_IRQ_Config(uint8_t IRQ_Num, uint8_t IRQ_Prio, uint8_t Enable);
 
 /**
  * @brief GPIO Handle IRQ
