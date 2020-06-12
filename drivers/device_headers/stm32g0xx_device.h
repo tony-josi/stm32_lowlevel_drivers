@@ -19,9 +19,17 @@
 /* NVIC register addresses */
 /* ----------------------- */
 
-#define NVIC_ISER                       ((__VL uint32_t *) 0xE000E100)  /*!< Interrupt Set-Enable Register, NVIC_ISER */
-#define NVIC_ICER                       ((__VL uint32_t *) 0xE000E180)  /*!< Interrupt Clear Enable Register, NVIC_ICER */
-#define NVIC_IPR
+#define NVIC_ISER                       ((__VL uint32_t *) 0xE000E100)  /*!< Interrupt Set-Enable Register,
+                                                                             NVIC_ISER */
+#define NVIC_ICER                       ((__VL uint32_t *) 0xE000E180)  /*!< Interrupt Clear Enable Register,
+                                                                             NVIC_ICER */
+#define NVIC_IPR_BASE_ADDR              ((__VL uint32_t *) 0xE000E400)  /*!< Interrupt Priority Registers,
+                                                                             NVIC_IPR0 - NVIC_IPR7 */
+#define NVIC_IPR_REG_COUNT              (8u)                     /*!< Number of NVIC_IPR registers available */
+#define NVIC_IPR_BIT_WIDTH              (8u)                     /*!< Number of bits reserved per IRQ */
+#define NVIC_IPR_IRQ_PER_REG            (4u)                     /*!< Number of IRQ configurations per register */
+#define NVIC_IPR_PER_IRQ_SHFT           (6u)                     /*!< Number of shifts required to align priority
+                                                                      per IRQ */
 
 /* Core memory address */
 /* ------------------- */

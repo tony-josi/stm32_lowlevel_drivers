@@ -314,6 +314,15 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) {
 
+  if ((IRQ_Num < 32) && (Priority < 4)) {
+
+    uint8_t reg_indx = IRQ_Num / NVIC_IPR_IRQ_PER_REG;
+    uint8_t reg_shftr = (IRQ_Num % NVIC_IPR_IRQ_PER_REG) * NVIC_IPR_BIT_WIDTH;
+    *(NVIC_IPR_BASE_ADDR + reg_indx) |= ((Priority << NVIC_IPR_PER_IRQ_SHFT) << reg_shftr);
+
+  } else
+    return DRV_ERROR;
+
   return DRV_OK;
 
 }
