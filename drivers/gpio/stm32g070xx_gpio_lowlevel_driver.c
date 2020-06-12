@@ -71,7 +71,7 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
     uint8_t temp_EXTI_EXTICRx_shftr = (hGPIO->GPIO_InitFields.pin % 4) * EXTI_EXTICR_EXTI_SEL_WIDTH;
     uint8_t port_code = GPIO_PORT_TO_CODE(hGPIO->GPIO_regdef);
 
-    EXTI->EXTICR[temp_EXTI_EXTICRx_idx] = port_code << temp_EXTI_EXTICRx_shftr;
+    EXTI->EXTICR[temp_EXTI_EXTICRx_idx] |= port_code << temp_EXTI_EXTICRx_shftr;
 
     /* Enable the Interrupt Mask Register */
     EXTI->IMR1 |= (1 << hGPIO->GPIO_InitFields.pin);
