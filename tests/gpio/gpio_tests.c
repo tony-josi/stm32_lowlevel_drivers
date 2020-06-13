@@ -114,11 +114,13 @@ void led_btn_gpio_it_init__exti_callback() {
   GS_btn.GPIO_InitFields.pin = GPIO_PIN_13;
   GS_btn.GPIO_InitFields.mode = GPIO_MODE_IT_RT;
   GS_btn.GPIO_InitFields.pullup_pulldown = GPIO_NOPULL;
+  GS_btn.GPIO_InitFields.op_speed = 0xFF;
+  GS_btn.GPIO_InitFields.op_type = 0xFF;
 
   LL_HAL_GPIO_PCLK_Cntrl(GPIO_C, ENABLE);
   LL_HAL_GPIO_Init(&GS_btn);
   LL_HAL_GPIO_IRQ_Interupt_Config(EXTI4_15_IRQn, ENABLE);
-  LL_HAL_GPIO_IRQ_Priority_Config(EXTI4_15_IRQn, 0);
+  //LL_HAL_GPIO_IRQ_Priority_Config(EXTI4_15_IRQn, 0);
 
 }
 

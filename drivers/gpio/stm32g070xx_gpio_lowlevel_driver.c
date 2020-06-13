@@ -293,7 +293,8 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
      * ARMv6-M Architecture Reference Manual */
 
     if(IRQ_Num <= 31)
-      *NVIC_ISER |= (1 << IRQ_Num);
+      //*NVIC_ISER |= (1 << IRQ_Num);
+      *NVIC_ISER = (uint32_t)(1UL << (((uint32_t)IRQ_Num) & 0x1FUL));
     else
       return DRV_ERROR;
 
