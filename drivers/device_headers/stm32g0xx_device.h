@@ -32,6 +32,12 @@
 #define NVIC_IPR_IRQ_PER_REG            (4u)                     /*!< Number of IRQ configurations per register */
 #define NVIC_IPR_PER_IRQ_SHFT           (6u)                     /*!< Number of shifts required to align priority
                                                                       per IRQ */
+/* EXTI IRQ Number Definitions */
+/* --------------------------- */
+
+#define EXTI0_1_IRQn                    (5u)                    /*!< EXTI 0 and 1 Interrupts                                           */
+#define EXTI2_3_IRQn                    (6u)                    /*!< EXTI Line 2 and 3 Interrupts                                      */
+#define EXTI4_15_IRQn                   (7u)                    /*!< EXTI Line 4 to 15 Interrupts                                      */
 
 /* Core memory address */
 /* ------------------- */

@@ -18,7 +18,7 @@
 
 void led_blink__gpio__pclk__init__toggle__deinit();
 void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
-void gpio_it_init__gpio_init();
+void led_btn_gpio_it_init__exti_callback();
 
 
 #endif /* __DRIVER_TESTS_H */

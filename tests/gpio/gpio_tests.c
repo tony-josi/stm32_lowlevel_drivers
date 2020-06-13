@@ -96,26 +96,44 @@ void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit() {
 
 }
 
+void led_btn_gpio_it_init__exti_callback() {
 
-void gpio_it_init__gpio_init() {
+  GPIO_Handle_t GS_led, GS_btn;
 
-  GPIO_Handle_t gpit;
-  gpit.GPIO_regdef = GPIO_D;
-  gpit.GPIO_InitFields.pin = GPIO_PIN_12;
-  gpit.GPIO_InitFields.mode = GPIO_MODE_IT_RT;
+  GS_led.GPIO_regdef = GPIO_A;
+  GS_led.GPIO_InitFields.pin = GPIO_PIN_5;
+  GS_led.GPIO_InitFields.mode = GPIO_MODE_OUT;
+  GS_led.GPIO_InitFields.op_speed = GPIO_SPEED_HIGH;
+  GS_led.GPIO_InitFields.pullup_pulldown = GPIO_NOPULL;
+  GS_led.GPIO_InitFields.op_type = GPIO_OP_PUSH_PULL;
 
   LL_HAL_GPIO_PCLK_Cntrl(GPIO_A, ENABLE);
-  LL_HAL_GPIO_Init(&gpit);
+  LL_HAL_GPIO_Init(&GS_led);
+
+  GS_btn.GPIO_regdef = GPIO_C;
+  GS_btn.GPIO_InitFields.pin = GPIO_PIN_13;
+  GS_btn.GPIO_InitFields.mode = GPIO_MODE_IT_RT;
+  GS_btn.GPIO_InitFields.pullup_pulldown = GPIO_NOPULL;
+
+  LL_HAL_GPIO_PCLK_Cntrl(GPIO_C, ENABLE);
+  LL_HAL_GPIO_Init(&GS_btn);
+  LL_HAL_GPIO_IRQ_Interupt_Config(EXTI4_15_IRQn, ENABLE);
+  LL_HAL_GPIO_IRQ_Priority_Config(EXTI4_15_IRQn, 0);
 
 }
 
-void EXTI4_15_IRQHandler(void)
-{
+
+void EXTI4_15_IRQHandler(void) {
 
   LL_HAL_GPIO_IRQ_Handler(GPIO_PIN_13);
 
 }
 
+void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
+
+  LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+
+}
 
 
 
