@@ -342,15 +342,48 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
   if (__HAL_GPIO_EXTI_RISING_IT_STATUS((1 << Pin)) != 0x00u) {
 
     __HAL_GPIO_EXTI_RISING_IT_CLEAR(1 << Pin);  /* Each bit is cleared by writing 1 into it. */
+
     /* IT action code */
+    LL_HAL_GPIO_EXTI_Rising_Callback(Pin);
   }
 
   if (__HAL_GPIO_EXTI_FALLING_IT_STATUS((1 << Pin)) != 0x00u) {
 
     __HAL_GPIO_EXTI_FALLING_IT_CLEAR(1 << Pin);  /* Each bit is cleared by writing 1 into it. */
+
     /* IT action code */
+    LL_HAL_GPIO_EXTI_Falling_Callback(Pin);
   }
 
   return DRV_OK;
+
+}
+
+/**
+  * @brief  EXTI line detection callback.
+  * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
+  * @retval None
+  */
+__weak void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
+
+  UNUSED(GPIO_Pin);
+
+  /* NOTE: This function should not be modified, when the callback is needed,
+           the LL_HAL_GPIO_EXTI_Rising_Callback could be implemented in the user file
+   */
+}
+
+/**
+  * @brief  EXTI line detection callback.
+  * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
+  * @retval None
+  */
+__weak void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin) {
+
+  UNUSED(GPIO_Pin);
+
+  /* NOTE: This function should not be modified, when the callback is needed,
+           the LL_HAL_GPIO_EXTI_Falling_Callback could be implemented in the user file
+   */
 
 }

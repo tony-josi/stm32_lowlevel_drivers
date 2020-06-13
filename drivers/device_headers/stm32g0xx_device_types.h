@@ -14,4 +14,12 @@
 
 #define __VL                              volatile /*!< Volatile type macro */
 
+#if  defined ( __GNUC__ )
+#ifndef __weak
+#define __weak   __attribute__((weak))
+#endif /* __weak */
+#endif /* __GNUC__ */
+
+#define UNUSED(X) (void)X                          /* To avoid gcc/g++ warnings */
+
 #endif /* __STM32G0XX_DEVICE_TYPES_H */

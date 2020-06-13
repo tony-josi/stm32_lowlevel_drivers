@@ -228,6 +228,18 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority);
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin);
 
+/**
+ * @brief  EXTI line detection callback.
+ *
+ */
+void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin);
+
+/**
+ * @brief  EXTI line detection callback.
+ *
+ */
+void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin);
+
 
 
 #endif /* __STM32070XX_GPIO_LOWLEVEL_DRIVER_H */
