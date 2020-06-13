@@ -341,13 +341,13 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
 
   if (__HAL_GPIO_EXTI_RISING_IT_STATUS((1 << Pin)) != 0x00u) {
 
-    EXTI->RPR1 &= (1 << Pin);  /* Each bit is cleared by writing 1 into it. */
+    __HAL_GPIO_EXTI_RISING_IT_CLEAR(1 << Pin);  /* Each bit is cleared by writing 1 into it. */
     /* IT action code */
   }
 
   if (__HAL_GPIO_EXTI_FALLING_IT_STATUS((1 << Pin)) != 0x00u) {
 
-    EXTI->FPR1 &= (1 << Pin);  /* Each bit is cleared by writing 1 into it. */
+    __HAL_GPIO_EXTI_FALLING_IT_CLEAR(1 << Pin);  /* Each bit is cleared by writing 1 into it. */
     /* IT action code */
   }
 

@@ -160,7 +160,7 @@ typedef struct __GPIO_Handle_t {
   *                         This parameter can be (1 << x) where x is GPIO_PIN_x
   * @retval None
   */
-#define __HAL_GPIO_EXTI_FALLING_IT_CLEAR(__EXTI)         (EXTI->FPR1 & =(__EXTI))
+#define __HAL_GPIO_EXTI_FALLING_IT_CLEAR(__EXTI)         (EXTI->FPR1 &= (__EXTI))
 
 /**
  * @brief GPIO Initialize
