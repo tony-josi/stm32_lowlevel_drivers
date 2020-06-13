@@ -339,13 +339,13 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
 
-  if ((EXTI->RPR1 & (1 << Pin)) != 0x00u) {
+  if (__HAL_GPIO_EXTI_RISING_IT_STATUS((1 << Pin)) != 0x00u) {
 
     EXTI->RPR1 &= (1 << Pin);  /* Each bit is cleared by writing 1 into it. */
     /* IT action code */
   }
 
-  if ((EXTI->FPR1 & (1 << Pin)) != 0x00u) {
+  if (__HAL_GPIO_EXTI_FALLING_IT_STATUS((1 << Pin)) != 0x00u) {
 
     EXTI->FPR1 &= (1 << Pin);  /* Each bit is cleared by writing 1 into it. */
     /* IT action code */

@@ -131,6 +131,38 @@ typedef struct __GPIO_Handle_t {
 #define GPIO_F_RESET            do { RCC->IOPRSTR |= (1 << 5); RCC->IOPRSTR &= ~(1 << 5); } while(0)
 
 /**
+  * @brief  Check if EXTI line is rising edge or not.
+  * @param  __EXTI         specifies the EXTI line to check.
+  *                        This parameter can be (1 << x) where x is GPIO_PIN_x
+  * @retval The new state of __EXTI (SET or RESET).
+  */
+#define __HAL_GPIO_EXTI_RISING_IT_STATUS(__EXTI)         (EXTI->RPR1 & (__EXTI))
+
+/**
+  * @brief  Check if EXTI line is falling edge or not.
+  * @param  __EXTI          specifies the EXTI line to check.
+  *                         This parameter can be (1 << x) where x is GPIO_PIN_x
+  * @retval The new state of __EXTI (SET or RESET).
+  */
+#define __HAL_GPIO_EXTI_FALLING_IT_STATUS(__EXTI)        (EXTI->FPR1 & (__EXTI))
+
+/**
+  * @brief  Clear EXTI line is rising edge.
+  * @param  __EXTI         specifies the EXTI line to check.
+  *                        This parameter can be (1 << x) where x is GPIO_PIN_x
+  * @retval None
+  */
+#define __HAL_GPIO_EXTI_RISING_IT_CLEAR(__EXTI)          (EXTI->RPR1 &= (__EXTI))
+
+/**
+  * @brief  Clear EXTI line is falling edge.
+  * @param  __EXTI          specifies the EXTI line to check.
+  *                         This parameter can be (1 << x) where x is GPIO_PIN_x
+  * @retval None
+  */
+#define __HAL_GPIO_EXTI_FALLING_IT_CLEAR(__EXTI)         (EXTI->FPR1 & =(__EXTI))
+
+/**
  * @brief GPIO Initialize
  *
  */
