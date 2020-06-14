@@ -16,28 +16,6 @@
 #include <stdint.h>
 #include "stm32g0xx_device_types.h"
 
-/* NVIC register addresses */
-/* ----------------------- */
-
-/* Bit alignment and addresses are based on
- * ARMv6-M Architecture Reference Manual */
-#define NVIC_ISER                       ((__VL uint32_t *) 0xE000E100)  /*!< Interrupt Set-Enable Register,
-                                                                             NVIC_ISER */
-#define NVIC_ICER                       ((__VL uint32_t *) 0xE000E180)  /*!< Interrupt Clear Enable Register,
-                                                                             NVIC_ICER */
-#define NVIC_IPR_BASE_ADDR              ((__VL uint32_t *) 0xE000E400)  /*!< Interrupt Priority Registers,
-                                                                             NVIC_IPR0 - NVIC_IPR7 */
-#define NVIC_IPR_REG_COUNT              (8u)                     /*!< Number of NVIC_IPR registers available */
-#define NVIC_IPR_BIT_WIDTH              (8u)                     /*!< Number of bits reserved per IRQ */
-#define NVIC_IPR_IRQ_PER_REG            (4u)                     /*!< Number of IRQ configurations per register */
-#define NVIC_IPR_PER_IRQ_SHFT           (6u)                     /*!< Number of shifts required to align priority
-                                                                      per IRQ */
-/* EXTI IRQ Number Definitions */
-/* --------------------------- */
-
-#define EXTI0_1_IRQn                    (5u)                    /*!< EXTI 0 and 1 Interrupts                                           */
-#define EXTI2_3_IRQn                    (6u)                    /*!< EXTI Line 2 and 3 Interrupts                                      */
-#define EXTI4_15_IRQn                   (7u)                    /*!< EXTI Line 4 to 15 Interrupts                                      */
 
 /* Core memory address */
 /* ------------------- */
@@ -113,6 +91,30 @@
 #define GPIOC_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000800UL) /*!< GPIOC base address */
 #define GPIOD_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00000C00UL) /*!< GPIOD base address */
 #define GPIOF_BASE_ADDR                 (IOPORT_BUS_BASE_ADDR + 0x00001400UL) /*!< GPIOF base address */
+
+/* NVIC register related definitions */
+/* --------------------------------- */
+
+/* Bit alignment and addresses are based on
+ * ARMv6-M Architecture Reference Manual */
+
+#define NVIC_IPR_REG_COUNT              (8u)                     /*!< Number of NVIC_IPR registers available */
+#define NVIC_IPR_BIT_WIDTH              (8u)                     /*!< Number of bits reserved per IRQ */
+#define NVIC_IPR_IRQ_PER_REG            (4u)                     /*!< Number of IRQ configurations per register */
+#define NVIC_IPR_PER_IRQ_SHFT           (6u)                     /*!< Number of shifts required to align priority
+                                                                      per IRQ */
+
+
+/* EXTI IRQ Number Definitions */
+/* --------------------------- */
+
+/**
+ * @brief IRQ Number Definition Macros
+ *
+ */
+#define EXTI0_1                         (5u)                    /*!< EXTI line 0 & 1 interrupt */
+#define EXTI2_3                         (6u)                    /*!< EXTI line 2 & 3 interrupt */
+#define EXTI4_15                        (7u)                    /*!< EXTI line 4 to 15 interrupt */
 
 
 /* Peripheral register structures */
@@ -353,23 +355,6 @@ typedef struct {
  * @brief SYSCFG Peripheral Clock disable
  */
 #define SYSCFG_PCLK_DI               ((RCC->APBENR2) &= ~(1 << 0))             /*!< SYSCFG Peripheral Clock disable */
-
-
-/* IRQ Numbers */
-/* ----------- */
-
-/**
- * @brief IRQ Number Definition Macros
- *
- */
-#define EXTI0_1                      (5u)                                      /*!< EXTI line 0 & 1 interrupt */
-#define EXTI2_3                      (6u)                                      /*!< EXTI line 2 & 3 interrupt */
-#define EXTI4_15                     (7u)                                      /*!< EXTI line 4 to 15 interrupt */
-
-
-
-
-
 
 
 
