@@ -310,12 +310,18 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
 
   drv_assert_param(pGPIOx);
 
+  /* Check for previous pin bit field, if set */
   if ((pGPIOx->ODR & (1 << Pin)) != 0x00u) {
 
+    /* Set the GPIO port bit reset
+     * register bit of given pin */
     pGPIOx->BRR = (uint32_t)(1 << Pin);
 
+    /* If not set */
   } else {
 
+    /* Set the GPIO port bit set/reset
+     * register bit of given pin */
     pGPIOx->BSRR = (uint32_t)(1 << Pin);
 
   }
@@ -330,24 +336,25 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
 
-  if(Enable == ENABLE) {
+  /* Bit alignment and address are based on
+   * ARMv6-M Architecture Reference Manual */
 
-    /* Bit alignment and address are based on
-     * ARMv6-M Architecture Reference Manual */
+  if(IRQ_Num <= 31) {
 
-    if(IRQ_Num <= 31)
-      //*NVIC_ISER |= (1 << IRQ_Num);
-      //*NVIC_ISER = (uint32_t)(1UL << (((uint32_t)IRQ_Num) & 0x1FUL));
+    if(Enable == ENABLE) {
+
+      /* Set the given IRQ by setting
+       * ISER register of NVIC */
       NVIC->ISER[0] = (uint32_t)(1UL << (((uint32_t)IRQ_Num) & 0x1FUL));
-    else
-      return DRV_ERROR;
 
-  } else if(Enable == DISABLE) {
+      /* To disable given IRQ */
+    } else if(Enable == DISABLE) {
 
-    if(IRQ_Num <= 31)
-      //*NVIC_ICER |= (1 << IRQ_Num);
+      /* Reset the given IRQ by setting
+       * ICER register of NVIC */
       NVIC->ICER[0] = (uint32_t)(1UL << (((uint32_t)IRQ_Num) & 0x1FUL));
-    else
+
+    } else
       return DRV_ERROR;
 
   } else
