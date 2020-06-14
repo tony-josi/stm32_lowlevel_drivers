@@ -489,30 +489,38 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
 }
 
 /**
-  * @brief  EXTI line detection callback.
-  * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
+  * @brief  EXTI line rising edge detection callback.
+  *
+  * @param  [in]  GPIO_Pin  Specifies the port pin
+  *                         connected to corresponding EXTI line.
+  *
   * @retval None
   */
 __WEAK void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
 
   UNUSED(GPIO_Pin);
 
-  /* NOTE: This function should not be modified, when the callback is needed,
-           the LL_HAL_GPIO_EXTI_Rising_Callback could be implemented in the user file
+  /* NOTE: DIFINED AS __WEAK, IMPLEMENT THIS
+   * FUNCTION => void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin);
+   * IN USER CODE, AVOID MODIFICATION HERE.
    */
 }
 
 /**
-  * @brief  EXTI line detection callback.
-  * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
+  * @brief  EXTI line falling edge detection callback.
+  *
+  * @param  [in]  GPIO_Pin  Specifies the port pin
+  *                         connected to corresponding EXTI line.
+  *
   * @retval None
   */
 __WEAK void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin) {
 
   UNUSED(GPIO_Pin);
 
-  /* NOTE: This function should not be modified, when the callback is needed,
-           the LL_HAL_GPIO_EXTI_Falling_Callback could be implemented in the user file
+  /* NOTE: DIFINED AS __WEAK, IMPLEMENT THIS
+   * FUNCTION => void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin);
+   * IN USER CODE, AVOID MODIFICATION HERE.
    */
 
 }
