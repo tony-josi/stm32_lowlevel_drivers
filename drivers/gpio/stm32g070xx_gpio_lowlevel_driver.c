@@ -370,6 +370,7 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) {
 
+ /* Check if IRQ number and Priority are valid */
   if ((IRQ_Num < 32) && (Priority < 4)) {
 
     uint8_t reg_indx = IRQ_Num / NVIC_IPR_IRQ_PER_REG;
@@ -377,8 +378,8 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
 
     /* Bit alignment and address are based on
      * ARMv6-M Architecture Reference Manual */
-    //*(NVIC_IPR_BASE_ADDR + reg_indx) |= ((Priority << NVIC_IPR_PER_IRQ_SHFT) << reg_shftr);
 
+    /* Set the corresponding IP register */
     NVIC->IP[reg_indx] |= ((Priority << NVIC_IPR_PER_IRQ_SHFT) << reg_shftr);
 
   } else
@@ -394,19 +395,25 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
 
+  /* Check if the rising pending register of
+   * given pin is activated */
   if (__HAL_GPIO_EXTI_RISING_IT_STATUS((1 << Pin)) != 0x00u) {
 
+    /* Clear the pending register */
     __HAL_GPIO_EXTI_RISING_IT_CLEAR(1 << Pin);  /* Each bit is cleared by writing 1 into it. */
 
-    /* IT action code */
+    /* Call the interrupt call back routine */
     LL_HAL_GPIO_EXTI_Rising_Callback(Pin);
   }
 
+  /* Check if the falling pending register of
+   * given pin is activated */
   if (__HAL_GPIO_EXTI_FALLING_IT_STATUS((1 << Pin)) != 0x00u) {
 
+    /* Clear the pending register */
     __HAL_GPIO_EXTI_FALLING_IT_CLEAR(1 << Pin);  /* Each bit is cleared by writing 1 into it. */
 
-    /* IT action code */
+    /* Call the interrupt call back routine */
     LL_HAL_GPIO_EXTI_Falling_Callback(Pin);
   }
 
