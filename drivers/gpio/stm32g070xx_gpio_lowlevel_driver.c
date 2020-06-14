@@ -227,7 +227,12 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint
   uint32_t idr, mask;
 
   idr = pGPIOx->IDR;
+
+  /* Mask for IDR given pin */
   mask = (1 << Pin);
+
+  /* Read the corresponding pin from
+   * IDR register of given GPIO port */
   *op_data = (uint8_t) ((idr & mask) >> Pin);
 
   return DRV_OK;
@@ -243,6 +248,8 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_dat
 
   drv_assert_param(pGPIOx);
 
+  /* Read first 16 bits of IDR
+   * register for port reading */
   *op_data = (uint16_t) (pGPIOx->IDR & 0xFFFF);
 
   return DRV_OK;
