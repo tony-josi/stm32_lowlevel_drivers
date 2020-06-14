@@ -18,6 +18,9 @@
  *
  * @param  [in]  hGPIO   GPIO Handle
  *
+ * @retval Status:
+ *             - #DRV_OK        Init success
+ *             - #DRV_ERROR     Init failed
  */
 Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
 
@@ -135,7 +138,10 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
 
 /**
  * @brief GPIO DeInitialize
- *
+ * @param  [in]  hGPIO   GPIO Handle
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx) {
 
@@ -165,10 +171,12 @@ Drv_Status_t LL_HAL_GPIO_Deinit(GPIO_RegDef_Type *pGPIOx) {
  * @brief GPIO Peripheral clock Initialize
  *
  * @param  [in]  pGPIOx   GPIOx Register Definition structure pointer
+ *
  * @param  [in]  Enable   Enable or Disable
+ *
  * @retval Status:
- *             - #DRV_OK        Init success
- *             - #DRV_ERROR     Init failed
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
 
@@ -220,6 +228,15 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
 /**
  * @brief GPIO Read input pin
  *
+ * @param  [in]  pGPIOx   GPIOx Register Definition structure pointer
+ *
+ * @param  [in]  Pin      GPIO pin
+ *
+ * @param  [out] op_data  Output data pointer
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t *op_data) {
 
@@ -243,6 +260,13 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint
 /**
  * @brief GPIO Read input port
  *
+ * @param  [in]  pGPIOx   GPIOx Register Definition structure pointer
+ *
+ * @param  [out] op_data  Output data pointer
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_data) {
 
@@ -260,6 +284,15 @@ Drv_Status_t LL_HAL_GPIO_Read_IP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t *op_dat
 /**
  * @brief GPIO Write output pin
  *
+ * @param  [in]  pGPIOx   GPIOx Register Definition structure pointer
+ *
+ * @param  [in]  Pin      GPIO pin
+ *
+ * @param  [in]  ip_data  Input data
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uint8_t ip_data) {
 
@@ -289,6 +322,13 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uin
 /**
  * @brief GPIO Write output port
  *
+ * @param  [in]  pGPIOx   GPIOx Register Definition structure pointer
+ *
+ * @param  [in]  ip_data  Input data
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_data) {
 
@@ -305,6 +345,13 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_dat
 /**
  * @brief GPIO toggle a pin
  *
+ * @param  [in]  pGPIOx   GPIOx Register Definition structure pointer
+ *
+ * @param  [in]  Pin      GPIO pin
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
 
@@ -333,6 +380,14 @@ Drv_Status_t LL_HAL_GPIO_Toggle_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin) {
 /**
  * @brief GPIO IRQ Interrupt configure
  *
+ * @param  [in]  IRQ_Num   IRQ number of the corresponding
+ *                         EXTI line/lines.
+ *
+ * @param  [in]  Enable    Enable or Disable pin
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
 
@@ -367,6 +422,14 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable) {
 /**
  * @brief GPIO IRQ Priority configure
  *
+ * @param  [in]  IRQ_Num   IRQ number of the corresponding
+ *                         EXTI line/lines.
+ *
+ * @param  [in]  Priority  Priority value, should be between [0,3]
+ *
+ * @retval Status:
+ *             - #DRV_OK         success
+ *             - #DRV_ERROR      failed
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) {
 
@@ -392,6 +455,10 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
 /**
  * @brief GPIO Handle IRQ
  *
+ * @param  [in]  Pin      GPIO pin
+ *
+ * @retval Status:
+ *             - #DRV_OK        Success
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
 
