@@ -54,6 +54,14 @@
 #define AHB_BASE_ADDR                   (0x40020000UL)  /*!< AHB base address */
 #define IOPORT_BUS_BASE_ADDR            (0x50000000UL)  /*!< IOPORT base address */
 
+/* Memory mapping of Core Hardware */
+/* ------------------------------- */
+
+#define SCS_BASE_ADDR                   (0xE000E000UL)                 /*!< System Control Space Base Address */
+#define SysTick_BASE_ADDR               (SCS_BASE_ADDR +  0x0010UL)    /*!< SysTick Base Address */
+#define NVIC_BASE_ADDR                  (SCS_BASE_ADDR +  0x0100UL)    /*!< NVIC Base Address */
+#define SCB_BASE_ADDR                   (SCS_BASE_ADDR +  0x0D00UL)    /*!< System Control Block Base Address */
+
 /* AHB Peripherals */
 /* --------------- */
 
@@ -253,6 +261,12 @@ typedef struct {
 /* ----------------------------------------------------- */
 
 #define SYSCFG                        ((SYSCFG_RegDef_Type *) SYSCFG_BASE_ADDR) /*!< EXTI #EXTI_RegDef_Type pointer */
+
+
+/* NVIC macro pointed to respective register locations */
+/* --------------------------------------------------- */
+
+#define NVIC                          ((NVIC_RegDef_Type *) NVIC_BASE_ADDR)     /*!< NVIC configuration struct */
 
 
 /* GPIOs Clock enable macros */

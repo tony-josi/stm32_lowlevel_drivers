@@ -14,12 +14,26 @@
 
 void EXTI4_15_IRQHandler(void);
 
+static void brute_delay(uint32_t delay) {
+
+  for(uint32_t val = 0; val < (delay * 10000); val++);
+
+}
+
+
 int main(void)
 {
 
   //led_blink__gpio__pclk__init__toggle__deinit();
   //led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
   led_btn_gpio_it_init__exti_callback();
+
+	while(1) {
+
+	  brute_delay(10);
+	  LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+
+	}
 
 	for(;;);
 }
