@@ -174,6 +174,7 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
 
   drv_assert_param(pGPIOx);
 
+  /* Enable peripheral clock for the given port */
   if(Enable == ENABLE) {
 
     if(pGPIOx == GPIO_A)
@@ -189,6 +190,8 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
     else
       return DRV_ERROR;
 
+
+    /* Disable peripheral clock for the given port */
   } else if (Enable == DISABLE) {
 
     if(pGPIOx == GPIO_A)
@@ -205,6 +208,8 @@ Drv_Status_t LL_HAL_GPIO_PCLK_Cntrl(GPIO_RegDef_Type *pGPIOx, uint8_t Enable) {
       return DRV_ERROR;
 
   } else
+
+    /* Invalid Enable option */
     return DRV_ERROR;
 
   return DRV_OK;
