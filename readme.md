@@ -2,10 +2,10 @@
 
 #### Drivers:
 
-- ✅ GPIO
-- ⬜️ SPI
-- ⬜️ I2C
-- ⬜️ USART
+- GPIO :white_check_mark:
+- SPI :white_circle:
+- I2C :white_circle:
+- USART :white_circle:
 
 #### Notes:
 
