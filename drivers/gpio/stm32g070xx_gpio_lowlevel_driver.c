@@ -493,7 +493,7 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
   * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
   * @retval None
   */
-__weak void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
+__WEAK void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
 
   UNUSED(GPIO_Pin);
 
@@ -507,7 +507,7 @@ __weak void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
   * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
   * @retval None
   */
-__weak void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin) {
+__WEAK void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin) {
 
   UNUSED(GPIO_Pin);
 

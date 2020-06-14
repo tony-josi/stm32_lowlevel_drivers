@@ -15,9 +15,9 @@
 #define __VL                              volatile /*!< Volatile type macro */
 
 #if  defined ( __GNUC__ )
-#ifndef __weak
-#define __weak   __attribute__((weak))
-#endif /* __weak */
+#ifndef __WEAK
+#define __WEAK   __attribute__((weak))
+#endif /* __WEAK */
 #endif /* __GNUC__ */
 
 #define UNUSED(X) (void)X                          /* To avoid gcc/g++ warnings */
