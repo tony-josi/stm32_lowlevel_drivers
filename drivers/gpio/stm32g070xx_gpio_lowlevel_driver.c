@@ -265,12 +265,18 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Pin(GPIO_RegDef_Type *pGPIOx, uint8_t Pin, uin
 
   drv_assert_param(pGPIOx);
 
+  /* To set the pin */
   if(ip_data == SET) {
 
+    /* Set the GPIO port bit set/reset
+     * register bit of given pin */
     pGPIOx->BSRR = (uint32_t)(1 << Pin);
 
+    /* To reset the pin */
   } else if (ip_data == RESET) {
 
+    /* Set the GPIO port bit reset
+     * register bit of given pin */
     pGPIOx->BRR = (uint32_t)(1 << Pin);
 
   } else
@@ -288,6 +294,8 @@ Drv_Status_t LL_HAL_GPIO_Write_OP_Port(GPIO_RegDef_Type *pGPIOx, uint16_t ip_dat
 
   drv_assert_param(pGPIOx);
 
+  /* Set the ODR register with
+   * given data to write to OP port*/
   pGPIOx->ODR = ip_data;
 
   return DRV_OK;
