@@ -112,7 +112,7 @@ void led_btn_gpio_it_init__exti_callback() {
 
   GS_btn.GPIO_regdef = GPIO_C;
   GS_btn.GPIO_InitFields.pin = GPIO_PIN_13;
-  GS_btn.GPIO_InitFields.mode = GPIO_MODE_IT_RT;
+  GS_btn.GPIO_InitFields.mode = GPIO_MODE_IT_RFT;
   GS_btn.GPIO_InitFields.pullup_pulldown = GPIO_NOPULL;
   GS_btn.GPIO_InitFields.op_speed = 0xFF;
   GS_btn.GPIO_InitFields.op_type = 0xFF;
@@ -143,6 +143,11 @@ void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
 
 }
 
+void LL_HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin) {
+
+  LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+
+}
 
 
 
