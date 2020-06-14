@@ -12,6 +12,8 @@
 #include "driver_tests.h"
 #include "stm32g070xx_ll_hal.h"
 
+void EXTI4_15_IRQHandler(void);
+
 int main(void)
 {
 
@@ -27,4 +29,15 @@ void drv_assert_failed(uint8_t *file_name, uint32_t line_num) {
 
 	// handle error
 
+}
+
+void EXTI4_15_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_15_IRQn 0 */
+
+  /* USER CODE END EXTI4_15_IRQn 0 */
+  LL_HAL_GPIO_IRQ_Handler(GPIO_PIN_13);
+  /* USER CODE BEGIN EXTI4_15_IRQn 1 */
+
+  /* USER CODE END EXTI4_15_IRQn 1 */
 }

@@ -50,6 +50,11 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
 
   } else if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
 
+    reg_buff = hGPIO->GPIO_regdef->MODER;
+    reg_buff &= ~((3U) << (hGPIO->GPIO_InitFields.pin * 2));
+    reg_buff |= ((hGPIO->GPIO_InitFields.mode) << (hGPIO->GPIO_InitFields.pin * 2));
+    hGPIO->GPIO_regdef->MODER = reg_buff;
+
     if (hGPIO->GPIO_InitFields.mode == GPIO_MODE_IT_RT) {
 
       EXTI->RTSR1 |= (1 << hGPIO->GPIO_InitFields.pin);

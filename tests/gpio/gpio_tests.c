@@ -117,19 +117,25 @@ void led_btn_gpio_it_init__exti_callback() {
   GS_btn.GPIO_InitFields.op_speed = 0xFF;
   GS_btn.GPIO_InitFields.op_type = 0xFF;
 
+  SYSCFG_PCLK_EN;
   LL_HAL_GPIO_PCLK_Cntrl(GPIO_C, ENABLE);
+  LL_HAL_GPIO_PCLK_Cntrl(GPIO_F, ENABLE);
   LL_HAL_GPIO_Init(&GS_btn);
   LL_HAL_GPIO_IRQ_Interupt_Config(EXTI4_15_IRQn, ENABLE);
-  //LL_HAL_GPIO_IRQ_Priority_Config(EXTI4_15_IRQn, 0);
+  LL_HAL_GPIO_IRQ_Priority_Config(EXTI4_15_IRQn, 0);
+  if((SYSCFG->IT_LINE_SR[7] & (1 << 9)) ==  1) {
+    LL_HAL_GPIO_Toggle_OP_Pin(GPIO_A, GPIO_PIN_5);
+  }
 
 }
 
-
+/*
 void EXTI4_15_IRQHandler(void) {
 
   LL_HAL_GPIO_IRQ_Handler(GPIO_PIN_13);
 
 }
+*/
 
 void LL_HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
 
