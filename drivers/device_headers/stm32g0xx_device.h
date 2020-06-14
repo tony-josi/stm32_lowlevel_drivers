@@ -111,6 +111,24 @@
 /* ------------------------------ */
 
 /**
+  * @brief  Nested Vectored Interrupt Controller (NVIC).
+  */
+typedef struct {
+
+  __VL uint32_t ISER[1U];               /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
+       uint32_t RSRVD0[31U];
+  __VL uint32_t ICER[1U];               /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
+       uint32_t RSRVD1[31U];
+  __VL uint32_t ISPR[1U];               /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
+       uint32_t RSRVD2[31U];
+  __VL uint32_t ICPR[1U];               /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
+       uint32_t RSRVD3[31U];
+       uint32_t RSRVD4[64U];
+  __VL uint32_t IP[8U];                 /*!< Offset: 0x300 (R/W)  Interrupt Priority Register */
+
+}  NVIC_RegDef_Type;
+
+/**
   * @brief General Purpose Input Output
   */
 typedef struct {
