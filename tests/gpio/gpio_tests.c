@@ -128,6 +128,20 @@ void led_btn_gpio_it_init__exti_callback() {
 
 void EXTI4_15_IRQHandler(void) {
 
+  /* NOTE: Use SYSCFG interrupt line X
+   * status register (SYSCFG_ITLINEX) to collect all pending
+   * interrupt sources associated with each interrupt
+   * line into a single register.
+   *
+   * This allows users to check by single read which
+   * peripheral requires service in case more than
+   * one source is associated to the interrupt line.
+   *
+   * All bits in those registers are read only,
+   * set by hardware when there is corresponding interrupt
+   * request pending and cleared by resetting the interrupt
+   * source flags in the peripheral registers. */
+
   LL_HAL_GPIO_IRQ_Handler(GPIO_PIN_13);
 
 }

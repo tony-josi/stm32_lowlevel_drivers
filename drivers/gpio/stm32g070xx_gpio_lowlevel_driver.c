@@ -462,6 +462,20 @@ Drv_Status_t LL_HAL_GPIO_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority) 
  */
 Drv_Status_t LL_HAL_GPIO_IRQ_Handler(uint16_t Pin) {
 
+  /* NOTE: Use SYSCFG interrupt line X
+   * status register (SYSCFG_ITLINEX) to collect all pending
+   * interrupt sources associated with each interrupt
+   * line into a single register.
+   *
+   * This allows users to check by single read which
+   * peripheral requires service in case more than
+   * one source is associated to the interrupt line.
+   *
+   * All bits in those registers are read only,
+   * set by hardware when there is corresponding interrupt
+   * request pending and cleared by resetting the interrupt
+   * source flags in the peripheral registers. */
+
   /* Check if the rising pending register of
    * given pin is activated */
   if (__HAL_GPIO_EXTI_RISING_IT_STATUS((1 << Pin)) != 0x00u) {
