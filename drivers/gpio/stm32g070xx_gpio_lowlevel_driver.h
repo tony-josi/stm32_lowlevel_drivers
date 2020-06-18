@@ -3,7 +3,10 @@
  *  @brief  GPIO Low level driver header file
  *
  *  This file contains the function declarations & structure declarations
- *  for low level GPIO functions
+ *  for low level GPIO functions. A general-purpose input/output is an
+ *  uncommitted digital signal pin on an integrated circuit or
+ *  electronic circuit board whose behavior—including whether
+ *  it acts as input or output—is controllable by the user at run time.
  *
  *  @author         Tony Josi   https://tonyjosi97.github.io/profile/
  *  @copyright      Copyright (C) 2020 Tony Josi
