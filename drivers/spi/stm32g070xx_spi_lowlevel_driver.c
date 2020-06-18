@@ -12,3 +12,5 @@
  *  @copyright      Copyright (C) 2020 Tony Josi
  *  @bug            No known bugs.
  */
+
+#include "stm32g070xx_spi_lowlevel_driver.h"
