@@ -23,7 +23,7 @@ Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
 
   drv_assert_param(pGPIOx);
 
-  /* Enable peripheral clock for the given port */
+  /* Enable peripheral clock for the given SPI */
   if(Enable == ENABLE) {
 
     if(pSPI == SPI1)
@@ -34,7 +34,7 @@ Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
       return DRV_ERROR;
 
 
-    /* Disable peripheral clock for the given port */
+    /* Disable peripheral clock for the given SPI */
   } else if (Enable == DISABLE) {
 
     if(pSPI == SPI1)
