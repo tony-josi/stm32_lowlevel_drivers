@@ -45,8 +45,50 @@ typedef struct __SPI_InitConfig_t {
 typedef struct __SPI_Handle_t {
 
   SPI_RegDef_Type    *SPI_regdef;                         /*!< SPI Register definition pointer */
-  SPI_InitConfig_t    SPI_InitFields;                     /*!< SPI initialization fields */
 
 } SPI_Handle_t;
+
+/**
+ * @brief SPI Initialize
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t);
+
+/**
+ * @brief SPI DeInitialize
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *hSPI);
+
+/**
+ * @brief SPI Peripheral CLK Control
+ *
+ */
+Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable);
+
+/**
+ * @brief SPI Peripheral CLK Control
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Transmit(SPI_RegDef_Type *pSPI);
+
+/**
+ * @brief SPI Peripheral CLK Control
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Transmit_IT(SPI_RegDef_Type *pSPI);
+
+/**
+ * @brief SPI Peripheral CLK Control
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Recieve(SPI_RegDef_Type *pSPI);
+
+/**
+ * @brief SPI Peripheral CLK Control
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Recieve_IT(SPI_RegDef_Type *pSPI);
+
 
 #endif /* __STM32070XX_SPI_LOWLEVEL_DRIVER_H */
