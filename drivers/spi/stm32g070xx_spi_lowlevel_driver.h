@@ -67,28 +67,28 @@ Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *hSPI);
 Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable);
 
 /**
- * @brief SPI Peripheral CLK Control
+ * @brief SPI Transmit in blocking mode
  *
  */
-Drv_Status_t LL_HAL_SPI_Transmit(SPI_RegDef_Type *pSPI);
+Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t len);
 
 /**
- * @brief SPI Peripheral CLK Control
+ * @brief SPI Transmit in interrupt mode
  *
  */
-Drv_Status_t LL_HAL_SPI_Transmit_IT(SPI_RegDef_Type *pSPI);
+Drv_Status_t LL_HAL_SPI_Transmit_IT(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t len);
 
 /**
- * @brief SPI Peripheral CLK Control
+ * @brief SPI Receive in blocking mode
  *
  */
-Drv_Status_t LL_HAL_SPI_Recieve(SPI_RegDef_Type *pSPI);
+Drv_Status_t LL_HAL_SPI_Recieve(SPI_Handle_t *pSPI, uint8_t *pRX_buff, uint32_t len);
 
 /**
- * @brief SPI Peripheral CLK Control
+ * @brief SPI Receive in interrupt mode
  *
  */
-Drv_Status_t LL_HAL_SPI_Recieve_IT(SPI_RegDef_Type *pSPI);
+Drv_Status_t LL_HAL_SPI_Recieve_IT(SPI_Handle_t *pSPI, uint8_t *pRX_buff, uint32_t len);
 
 
 #endif /* __STM32070XX_SPI_LOWLEVEL_DRIVER_H */
