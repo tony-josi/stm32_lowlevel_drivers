@@ -64,6 +64,73 @@ typedef struct __SPI_Handle_t {
 #define SPI1_RESET            RCC->APBRSTR2 |= (1 << APBRSTR2_SPI1_RESET)    /*!< SPI1 Reset */
 #define SPI2_RESET            RCC->APBRSTR1 |= (1 << APBRSTR1_SPI2_RESET)    /*!< SPI2 Reset */
 
+
+/**
+ * @brief BIDIMODE: Bidirectional data
+ * mode enable.
+ *
+ * This bit enables half-duplex
+ * communication using common single
+ * bidirectional data line.
+ * Keep RXONLY bit clear when bidirectional
+ * mode is active.
+ *
+ * @note: This bit is not used in I2S mode.
+ */
+#define UNIDIRECTIONAL_DATA_MODE                      (0u)                 /*!< Unidirectional data mode selected */
+#define BIDIRECTIONAL_DATA_MODE                       (1u)                 /*!< Bidirectional data mode selected */
+
+
+/**
+ * @brief BIDIOE: Output enable in bidirectional mode
+ *
+ * This bit combined with the BIDIMODE bit
+ * selects the direction of transfer in bidirectional mode.
+ *
+ * @note In master mode, the MOSI pin is used
+ * and in slave mode, the MISO pin is used.
+ * This bit is not used in I2S mode.
+ *
+ */
+#define BIDIOE_OP_DISABLED                            (0u)                 /*!< Output disabled (receive-only mode */
+#define BIDIOE_OP_ENABLED                             (1u)                 /*!< Output enabled (transmit-only mode */
+
+
+/**
+ * @brief CRCEN: Hardware CRC calculation enable
+ *
+ * @note This bit should be written only
+ * when SPI is disabled (SPE = ‘0’) for
+ * correct operation. This bit is not used in I2S mode.
+ *
+ */
+#define CRC_CALC_DISABLED                            (0u)                  /*!< CRC calculation disabled */
+#define CRC_CALC_ENABLED                             (1u)                  /*!< CRC calculation enabled */
+
+
+/**
+ * @brief CRCNEXT: Transmit CRC next
+ *
+ * @note This bit has to be written as
+ * soon as the last data is written in the
+ * SPIx_DR register. This bit is not used in I2S mode.
+ *
+ */
+#define CRCNEXT_TX_BUFF                              (0u)                  /*!< Next transmit value is from TX buffer. */
+#define CRCNEXT_TX_CRC_REG                           (1u)                  /*!< Next transmit value is from TX CRC register.*/
+
+
+/**
+ * @brief CRCL:CRC length
+ *
+ * This bit is set and cleared by
+ * software to select the CRC length.
+ *
+ */
+#define CRC_8_BIT                                    (0u)                  /*!< 8-bit CRC length */
+#define CRC_16_BIT                                   (1u)                  /*!< 16-bit CRC length */
+
+
 /**
  * @brief SPI Initialize
  *
