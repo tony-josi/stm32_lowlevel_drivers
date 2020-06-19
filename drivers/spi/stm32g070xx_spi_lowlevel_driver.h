@@ -90,5 +90,23 @@ Drv_Status_t LL_HAL_SPI_Recieve(SPI_Handle_t *pSPI, uint8_t *pRX_buff, uint32_t 
  */
 Drv_Status_t LL_HAL_SPI_Recieve_IT(SPI_Handle_t *pSPI, uint8_t *pRX_buff, uint32_t len);
 
+/**
+ * @brief SPI IRQ Interrupt configure
+ *
+ */
+Drv_Status_t LL_HAL_SPI_IRQ_Interupt_Config(uint8_t IRQ_Num, uint8_t Enable);
+
+/**
+ * @brief SPI IRQ Priority configure
+ *
+ */
+Drv_Status_t LL_HAL_SPI_IRQ_Priority_Config(uint8_t IRQ_Num, uint8_t Priority);
+
+/**
+ * @brief SPI Handle IRQ
+ *
+ */
+Drv_Status_t LL_HAL_SPI_IRQ_Handler(SPI_Handle_t *pSPI);
+
 
 #endif /* __STM32070XX_SPI_LOWLEVEL_DRIVER_H */
