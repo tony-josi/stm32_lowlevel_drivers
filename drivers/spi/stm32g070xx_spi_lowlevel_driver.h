@@ -48,6 +48,22 @@ typedef struct __SPI_Handle_t {
 
 } SPI_Handle_t;
 
+
+/**
+ * @brief SPI Controller reset
+ *
+ */
+#define APBRSTR2_SPI1_RESET                               12
+#define APBRSTR1_SPI2_RESET                               14
+
+
+/**
+ * @brief SPI Controller reset
+ *
+ */
+#define SPI1_RESET            RCC->APBRSTR2 |= (1 << APBRSTR2_SPI1_RESET)    /*!< SPI1 Reset */
+#define SPI2_RESET            RCC->APBRSTR1 |= (1 << APBRSTR1_SPI2_RESET)    /*!< SPI2 Reset */
+
 /**
  * @brief SPI Initialize
  *
@@ -58,7 +74,7 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t);
  * @brief SPI DeInitialize
  *
  */
-Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *hSPI);
+Drv_Status_t LL_HAL_SPI_Deinit(SPI_RegDef_Type *pSPI);
 
 /**
  * @brief SPI Peripheral CLK Control

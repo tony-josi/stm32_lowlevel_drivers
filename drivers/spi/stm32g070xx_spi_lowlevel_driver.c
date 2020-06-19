@@ -52,3 +52,28 @@ Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
   return DRV_OK;
 
 }
+
+
+
+/**
+ * @brief SPI DeInitialize
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Deinit(SPI_RegDef_Type *pSPI) {
+
+  drv_assert_param(pSPI);
+
+  /* Check for corresponding SPI and reset
+   * using appropriate macros */
+  if(pSPI == SPI1)
+    SPI1_RESET;
+  else if(pSPI == SPI2)
+    SPI2_RESET;
+  else
+    return DRV_ERROR;
+
+  return DRV_OK;
+
+}
+
+
