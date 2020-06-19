@@ -256,6 +256,13 @@ typedef struct {
 #define GPIO_F                        ((GPIO_RegDef_Type *) GPIOF_BASE_ADDR)    /*!< GPIOF #GPIO_RegDef_Type pointer */
 
 
+/* SPIs pointed to respective register locations */
+/* ---------------------------------------------- */
+
+#define SPI1                          ((SPI_RegDef_Type *) SPI1_I2S1_BASE_ADDR)    /*!< SPI1 #SPI_RegDef_Type pointer */
+#define SPI2                          ((SPI_RegDef_Type *) SPI2_BASE_ADDR)         /*!< SPI2 #SPI_RegDef_Type pointer */
+
+
 /* GPIO Port to EXTI Selection code  */
 /* --------------------------------- */
 #define GPIO_PORT_TO_CODE(X)          ((X == GPIO_A) ? (0x00u) : \
