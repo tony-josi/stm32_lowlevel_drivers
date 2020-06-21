@@ -147,67 +147,88 @@ typedef struct __SPI_Handle_t {
 #define FULL_DUPLEX                                  (0u)                 /*!< Full-duplex (Transmit and receive) */
 #define HALF_DUPLEX_OUTPUT_DISABLED                  (1u)                 /*!< Output disabled (Receive-only mode) */
 
-/**
- * @brief
- *
- *
- * @note
- *
- */
-SSM:Softwareslavemanagement
-When the SSM bit is set, the NSS pin input is replaced with the value from the SSI bit. 0: Software slave management disabled
-1: Software slave management enabled
-Note: This bit is not used in I2S mode and SPI TI mode.
 
 /**
- * @brief
+ * @brief SSM: Software slave management
  *
+ * When the SSM bit is set, the NSS pin input is
+ * replaced with the value from the SSI bit.
  *
- * @note
+ * @note This bit is not used in I2S mode and SPI TI mode.
  *
  */
-SSI:Internalslaveselect
-This bit has an effect only when the SSM bit is set. The value of this bit is forced onto the NSS pin and the I/O value of the NSS pin is ignored.
-Note: This bit is not used in I2S mode and SPI TI mode.
+#define SSM_DISABLED                                  (0u)                 /*!< Software slave management disabled */
+#define SSM_ENABLED                                   (1u)                 /*!< Software slave management enabled */
 
 /**
- * @brief
+ * @brief SSI: Internal slave select
  *
+ * This bit has an effect only when the SSM bit is set.
+ * The value of this bit is forced onto the NSS pin and
+ * the I/O value of the NSS pin is ignored.
  *
- * @note
+ * @note This bit is not used in I2S mode and SPI TI mode.
  *
  */
-LSBFIRST:Frameformat
-0: data is transmitted / received with the MSB first 1: data is transmitted / received with the LSB first
-Note: 1. This bit should not be changed when communication is ongoing. 2. This bit is not used in I2S mode and SPI TI mode.
+#define SPI_SSI_RESET                                 (0u)                 /*!< Internal slave select reset */
+#define SPI_SSI_SET                                   (1u)                 /*!< Internal slave select set */
 
 /**
- * @brief
+ * @brief LSBFIRST: Frame format
  *
  *
- * @note
+ * @note 1. This bit should not be changed when communication is ongoing.
+ *       2. This bit is not used in I2S mode and SPI TI mode.
  *
  */
-SPE:SPIenable
-0: Peripheral disabled 1: Peripheral enabled
-Note: When disabling the SPI, follow the procedure described in Procedure for disabling the SPI on page 855.
-This bit is not used in I2S mode.
+#define MSB_FIRST_SPI_FRAME                           (0u)                 /*!< Data is transmitted / received with the MSB first */
+#define LSB_FIRST_SPI_FRAME                           (1u)                 /*!< Data is transmitted / received with the LSB first */
+
 
 /**
- * @brief
+ * @brief SPE: SPI enable
  *
  *
- * @note
+ * @note When disabling the SPI, follow the procedure
+ * described in Procedure for disabling the SPI on page 855 of Data sheet.
+ * This bit is not used in I2S mode.
  *
  */
-BR[2:0]:Baudratecontrol 000: fPCLK/2
-001: fPCLK/4
-010: fPCLK/8
-011: fPCLK/16 100: fPCLK/32 101: fPCLK/64 110: fPCLK/128 111: fPCLK/256
-Note: These bits should not be changed when communication is ongoing. This bit is not used in I2S mode.
-MSTR:Masterselection 0: Slave configuration 1: Master configuration
-Note: This bit should not be changed when communication is ongoing. This bit is not used in I2S mode.
+#define SPI_PERI_DISABLED                             (0u)                 /*!< Peripheral disabled */
+#define SPI_PERI_ENABLED                              (1u)                 /*!< Peripheral enabled */
 
+
+/**
+ * @brief BR[2:0]: Baud rate control
+ *
+ *
+ * @note These bits should not be changed
+ * when communication is ongoing.
+ * This bit is not used in I2S mode.
+ *
+ */
+
+#define SPI_BR_PRESCALER_2                            (0u)                 /*!< fPCLK/2 */
+#define SPI_BR_PRESCALER_4                            (1u)                 /*!< fPCLK/4 */
+#define SPI_BR_PRESCALER_8                            (2u)                 /*!< fPCLK/8 */
+#define SPI_BR_PRESCALER_16                           (3u)                 /*!< fPCLK/16 */
+#define SPI_BR_PRESCALER_32                           (4u)                 /*!< fPCLK/32 */
+#define SPI_BR_PRESCALER_64                           (5u)                 /*!< fPCLK/64 */
+#define SPI_BR_PRESCALER_128                          (6u)                 /*!< fPCLK/128 */
+#define SPI_BR_PRESCALER_256                          (7u)                 /*!< fPCLK/256 */
+
+
+/**
+ * @brief MSTR: Master selection
+ *
+ *
+ * @note This bit should not be changed
+ * when communication is ongoing.
+ * This bit is not used in I2S mode.
+ *
+ */
+#define SPI_SLAVE                                     (0u)                 /*!< Slave configuration */
+#define SPI_MASTER                                    (1u)                 /*!< Master configuration */
 
 
 /**
