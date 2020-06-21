@@ -261,6 +261,33 @@ typedef struct __SPI_Handle_t {
 #define SPI_CLK_PHASE_1                                 (1u)               /*!< The second clock transition
                                                                                 is the first data capture edge */
 
+/**
+ * @brief DS[3:0]: Data size
+ *
+ * These bits configure the data length for SPI transfers.
+ * If software attempts to write one of the
+ * “Not used” values, they are forced to the value “0111” (8-bit)
+ *
+ * Note: This bit is not used in I2S mode.
+ *
+ */
+#define SPI_DATA_SIZE_NOT_USED_1                        (0u)               /*!< Not used */
+#define SPI_DATA_SIZE_NOT_USED_2                        (1u)               /*!< Not used */
+#define SPI_DATA_SIZE_NOT_USED_3                        (2u)               /*!< Not used */
+#define SPI_DATA_SIZE_4_BITS                            (3u)               /*!< 4 bit DS */
+#define SPI_DATA_SIZE_5_BITS                            (4u)               /*!< 5 bit DS */
+#define SPI_DATA_SIZE_6_BITS                            (5u)               /*!< 6 bit DS */
+#define SPI_DATA_SIZE_7_BITS                            (6u)               /*!< 7 bit DS */
+#define SPI_DATA_SIZE_8_BITS                            (7u)               /*!< 8 bit DS */
+#define SPI_DATA_SIZE_9_BITS                            (8u)               /*!< 9 bit DS */
+#define SPI_DATA_SIZE_10_BITS                           (9u)               /*!< 10 bit DS */
+#define SPI_DATA_SIZE_11_BITS                           (10u)              /*!< 11 bit DS */
+#define SPI_DATA_SIZE_12_BITS                           (11u)              /*!< 12 bit DS */
+#define SPI_DATA_SIZE_13_BITS                           (12u)              /*!< 13 bit DS */
+#define SPI_DATA_SIZE_14_BITS                           (13u)              /*!< 14 bit DS */
+#define SPI_DATA_SIZE_15_BITS                           (14u)              /*!< 15 bit DS */
+#define SPI_DATA_SIZE_16_BITS                           (15u)              /*!< 16 bit DS */
+
 
 /**
  * @brief SPI Initialize
