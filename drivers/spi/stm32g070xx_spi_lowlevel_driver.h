@@ -121,7 +121,7 @@ typedef struct __SPI_Handle_t {
 
 
 /**
- * @brief CRCL:CRC length
+ * @brief CRCL: CRC length
  *
  * This bit is set and cleared by
  * software to select the CRC length.
@@ -129,6 +129,85 @@ typedef struct __SPI_Handle_t {
  */
 #define CRC_8_BIT                                    (0u)                  /*!< 8-bit CRC length */
 #define CRC_16_BIT                                   (1u)                  /*!< 16-bit CRC length */
+
+
+/**
+ * @brief RXONLY: Receive only mode enabled.
+ *
+ * This bit enables simplex communication using a
+ * single unidirectional line to receive data exclusively.
+ * Keep BIDIMODE bit clear when receive only mode is active.
+ * This bit is also useful in a multi-slave system in
+ * which this particular slave is not accessed,
+ * the output from the accessed slave is not corrupted.
+ *
+ * @note This bit is not used in I2S mode.
+ *
+ */
+#define FULL_DUPLEX                                  (0u)                 /*!< Full-duplex (Transmit and receive) */
+#define HALF_DUPLEX_OUTPUT_DISABLED                  (1u)                 /*!< Output disabled (Receive-only mode) */
+
+/**
+ * @brief
+ *
+ *
+ * @note
+ *
+ */
+SSM:Softwareslavemanagement
+When the SSM bit is set, the NSS pin input is replaced with the value from the SSI bit. 0: Software slave management disabled
+1: Software slave management enabled
+Note: This bit is not used in I2S mode and SPI TI mode.
+
+/**
+ * @brief
+ *
+ *
+ * @note
+ *
+ */
+SSI:Internalslaveselect
+This bit has an effect only when the SSM bit is set. The value of this bit is forced onto the NSS pin and the I/O value of the NSS pin is ignored.
+Note: This bit is not used in I2S mode and SPI TI mode.
+
+/**
+ * @brief
+ *
+ *
+ * @note
+ *
+ */
+LSBFIRST:Frameformat
+0: data is transmitted / received with the MSB first 1: data is transmitted / received with the LSB first
+Note: 1. This bit should not be changed when communication is ongoing. 2. This bit is not used in I2S mode and SPI TI mode.
+
+/**
+ * @brief
+ *
+ *
+ * @note
+ *
+ */
+SPE:SPIenable
+0: Peripheral disabled 1: Peripheral enabled
+Note: When disabling the SPI, follow the procedure described in Procedure for disabling the SPI on page 855.
+This bit is not used in I2S mode.
+
+/**
+ * @brief
+ *
+ *
+ * @note
+ *
+ */
+BR[2:0]:Baudratecontrol 000: fPCLK/2
+001: fPCLK/4
+010: fPCLK/8
+011: fPCLK/16 100: fPCLK/32 101: fPCLK/64 110: fPCLK/128 111: fPCLK/256
+Note: These bits should not be changed when communication is ongoing. This bit is not used in I2S mode.
+MSTR:Masterselection 0: Slave configuration 1: Master configuration
+Note: This bit should not be changed when communication is ongoing. This bit is not used in I2S mode.
+
 
 
 /**
