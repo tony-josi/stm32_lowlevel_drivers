@@ -77,8 +77,8 @@ typedef struct __SPI_Handle_t {
  *
  * @note: This bit is not used in I2S mode.
  */
-#define UNIDIRECTIONAL_DATA_MODE                      (0u)                 /*!< Unidirectional data mode selected */
-#define BIDIRECTIONAL_DATA_MODE                       (1u)                 /*!< Bidirectional data mode selected */
+#define SPI_UNIDIRECTIONAL_DATA_MODE                  (0u)                 /*!< Unidirectional data mode selected */
+#define SPI_BIDIRECTIONAL_DATA_MODE                   (1u)                 /*!< Bidirectional data mode selected */
 
 
 /**
@@ -92,8 +92,8 @@ typedef struct __SPI_Handle_t {
  * This bit is not used in I2S mode.
  *
  */
-#define BIDIOE_OP_DISABLED                            (0u)                 /*!< Output disabled (receive-only mode */
-#define BIDIOE_OP_ENABLED                             (1u)                 /*!< Output enabled (transmit-only mode */
+#define SPI_BIDIOE_OP_DISABLED                        (0u)                 /*!< Output disabled (receive-only mode */
+#define SPI_BIDIOE_OP_ENABLED                         (1u)                 /*!< Output enabled (transmit-only mode */
 
 
 /**
@@ -104,8 +104,8 @@ typedef struct __SPI_Handle_t {
  * correct operation. This bit is not used in I2S mode.
  *
  */
-#define CRC_CALC_DISABLED                            (0u)                  /*!< CRC calculation disabled */
-#define CRC_CALC_ENABLED                             (1u)                  /*!< CRC calculation enabled */
+#define SPI_CRC_CALC_DISABLED                        (0u)                  /*!< CRC calculation disabled */
+#define SPI_CRC_CALC_ENABLED                         (1u)                  /*!< CRC calculation enabled */
 
 
 /**
@@ -116,8 +116,8 @@ typedef struct __SPI_Handle_t {
  * SPIx_DR register. This bit is not used in I2S mode.
  *
  */
-#define CRCNEXT_TX_BUFF                              (0u)                  /*!< Next transmit value is from TX buffer. */
-#define CRCNEXT_TX_CRC_REG                           (1u)                  /*!< Next transmit value is from TX CRC register.*/
+#define SPI_CRCNEXT_TX_BUFF                          (0u)                  /*!< Next transmit value is from TX buffer. */
+#define SPI_CRCNEXT_TX_CRC_REG                       (1u)                  /*!< Next transmit value is from TX CRC register.*/
 
 
 /**
@@ -127,8 +127,8 @@ typedef struct __SPI_Handle_t {
  * software to select the CRC length.
  *
  */
-#define CRC_8_BIT                                    (0u)                  /*!< 8-bit CRC length */
-#define CRC_16_BIT                                   (1u)                  /*!< 16-bit CRC length */
+#define SPI_CRC_8_BIT                                (0u)                  /*!< 8-bit CRC length */
+#define SPI_CRC_16_BIT                               (1u)                  /*!< 16-bit CRC length */
 
 
 /**
@@ -144,8 +144,8 @@ typedef struct __SPI_Handle_t {
  * @note This bit is not used in I2S mode.
  *
  */
-#define FULL_DUPLEX                                  (0u)                 /*!< Full-duplex (Transmit and receive) */
-#define HALF_DUPLEX_OUTPUT_DISABLED                  (1u)                 /*!< Output disabled (Receive-only mode) */
+#define SPI_FULL_DUPLEX                              (0u)                 /*!< Full-duplex (Transmit and receive) */
+#define SPI_HALF_DUPLEX_OUTPUT_DISABLED              (1u)                 /*!< Output disabled (Receive-only mode) */
 
 
 /**
@@ -157,8 +157,8 @@ typedef struct __SPI_Handle_t {
  * @note This bit is not used in I2S mode and SPI TI mode.
  *
  */
-#define SSM_DISABLED                                  (0u)                 /*!< Software slave management disabled */
-#define SSM_ENABLED                                   (1u)                 /*!< Software slave management enabled */
+#define SPI_SSM_DISABLED                              (0u)                 /*!< Software slave management disabled */
+#define SPI_SSM_ENABLED                               (1u)                 /*!< Software slave management enabled */
 
 /**
  * @brief SSI: Internal slave select
@@ -181,8 +181,8 @@ typedef struct __SPI_Handle_t {
  *       2. This bit is not used in I2S mode and SPI TI mode.
  *
  */
-#define MSB_FIRST_SPI_FRAME                           (0u)                 /*!< Data is transmitted / received with the MSB first */
-#define LSB_FIRST_SPI_FRAME                           (1u)                 /*!< Data is transmitted / received with the LSB first */
+#define SPI_MSB_FIRST_FRAME                           (0u)                 /*!< Data is transmitted / received with the MSB first */
+#define SPI_LSB_FIRST_FRAME                           (1u)                 /*!< Data is transmitted / received with the LSB first */
 
 
 /**
@@ -229,6 +229,37 @@ typedef struct __SPI_Handle_t {
  */
 #define SPI_SLAVE                                     (0u)                 /*!< Slave configuration */
 #define SPI_MASTER                                    (1u)                 /*!< Master configuration */
+
+
+/**
+ * @brief CPOL: Clock polarity
+ *
+ *
+ * @note This bit should not be changed
+ * when communication is ongoing. This bit is not used in
+ * I2S mode and SPI TI mode except the case
+ * when CRC is applied at TI mode.
+ *
+ *
+ */
+#define SPI_CLK_POLARITY_0                            (0u)                 /*!< CK to 0 when idle */
+#define SPI_CLK_POLARITY_1                            (1u)                 /*!< CK to 1 when idle */
+
+
+/**
+ * @brief CPHA: Clock phase
+ *
+ *
+ * @note This bit should not be changed
+ * when communication is ongoing. This bit is not used
+ * in I2S mode and SPI TI mode except the
+ * case when CRC is applied at TI mode.
+ *
+ */
+#define SPI_CLK_PHASE_0                                 (0u)               /*!< The first clock transition
+                                                                                is the first data capture edge */
+#define SPI_CLK_PHASE_1                                 (1u)               /*!< The second clock transition
+                                                                                is the first data capture edge */
 
 
 /**
