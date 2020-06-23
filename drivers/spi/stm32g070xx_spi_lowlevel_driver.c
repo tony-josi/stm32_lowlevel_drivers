@@ -16,6 +16,38 @@
 #include "stm32g070xx_spi_lowlevel_driver.h"
 
 /**
+ * @brief SPI Initialize
+ *
+ * @param  [in]  hSPI   SPI Handle
+ *
+ * @retval Status:
+ *             - #DRV_OK        Init success
+ *             - #DRV_ERROR     Init failed
+ */
+Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
+
+  uint32_t reg_buff = 0;
+
+  /* Initialize the mode of communication */
+  reg_buff = hSPI->SPI_regdef->CR1;
+  reg_buff &= ~(1u) << 2;
+  reg_buff |= init_spi.mode << 2;
+
+
+  if(init_spi.mode == SPI_FULL_DUPLEX_MODE) {
+
+  } else if(init_spi.mode == SPI_HALF_DUPLEX_MODE) {
+
+  } else if(init_spi.mode == SPI_SIMPLEX_TX_MODE) {
+
+  } else if(init_spi.mode == SPI_SIMPLEX_RX_MODE) {
+
+  } else
+    return DRV_ERROR;
+
+}
+
+/**
  * @brief SPI Peripheral CLK Control
  *
  */

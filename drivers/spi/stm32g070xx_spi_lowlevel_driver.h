@@ -48,6 +48,23 @@ typedef struct __SPI_Handle_t {
 
 } SPI_Handle_t;
 
+/**
+ * @brief SPI Mode
+ *
+ */
+#define SPI_MASTER                                    (0u)                 /*!< SPI master communication mode */
+#define SPI_SLAVE                                     (1u)                 /*!< SPI slave communication mode  */
+
+
+/**
+ * @brief SPI Bus Configuration
+ *
+ */
+#define SPI_FULL_DUPLEX_BUS                           (0u)                 /*!< Full duplex communication */
+#define SPI_HALF_DUPLEX_BUS                           (1u)                 /*!< Half duplex communication */
+#define SPI_SIMPLEX_TX_BUS                            (2u)                 /*!< Simplex transmit only communication */
+#define SPI_SIMPLEX_RX_BUS                            (3u)                 /*!< Simplex receive only  communication */
+
 
 /**
  * @brief SPI Controller reset
