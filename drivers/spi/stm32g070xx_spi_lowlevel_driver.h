@@ -55,6 +55,12 @@ typedef struct __SPI_Handle_t {
 #define SPI_MASTER                                    (0u)                 /*!< SPI master communication mode */
 #define SPI_SLAVE                                     (1u)                 /*!< SPI slave communication mode  */
 
+/**
+ * @brief SPI Mode - bit info
+ *
+ */
+#define SPI_MODE_BIT_POS                              (2u)                 /*!< SPI mode bit position */
+#define SPI_MODE_BIT_WIDTH                            (1u)                 /*!< SPI mode bit width */
 
 /**
  * @brief SPI Bus Configuration
