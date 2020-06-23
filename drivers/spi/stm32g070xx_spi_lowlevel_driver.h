@@ -62,6 +62,7 @@ typedef struct __SPI_Handle_t {
 #define SPI_MODE_BIT_POS                              (2u)                 /*!< SPI mode bit position */
 #define SPI_MODE_BIT_WIDTH                            (1u)                 /*!< SPI mode bit width */
 
+
 /**
  * @brief SPI Bus Configuration
  *
@@ -71,6 +72,13 @@ typedef struct __SPI_Handle_t {
 #define SPI_SIMPLEX_TX_BUS                            (2u)                 /*!< Simplex transmit only communication */
 #define SPI_SIMPLEX_RX_BUS                            (3u)                 /*!< Simplex receive only  communication */
 
+
+/**
+ * @brief SPI Mode - bit info
+ *
+ */
+#define SPI_DIR_BIT_POS                               (15u)                /*!< SPI Bidirectional data mode enable bit position */
+#define SPI_DIR_BIT_WIDTH                             (1u)                 /*!< SPI Bidirectional data mode enable bit width */
 
 /**
  * @brief SPI Controller reset
@@ -169,6 +177,13 @@ typedef struct __SPI_Handle_t {
  */
 #define SPI_FULL_DUPLEX                              (0u)                 /*!< Full-duplex (Transmit and receive) */
 #define SPI_HALF_DUPLEX_OUTPUT_DISABLED              (1u)                 /*!< Output disabled (Receive-only mode) */
+
+/**
+ * @brief SPI RXONLY - bit info
+ *
+ */
+#define SPI_RXONLY_BIT_POS                           (10u)                /*!< SPI mode bit position */
+#define SPI_RXONLY_BIT_WIDTH                         (1u)                 /*!< SPI mode bit width */
 
 
 /**
