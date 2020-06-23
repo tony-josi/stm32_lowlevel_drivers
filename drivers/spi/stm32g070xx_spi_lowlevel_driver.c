@@ -45,12 +45,20 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_BIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
 
-  } else if(init_spi.bus_config == SPI_SIMPLEX_TX_MODE) {
-
   } else if(init_spi.bus_config == SPI_SIMPLEX_RX_MODE) {
+
+    reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
+    reg_buff |= SPI_UNIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
+
+    reg_buff &= ~(SPI_RXONLY_BIT_POS << SPI_RXONLY_BIT_POS);
+    reg_buff |= SPI_HALF_DUPLEX_OUTPUT_DISABLED << SPI_DIR_BIT_POS;
 
   } else
     return DRV_ERROR;
+
+  /* Assign buffer values to the register */
+  hSPI->SPI_regdef->CR1 = reg_buff;
+
 
 }
 

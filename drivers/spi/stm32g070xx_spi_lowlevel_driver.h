@@ -285,6 +285,14 @@ typedef struct __SPI_Handle_t {
 
 
 /**
+ * @brief SPI Clock polarity - bit info
+ *
+ */
+#define SPI_CLK_POL_BIT_POS                           (1u)                /*!< SPI Clock polarity bit position */
+#define SPI_CLK_POL_BIT_WIDTH                         (1u)                /*!< SPI Clock polarity bit width */
+
+
+/**
  * @brief CPHA: Clock phase
  *
  *
@@ -294,10 +302,18 @@ typedef struct __SPI_Handle_t {
  * case when CRC is applied at TI mode.
  *
  */
-#define SPI_CLK_PHASE_0                                 (0u)               /*!< The first clock transition
+#define SPI_CLK_PHASE_0                               (0u)                /*!< The first clock transition
                                                                                 is the first data capture edge */
-#define SPI_CLK_PHASE_1                                 (1u)               /*!< The second clock transition
+#define SPI_CLK_PHASE_1                               (1u)                /*!< The second clock transition
                                                                                 is the first data capture edge */
+
+/**
+ * @brief SPI Clock phase - bit info
+ *
+ */
+#define SPI_CLK_PHA_BIT_POS                           (0u)                /*!< SPI Clock phase bit position */
+#define SPI_CLK_PHA_BIT_WIDTH                         (1u)                /*!< SPI Clock phase bit width */
+
 
 /**
  * @brief DS[3:0]: Data size
