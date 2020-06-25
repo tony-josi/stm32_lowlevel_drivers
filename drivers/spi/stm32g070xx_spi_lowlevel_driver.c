@@ -56,6 +56,11 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
   } else
     return DRV_ERROR;
 
+  if(init_spi.clock_speed <= SPI_BR_PRESCALER_256) {
+    reg_buff &= ~(SPI_BAUD_BIT_WIDTH << SPI_BAUD_BIT_POS);
+    reg_buff |= init_spi.clock_speed << SPI_BAUD_BIT_POS;
+  }
+
   /* Assign buffer values to the register */
   hSPI->SPI_regdef->CR1 = reg_buff;
 

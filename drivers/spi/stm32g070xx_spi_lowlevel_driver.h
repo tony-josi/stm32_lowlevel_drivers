@@ -259,8 +259,8 @@ typedef struct __SPI_Handle_t {
  * @brief SPI Baud rate bit info
  *
  */
-#define SPI_CLK_PHA_BIT_POS                           (3u)                /*!< SPI Baud rate bit position */
-#define SPI_CLK_PHA_BIT_WIDTH                         (7u)                /*!< SPI Baud rate bit width */
+#define SPI_BAUD_BIT_POS                           (3u)                /*!< SPI Baud rate bit position */
+#define SPI_BAUD_BIT_WIDTH                         (7u)                /*!< SPI Baud rate bit width */
 
 /**
  * @brief MSTR: Master selection
