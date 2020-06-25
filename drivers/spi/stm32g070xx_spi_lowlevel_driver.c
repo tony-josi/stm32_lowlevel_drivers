@@ -35,17 +35,17 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
   reg_buff |= init_spi.mode << SPI_MODE_BIT_POS;
 
   /* Initialize bus configuration */
-  if(init_spi.bus_config == SPI_FULL_DUPLEX_MODE) {
+  if(init_spi.bus_config == SPI_FULL_DUPLEX_BUS) {
 
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_UNIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
 
-  } else if(init_spi.bus_config == SPI_HALF_DUPLEX_MODE) {
+  } else if(init_spi.bus_config == SPI_HALF_DUPLEX_BUS) {
 
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_BIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
 
-  } else if(init_spi.bus_config == SPI_SIMPLEX_RX_MODE) {
+  } else if(init_spi.bus_config == SPI_SIMPLEX_RX_BUS) {
 
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_UNIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
@@ -74,11 +74,17 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
     reg_buff |= init_spi.clock_polarity << SPI_CLK_PHA_BIT_POS;
   }
 
-
-
   /* Assign buffer values to the register */
   hSPI->SPI_regdef->CR1 = reg_buff;
 
+  reg_buff = hSPI->SPI_regdef->CR2;
+  reg_buff &= ~(SPI_DATA_SIZE_BIT_WIDTH << SPI_DATA_SIZE_BIT_POS);
+  reg_buff |= init_spi.dff << SPI_DATA_SIZE_BIT_POS;
+
+  /* Assign buffer values to the register */
+  hSPI->SPI_regdef->CR2 = reg_buff;
+
+  return DRV_OK;
 
 }
 

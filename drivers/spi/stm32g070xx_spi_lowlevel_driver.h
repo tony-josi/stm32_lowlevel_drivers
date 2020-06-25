@@ -49,11 +49,16 @@ typedef struct __SPI_Handle_t {
 } SPI_Handle_t;
 
 /**
- * @brief SPI Mode
+ * @brief MSTR: Master selection
+ *
+ *
+ * @note This bit should not be changed
+ * when communication is ongoing.
+ * This bit is not used in I2S mode.
  *
  */
-#define SPI_MASTER                                    (0u)                 /*!< SPI master communication mode */
-#define SPI_SLAVE                                     (1u)                 /*!< SPI slave communication mode  */
+#define SPI_SLAVE                                     (0u)                 /*!< Slave configuration */
+#define SPI_MASTER                                    (1u)                 /*!< Master configuration */
 
 /**
  * @brief SPI Mode - bit info
@@ -262,18 +267,6 @@ typedef struct __SPI_Handle_t {
 #define SPI_BAUD_BIT_POS                           (3u)                /*!< SPI Baud rate bit position */
 #define SPI_BAUD_BIT_WIDTH                         (7u)                /*!< SPI Baud rate bit width */
 
-/**
- * @brief MSTR: Master selection
- *
- *
- * @note This bit should not be changed
- * when communication is ongoing.
- * This bit is not used in I2S mode.
- *
- */
-#define SPI_SLAVE                                     (0u)                 /*!< Slave configuration */
-#define SPI_MASTER                                    (1u)                 /*!< Master configuration */
-
 
 /**
  * @brief CPOL: Clock polarity
@@ -347,6 +340,13 @@ typedef struct __SPI_Handle_t {
 #define SPI_DATA_SIZE_14_BITS                           (13u)              /*!< 14 bit DS */
 #define SPI_DATA_SIZE_15_BITS                           (14u)              /*!< 15 bit DS */
 #define SPI_DATA_SIZE_16_BITS                           (15u)              /*!< 16 bit DS */
+
+/**
+ * @brief SPI Data size bit info
+ *
+ */
+#define SPI_DATA_SIZE_BIT_POS                           (8u)                /*!< SPI Data size bit position */
+#define SPI_DATA_SIZE_BIT_WIDTH                         (0xFu)              /*!< SPI Data size bit width */
 
 
 /**
