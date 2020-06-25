@@ -255,6 +255,12 @@ typedef struct __SPI_Handle_t {
 #define SPI_BR_PRESCALER_128                          (6u)                 /*!< fPCLK/128 */
 #define SPI_BR_PRESCALER_256                          (7u)                 /*!< fPCLK/256 */
 
+/**
+ * @brief SPI Baud rate bit info
+ *
+ */
+#define SPI_CLK_PHA_BIT_POS                           (3u)                /*!< SPI Baud rate bit position */
+#define SPI_CLK_PHA_BIT_WIDTH                         (7u)                /*!< SPI Baud rate bit width */
 
 /**
  * @brief MSTR: Master selection
