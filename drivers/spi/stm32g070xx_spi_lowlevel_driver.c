@@ -62,6 +62,18 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
     reg_buff |= init_spi.clock_speed << SPI_BAUD_BIT_POS;
   }
 
+  /* Set clock polarity for SPI */
+  if(init_spi.clock_polarity <= SPI_CLK_POLARITY_1) {
+    reg_buff &= ~(SPI_CLK_POL_BIT_WIDTH << SPI_CLK_POL_BIT_POS);
+    reg_buff |= init_spi.clock_polarity << SPI_CLK_POL_BIT_POS;
+  }
+
+  /* Set clock phase for SPI */
+  if(init_spi.clock_polarity <= SPI_CLK_PHASE_1) {
+    reg_buff &= ~(SPI_CLK_PHA_BIT_WIDTH << SPI_CLK_PHA_BIT_POS);
+    reg_buff |= init_spi.clock_polarity << SPI_CLK_PHA_BIT_POS;
+  }
+
 
 
   /* Assign buffer values to the register */
