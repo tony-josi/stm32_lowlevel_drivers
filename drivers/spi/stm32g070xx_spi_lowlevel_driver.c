@@ -87,8 +87,13 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
   hSPI->SPI_regdef->CR1 = reg_buff;
 
   reg_buff = hSPI->SPI_regdef->CR2;
-  reg_buff &= ~(SPI_DATA_SIZE_BIT_WIDTH << SPI_DATA_SIZE_BIT_POS);
-  reg_buff |= init_spi.dff << SPI_DATA_SIZE_BIT_POS;
+
+  /* Set Data size: These bits configure the data length for SPI transfers */
+  if((init_spi.dff > SPI_DATA_SIZE_NOT_USED_3) &&
+      (init_spi.dff <= SPI_DATA_SIZE_16_BITS)) {
+    reg_buff &= ~(SPI_DATA_SIZE_BIT_WIDTH << SPI_DATA_SIZE_BIT_POS);
+    reg_buff |= init_spi.dff << SPI_DATA_SIZE_BIT_POS;
+  }
 
   /* Assign buffer values to the register */
   hSPI->SPI_regdef->CR2 = reg_buff;
