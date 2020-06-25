@@ -26,13 +26,16 @@
  */
 Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
 
-  drv_assert_param(hGPIO);
+  drv_assert_param(hSPI);
   uint32_t reg_buff = 0;
 
   /* Initialize the mode of communication */
   reg_buff = hSPI->SPI_regdef->CR1;
-  reg_buff &= ~(SPI_MODE_BIT_WIDTH << SPI_MODE_BIT_POS);
-  reg_buff |= init_spi.mode << SPI_MODE_BIT_POS;
+
+  if(init_spi.mode < SPI_MASTER) {
+    reg_buff &= ~(SPI_MODE_BIT_WIDTH << SPI_MODE_BIT_POS);
+    reg_buff |= init_spi.mode << SPI_MODE_BIT_POS;
+  }
 
   /* Initialize bus configuration */
   if(init_spi.bus_config == SPI_FULL_DUPLEX_BUS) {
@@ -72,6 +75,12 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
   if(init_spi.clock_polarity <= SPI_CLK_PHASE_1) {
     reg_buff &= ~(SPI_CLK_PHA_BIT_WIDTH << SPI_CLK_PHA_BIT_POS);
     reg_buff |= init_spi.clock_polarity << SPI_CLK_PHA_BIT_POS;
+  }
+
+  /* Set Software slave management for SPI */
+  if(init_spi.ssm <= SPI_SSM_ENABLED) {
+    reg_buff &= ~(SPI_SSM_BIT_WIDTH << SPI_SSM_BIT_POS);
+    reg_buff |= init_spi.ssm << SPI_SSM_BIT_POS;
   }
 
   /* Assign buffer values to the register */

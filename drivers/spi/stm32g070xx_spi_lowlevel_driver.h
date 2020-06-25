@@ -204,6 +204,13 @@ typedef struct __SPI_Handle_t {
 #define SPI_SSM_ENABLED                               (1u)                 /*!< Software slave management enabled */
 
 /**
+ * @brief SPI Software slave management bit info
+ *
+ */
+#define SPI_SSM_BIT_POS                               (9u)                /*!< SPI Software slave management bit position */
+#define SPI_SSM_BIT_WIDTH                             (1u)                 /*!< SPI Software slave management bit width */
+
+/**
  * @brief SSI: Internal slave select
  *
  * This bit has an effect only when the SSM bit is set.
