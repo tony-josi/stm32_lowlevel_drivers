@@ -90,8 +90,8 @@ typedef struct __SPI_Handle_t {
  * @brief SPI Controller reset
  *
  */
-#define APBRSTR2_SPI1_RESET                               12
-#define APBRSTR1_SPI2_RESET                               14
+#define APBRSTR2_SPI1_RESET                           12
+#define APBRSTR1_SPI2_RESET                           14
 
 
 /**
@@ -114,8 +114,8 @@ typedef struct __SPI_Handle_t {
  *
  * @note: This bit is not used in I2S mode.
  */
-#define SPI_UNIDIRECTIONAL_DATA_MODE                  (0u)                 /*!< Unidirectional data mode selected */
-#define SPI_BIDIRECTIONAL_DATA_MODE                   (1u)                 /*!< Bidirectional data mode selected */
+#define SPI_UNIDIRECTIONAL_DATA_MODE                 (0u)                 /*!< Unidirectional data mode selected */
+#define SPI_BIDIRECTIONAL_DATA_MODE                  (1u)                 /*!< Bidirectional data mode selected */
 
 
 /**
@@ -129,8 +129,8 @@ typedef struct __SPI_Handle_t {
  * This bit is not used in I2S mode.
  *
  */
-#define SPI_BIDIOE_OP_DISABLED                        (0u)                 /*!< Output disabled (receive-only mode */
-#define SPI_BIDIOE_OP_ENABLED                         (1u)                 /*!< Output enabled (transmit-only mode */
+#define SPI_BIDIOE_OP_DISABLED                       (0u)                 /*!< Output disabled (receive-only mode */
+#define SPI_BIDIOE_OP_ENABLED                        (1u)                 /*!< Output enabled (transmit-only mode */
 
 
 /**
@@ -402,12 +402,12 @@ typedef struct __SPI_Handle_t {
  * and reset when SPIx_SR is read by software.
  *
  */
-#define SPI_FRAME_FORMAT_ERR_BIT_POS                  (9u)                /*!< Frame format error bit position */
-#define SPI_FRAME_FORMAT_ERR_BIT_WIDTH                (3u)                /*!< Frame format error width */
+#define SPI_FRAME_FORMAT_ERR_BIT_POS                  (8u)                /*!< Frame format error bit position */
+#define SPI_FRAME_FORMAT_ERR_BIT_WIDTH                (1u)                /*!< Frame format error width */
 
 
 /**
- * @brief BSY: Busy flag
+ * @brief BSY: Busy flag - bit info
  *
  * This flag is set and cleared by hardware.
  *
@@ -416,100 +416,102 @@ typedef struct __SPI_Handle_t {
  * and Procedure for disabling the SPI on page 855.
  *
  */
-BSY:Busyflag
-0: SPI (or I2S) not busy
-1: SPI (or I2S) is busy in communication or Tx buffer is not empty
-This flag is set and cleared by hardware.
-Note: The BSY flag must be used with caution: refer to Section 27.5.10: SPI status flags and Procedure for disabling the SPI on page 855.
+#define SPI_BUSY_FLAG_BIT_POS                         (7u)                /*!< Busy flag bit position */
+#define SPI_BUSY_FLAG_BIT_WIDTH                       (1u)                /*!< Busy flag error width */
 
 /**
- * @brief
+ * @brief OVR: Over run flag - bit info
  *
- *
- * Note:
+ * This flag is set by hardware and reset by a
+ * software sequence. Refer to I2S error flags
+ * on page 887 for the software sequence.
  *
  */
-OVR:Overrunflag
-0: No overrun occurred
-1: Overrun occurred
-This flag is set by hardware and reset by a software sequence. Refer to I2S error flags on page 887 for the software sequence.
+#define SPI_OVER_RUN_BIT_POS                          (6u)                /*!< Over run flag bit position */
+#define SPI_OVER_RUN_BIT_WIDTH                        (1u)                /*!< Over run flag width */
+
 
 /**
- * @brief
+ * @brief MODF: Mode fault - bit info
  *
+ * This flag is set by hardware and reset by a
+ * software sequence. Refer to Section :
+ * Mode fault (MODF) on page 865 for the software sequence.
  *
- * Note:
+ * Note: This bit is not used in I2S mode.
  *
  */
-MODF:Modefault
-0: No mode fault occurred
-1: Mode fault occurred
-This flag is set by hardware and reset by a software sequence. Refer to Section : Mode fault (MODF) on page 865 for the software sequence.
-Note: This bit is not used in I2S mode.
+#define SPI_MODE_FAULT_BIT_POS                        (5u)                /*!< Mode fault bit position */
+#define SPI_MODE_FAULT_BIT_WIDTH                      (1u)                /*!< Mode fault width */
+
 
 /**
- * @brief
+ * @brief CRCERR: CRC error flag - bit info
  *
  *
- * Note:
+ * Note: This flag is set by hardware and cleared by software writing 0.
+ * This bit is not used in I2S mode.
  *
  */
-CRCERR:CRCerrorflag
-0: CRC value received matches the SPIx_RXCRCR value
-1: CRC value received does not match the SPIx_RXCRCR value
-Note: This flag is set by hardware and cleared by software writing 0.
-This bit is not used in I2S mode.
+#define SPI_CRC_ERR_BIT_POS                           (4u)                /*!< CRC error flag bit position */
+#define SPI_CRC_ERR_BIT_WIDTH                         (1u)                /*!< CRC error flag width */
+
 
 /**
- * @brief
+ * @brief UDR: Under run flag - bit info
  *
+ * This flag is set by hardware and reset by a
+ * software sequence. Refer to I2S error flags on
+ * page 887 for the software sequence.
  *
- * Note:
+ * Note: This bit is not used in SPI mode.
  *
  */
-UDR:Underrunflag
-0: No underrun occurred
-1: Underrun occurred
-This flag is set by hardware and reset by a software sequence. Refer to I2S error flags on page 887 for the software sequence.
-Note: This bit is not used in SPI mode.
+#define SPI_UNDER_RUN_BIT_POS                         (3u)                /*!< Under run flag bit position */
+#define SPI_UNDER_RUN_BIT_WIDTH                       (1u)                /*!< Under run flag width */
+
 
 /**
- * @brief
+ * @brief CHSIDE: Channel side
  *
  *
- * Note:
+ * Note: This bit is not used in SPI mode.
+ * It has no significance in PCM mode.
  *
  */
-CHSIDE:Channelside
-0: Channel Left has to be transmitted or has been received 1: Channel Right has to be transmitted or has been received
-Note: This bit is not used in SPI mode. It has no significance in PCM mode.
+#define SPI_CHN_TXRX_LEFT_SIDE                        (0u)                /*!< Channel Left has to be transmitted or has been received */
+#define SPI_CHN_TXRX_RIGHT_SIDE                       (1u)                /*!< Channel Right has to be transmitted or has been received */
 
 /**
- * @brief
- *
- *
- * Note:
+ * @brief Channel side - bit info
  *
  */
-TXE:Transmitbufferempty 0: Tx buffer not empty
-1: Tx buffer empty
+#define SPI_CHN_SIDE_BIT_POS                          (2u)                /*!< Channel side bit position */
+#define SPI_CHN_SIDE_BIT_WIDTH                        (1u)                /*!< Channel side width */
+
 
 /**
- * @brief
- *
- *
- * Note:
+ * @brief TXE: Transmit buffer empty
  *
  */
-RXNE:Receivebuffernotempty 0: Rx buffer empty
-1: Rx buffer not empty
+#define SPI_TXE_BIT_POS                               (1u)                /*!< Transmit buffer empty bit position */
+#define SPI_TXE_BIT_WIDTH                             (1u)                /*!< Transmit buffer empty width */
+
+
+/**
+ * @brief RXNE: Receive buffer not empty
+ *
+ */
+#define SPI_RXNXE_BIT_POS                             (0u)                /*!< Receive buffer not empty bit position */
+#define SPI_RXNXE_BIT_WIDTH                           (1u)                /*!< Receive buffer not empty width */
+
 
 /**
  * @brief SPI Data size bit info
  *
  */
-#define SPI_DATA_SIZE_BIT_POS                           (8u)                /*!< SPI Data size bit position */
-#define SPI_DATA_SIZE_BIT_WIDTH                         (0xFu)              /*!< SPI Data size bit width */
+#define SPI_DATA_SIZE_BIT_POS                         (8u)                /*!< SPI Data size bit position */
+#define SPI_DATA_SIZE_BIT_WIDTH                       (0xFu)              /*!< SPI Data size bit width */
 
 
 /**
