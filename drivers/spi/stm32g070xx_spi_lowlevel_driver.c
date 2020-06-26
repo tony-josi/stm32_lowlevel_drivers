@@ -24,7 +24,7 @@
  *             - #DRV_OK        Init success
  *             - #DRV_ERROR     Init failed
  */
-Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
+Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI) {
 
   drv_assert_param(hSPI);
   uint32_t reg_buff = 0;
@@ -32,23 +32,23 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
   /* Initialize the mode of communication */
   reg_buff = hSPI->SPI_regdef->CR1;
 
-  if(init_spi.mode < SPI_MASTER) {
+  if(hSPI->SPI_Init.mode < SPI_MASTER) {
     reg_buff &= ~(SPI_MODE_BIT_WIDTH << SPI_MODE_BIT_POS);
-    reg_buff |= init_spi.mode << SPI_MODE_BIT_POS;
+    reg_buff |= hSPI->SPI_Init.mode << SPI_MODE_BIT_POS;
   }
 
   /* Initialize bus configuration */
-  if(init_spi.bus_config == SPI_FULL_DUPLEX_BUS) {
+  if(hSPI->SPI_Init.bus_config == SPI_FULL_DUPLEX_BUS) {
 
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_UNIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
 
-  } else if(init_spi.bus_config == SPI_HALF_DUPLEX_BUS) {
+  } else if(hSPI->SPI_Init.bus_config == SPI_HALF_DUPLEX_BUS) {
 
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_BIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
 
-  } else if(init_spi.bus_config == SPI_SIMPLEX_RX_BUS) {
+  } else if(hSPI->SPI_Init.bus_config == SPI_SIMPLEX_RX_BUS) {
 
     reg_buff &= ~(SPI_DIR_BIT_WIDTH << SPI_DIR_BIT_POS);
     reg_buff |= SPI_UNIDIRECTIONAL_DATA_MODE << SPI_DIR_BIT_POS;
@@ -60,27 +60,27 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
     return DRV_ERROR;
 
   /* Set baud rate for SPI */
-  if(init_spi.clock_speed <= SPI_BR_PRESCALER_256) {
+  if(hSPI->SPI_Init.clock_speed <= SPI_BR_PRESCALER_256) {
     reg_buff &= ~(SPI_BAUD_BIT_WIDTH << SPI_BAUD_BIT_POS);
-    reg_buff |= init_spi.clock_speed << SPI_BAUD_BIT_POS;
+    reg_buff |= hSPI->SPI_Init.clock_speed << SPI_BAUD_BIT_POS;
   }
 
   /* Set clock polarity for SPI */
-  if(init_spi.clock_polarity <= SPI_CLK_POLARITY_1) {
+  if(hSPI->SPI_Init.clock_polarity <= SPI_CLK_POLARITY_1) {
     reg_buff &= ~(SPI_CLK_POL_BIT_WIDTH << SPI_CLK_POL_BIT_POS);
-    reg_buff |= init_spi.clock_polarity << SPI_CLK_POL_BIT_POS;
+    reg_buff |= hSPI->SPI_Init.clock_polarity << SPI_CLK_POL_BIT_POS;
   }
 
   /* Set clock phase for SPI */
-  if(init_spi.clock_polarity <= SPI_CLK_PHASE_1) {
+  if(hSPI->SPI_Init.clock_polarity <= SPI_CLK_PHASE_1) {
     reg_buff &= ~(SPI_CLK_PHA_BIT_WIDTH << SPI_CLK_PHA_BIT_POS);
-    reg_buff |= init_spi.clock_polarity << SPI_CLK_PHA_BIT_POS;
+    reg_buff |= hSPI->SPI_Init.clock_polarity << SPI_CLK_PHA_BIT_POS;
   }
 
   /* Set Software slave management for SPI */
-  if(init_spi.ssm <= SPI_SSM_ENABLED) {
+  if(hSPI->SPI_Init.ssm <= SPI_SSM_ENABLED) {
     reg_buff &= ~(SPI_SSM_BIT_WIDTH << SPI_SSM_BIT_POS);
-    reg_buff |= init_spi.ssm << SPI_SSM_BIT_POS;
+    reg_buff |= hSPI->SPI_Init.ssm << SPI_SSM_BIT_POS;
   }
 
   /* Assign buffer values to the register */
@@ -89,10 +89,10 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t init_spi) {
   reg_buff = hSPI->SPI_regdef->CR2;
 
   /* Set Data size: These bits configure the data length for SPI transfers */
-  if((init_spi.dff > SPI_DATA_SIZE_NOT_USED_3) &&
-      (init_spi.dff <= SPI_DATA_SIZE_16_BITS)) {
+  if((hSPI->SPI_Init.dff > SPI_DATA_SIZE_NOT_USED_3) &&
+      (hSPI->SPI_Init.dff <= SPI_DATA_SIZE_16_BITS)) {
     reg_buff &= ~(SPI_DATA_SIZE_BIT_WIDTH << SPI_DATA_SIZE_BIT_POS);
-    reg_buff |= init_spi.dff << SPI_DATA_SIZE_BIT_POS;
+    reg_buff |= hSPI->SPI_Init.dff << SPI_DATA_SIZE_BIT_POS;
   }
 
   /* Assign buffer values to the register */

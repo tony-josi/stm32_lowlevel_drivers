@@ -45,7 +45,7 @@ typedef struct __SPI_InitConfig_t {
 typedef struct __SPI_Handle_t {
 
   SPI_RegDef_Type    *SPI_regdef;                         /*!< SPI Register definition pointer */
-  SPI_InitConfig_t    SPI_Init;
+  SPI_InitConfig_t    SPI_Init;                           /*!< SPI Initialization configuration structure */
 
 } SPI_Handle_t;
 
@@ -361,7 +361,7 @@ typedef struct __SPI_Handle_t {
  * @brief SPI Initialize
  *
  */
-Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI, SPI_InitConfig_t);
+Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI);
 
 /**
  * @brief SPI DeInitialize
