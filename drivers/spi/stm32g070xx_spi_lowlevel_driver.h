@@ -272,8 +272,8 @@ typedef struct __SPI_Handle_t {
  * @brief SPI Baud rate bit info
  *
  */
-#define SPI_BAUD_BIT_POS                           (3u)                /*!< SPI Baud rate bit position */
-#define SPI_BAUD_BIT_WIDTH                         (7u)                /*!< SPI Baud rate bit width */
+#define SPI_BAUD_BIT_POS                              (3u)                /*!< SPI Baud rate bit position */
+#define SPI_BAUD_BIT_WIDTH                            (7u)                /*!< SPI Baud rate bit width */
 
 
 /**
@@ -332,22 +332,174 @@ typedef struct __SPI_Handle_t {
  * Note: This bit is not used in I2S mode.
  *
  */
-#define SPI_DATA_SIZE_NOT_USED_1                        (0u)               /*!< Not used */
-#define SPI_DATA_SIZE_NOT_USED_2                        (1u)               /*!< Not used */
-#define SPI_DATA_SIZE_NOT_USED_3                        (2u)               /*!< Not used */
-#define SPI_DATA_SIZE_4_BITS                            (3u)               /*!< 4 bit DS */
-#define SPI_DATA_SIZE_5_BITS                            (4u)               /*!< 5 bit DS */
-#define SPI_DATA_SIZE_6_BITS                            (5u)               /*!< 6 bit DS */
-#define SPI_DATA_SIZE_7_BITS                            (6u)               /*!< 7 bit DS */
-#define SPI_DATA_SIZE_8_BITS                            (7u)               /*!< 8 bit DS */
-#define SPI_DATA_SIZE_9_BITS                            (8u)               /*!< 9 bit DS */
-#define SPI_DATA_SIZE_10_BITS                           (9u)               /*!< 10 bit DS */
-#define SPI_DATA_SIZE_11_BITS                           (10u)              /*!< 11 bit DS */
-#define SPI_DATA_SIZE_12_BITS                           (11u)              /*!< 12 bit DS */
-#define SPI_DATA_SIZE_13_BITS                           (12u)              /*!< 13 bit DS */
-#define SPI_DATA_SIZE_14_BITS                           (13u)              /*!< 14 bit DS */
-#define SPI_DATA_SIZE_15_BITS                           (14u)              /*!< 15 bit DS */
-#define SPI_DATA_SIZE_16_BITS                           (15u)              /*!< 16 bit DS */
+#define SPI_DATA_SIZE_NOT_USED_1                      (0u)               /*!< Not used */
+#define SPI_DATA_SIZE_NOT_USED_2                      (1u)               /*!< Not used */
+#define SPI_DATA_SIZE_NOT_USED_3                      (2u)               /*!< Not used */
+#define SPI_DATA_SIZE_4_BITS                          (3u)               /*!< 4 bit DS */
+#define SPI_DATA_SIZE_5_BITS                          (4u)               /*!< 5 bit DS */
+#define SPI_DATA_SIZE_6_BITS                          (5u)               /*!< 6 bit DS */
+#define SPI_DATA_SIZE_7_BITS                          (6u)               /*!< 7 bit DS */
+#define SPI_DATA_SIZE_8_BITS                          (7u)               /*!< 8 bit DS */
+#define SPI_DATA_SIZE_9_BITS                          (8u)               /*!< 9 bit DS */
+#define SPI_DATA_SIZE_10_BITS                         (9u)               /*!< 10 bit DS */
+#define SPI_DATA_SIZE_11_BITS                         (10u)              /*!< 11 bit DS */
+#define SPI_DATA_SIZE_12_BITS                         (11u)              /*!< 12 bit DS */
+#define SPI_DATA_SIZE_13_BITS                         (12u)              /*!< 13 bit DS */
+#define SPI_DATA_SIZE_14_BITS                         (13u)              /*!< 14 bit DS */
+#define SPI_DATA_SIZE_15_BITS                         (14u)              /*!< 15 bit DS */
+#define SPI_DATA_SIZE_16_BITS                         (15u)              /*!< 16 bit DS */
+
+
+
+/**
+ * @brief FTLVL[1:0]: FIFO transmission level
+ *
+ * Note: These bits are set and cleared by hardware.
+ * This bit is not used in I2S mode.
+ *
+ */
+#define SPI_TX_FIFO_EMPTY                             (0u)               /*!< FIFO empty */
+#define SPI_TX_FIFO_1_4TH                             (1u)               /*!< FIFO 1/4th */
+#define SPI_TX_FIFO_1_2ND                             (2u)               /*!< FIFO half */
+#define SPI_TX_FIFO_FULL                              (3u)               /*!< FIFO full */
+
+/**
+ * @brief SPI FIFO transmission level - bit info
+ *
+ */
+#define SPI_TX_FIFO_LVL_BIT_POS                       (11u)                /*!< FIFO transmission level bit position */
+#define SPI_TX_FIFO_LVL_BIT_WIDTH                     (3u)                 /*!< FIFO transmission level width */
+
+
+/**
+ * @brief FRLVL[1:0]: FIFO reception level
+ *
+ *
+ * Note: These bits are set and cleared by hardware.
+ * Note: These bits are not used in I2S mode and in
+ * SPI receive-only mode while CRC calculation is enabled.
+ *
+ */
+#define SPI_RX_FIFO_EMPTY                             (0u)               /*!< FIFO empty */
+#define SPI_RX_FIFO_1_4TH                             (1u)               /*!< FIFO 1/4th */
+#define SPI_RX_FIFO_1_2ND                             (2u)               /*!< FIFO half */
+#define SPI_RX_FIFO_FULL                              (3u)               /*!< FIFO full */
+
+/**
+ * @brief SPI FIFO reception level - bit info
+ *
+ */
+#define SPI_RX_FIFO_LVL_BIT_POS                       (9u)                /*!< FIFO reception level bit position */
+#define SPI_RX_FIFO_LVL_BIT_WIDTH                     (3u)                /*!< FIFO reception level width */
+
+
+/**
+ * @brief FRE: Frame format error - bit info
+ *
+ * This flag is used for SPI in TI slave mode and I2S slave mode.
+ * Refer to Section 27.5.11: SPI error flags and
+ * Section 27.7.8: I2S error flags. This flag is set by hardware
+ * and reset when SPIx_SR is read by software.
+ *
+ */
+#define SPI_FRAME_FORMAT_ERR_BIT_POS                  (9u)                /*!< Frame format error bit position */
+#define SPI_FRAME_FORMAT_ERR_BIT_WIDTH                (3u)                /*!< Frame format error width */
+
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+BSY:Busyflag
+0: SPI (or I2S) not busy
+1: SPI (or I2S) is busy in communication or Tx buffer is not empty
+This flag is set and cleared by hardware.
+Note: The BSY flag must be used with caution: refer to Section 27.5.10: SPI status flags and Procedure for disabling the SPI on page 855.
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+OVR:Overrunflag
+0: No overrun occurred
+1: Overrun occurred
+This flag is set by hardware and reset by a software sequence. Refer to I2S error flags on page 887 for the software sequence.
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+MODF:Modefault
+0: No mode fault occurred
+1: Mode fault occurred
+This flag is set by hardware and reset by a software sequence. Refer to Section : Mode fault (MODF) on page 865 for the software sequence.
+Note: This bit is not used in I2S mode.
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+CRCERR:CRCerrorflag
+0: CRC value received matches the SPIx_RXCRCR value
+1: CRC value received does not match the SPIx_RXCRCR value
+Note: This flag is set by hardware and cleared by software writing 0.
+This bit is not used in I2S mode.
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+UDR:Underrunflag
+0: No underrun occurred
+1: Underrun occurred
+This flag is set by hardware and reset by a software sequence. Refer to I2S error flags on page 887 for the software sequence.
+Note: This bit is not used in SPI mode.
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+CHSIDE:Channelside
+0: Channel Left has to be transmitted or has been received 1: Channel Right has to be transmitted or has been received
+Note: This bit is not used in SPI mode. It has no significance in PCM mode.
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+TXE:Transmitbufferempty 0: Tx buffer not empty
+1: Tx buffer empty
+
+/**
+ * @brief
+ *
+ *
+ * Note:
+ *
+ */
+RXNE:Receivebuffernotempty 0: Rx buffer empty
+1: Rx buffer not empty
 
 /**
  * @brief SPI Data size bit info
