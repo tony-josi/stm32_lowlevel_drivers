@@ -407,10 +407,13 @@ typedef struct __SPI_Handle_t {
 
 
 /**
- * @brief
+ * @brief BSY: Busy flag
  *
+ * This flag is set and cleared by hardware.
  *
- * Note:
+ * Note: The BSY flag must be used with caution:
+ * refer to Section 27.5.10: SPI status flags
+ * and Procedure for disabling the SPI on page 855.
  *
  */
 BSY:Busyflag
