@@ -49,6 +49,14 @@ typedef struct __SPI_Handle_t {
 
 } SPI_Handle_t;
 
+
+/**
+ * @brief SPI set and reset macros
+ *
+ */
+#define SPI_SET                                       (1u)
+#define SPI_RESET                                     (0u)
+
 /**
  * @brief MSTR: Master selection
  *
@@ -513,6 +521,12 @@ typedef struct __SPI_Handle_t {
 #define SPI_DATA_SIZE_BIT_POS                         (8u)                /*!< SPI Data size bit position */
 #define SPI_DATA_SIZE_BIT_WIDTH                       (0xFu)              /*!< SPI Data size bit width */
 
+
+/**
+ * @brief SPI get status flag macro
+ *
+ */
+#define SPI_GET_FLAG_STATUS(spi_reg, bit_mask)        ((spi_reg) & (bit_mask))
 
 /**
  * @brief SPI Initialize

@@ -108,7 +108,7 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI) {
  */
 Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
 
-  drv_assert_param(pGPIOx);
+  drv_assert_param(pSPI);
 
   /* Enable peripheral clock for the given SPI */
   if(Enable == ENABLE) {
@@ -140,6 +140,48 @@ Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
 
 }
 
+
+/**
+ * @brief SPI Transmit in blocking mode
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t len) {
+
+  drv_assert_param(pSPI);
+
+  /*
+   * TODO: Add timeout
+   * TODO: Handle other data size or dff
+   * */
+
+  if(len > 0) {
+
+    while(len > 0) {
+
+      while(SPI_GET_FLAG_STATUS(pSPI->SPI_regdef->SR, (SPI_TXE_BIT_POS << SPI_TXE_BIT_WIDTH)) == SPI_RESET);
+
+      if(pSPI->SPI_Init.dff == SPI_DATA_SIZE_8_BITS) {
+
+        pSPI->SPI_regdef->DR = (uint8_t) *pTX_buff;
+        --len;
+        ++pTX_buff;
+
+      } else if(pSPI->SPI_Init.dff == SPI_DATA_SIZE_16_BITS) {
+
+        pSPI->SPI_regdef->DR = (uint16_t) *((uint16_t *)pTX_buff);
+        len -= 2;
+        pTX_buff += 2;
+
+      }
+    }
+
+    return DRV_OK;
+
+  }
+
+  return DRV_ERROR;
+
+}
 
 
 /**
