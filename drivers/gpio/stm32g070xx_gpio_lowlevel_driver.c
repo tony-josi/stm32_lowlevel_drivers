@@ -31,6 +31,9 @@ Drv_Status_t LL_HAL_GPIO_Init(GPIO_Handle_t *hGPIO) {
   drv_assert_param(hGPIO);
   uint32_t reg_buff = 0;
 
+  /* Enable the clock of the corresponding port */
+  LL_HAL_GPIO_PCLK_Cntrl(hGPIO->GPIO_regdef, ENABLE);
+
   /* Check if the mode is valid */
   if (hGPIO->GPIO_InitFields.mode <= GPIO_MODE_IT_RFT) {
 
