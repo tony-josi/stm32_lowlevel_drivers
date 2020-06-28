@@ -15,9 +15,17 @@
 int main(void)
 {
 
+  /* GPIO Test Case Calls */
+  /* -------------------- */
+
   //gpio_test_led_blink__gpio__pclk__init__toggle__deinit();
   //gpio_test_led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
   //gpio_test_led_btn_gpio_it_init__exti_callback();
+
+  /* SPI Test Case Calls */
+  /* ------------------- */
+
+  //void spi_test_init_sent_data__pol();
 
 	while(1) {
 
