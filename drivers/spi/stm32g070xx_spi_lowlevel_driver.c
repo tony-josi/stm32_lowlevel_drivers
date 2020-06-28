@@ -173,6 +173,7 @@ Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t
         pTX_buff += 2;
 
       } else
+        /* Only supports 8bit & 16bit DS */
         return DRV_ERROR;
     }
 
