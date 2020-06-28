@@ -256,6 +256,13 @@ typedef struct __SPI_Handle_t {
 #define SPI_PERI_DISABLED                             (0u)                 /*!< Peripheral disabled */
 #define SPI_PERI_ENABLED                              (1u)                 /*!< Peripheral enabled */
 
+/**
+ * @brief SPI enable bit info
+ *
+ */
+#define SPI_PERI_BIT_POS                              (6u)                /*!< SPI Baud rate bit position */
+#define SPI_PERI_BIT_WIDTH                            (1u)                /*!< SPI Baud rate bit width */
+
 
 /**
  * @brief BR[2:0]: Baud rate control
@@ -533,6 +540,12 @@ typedef struct __SPI_Handle_t {
  *
  */
 Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI);
+
+/**
+ * @brief SPI Peripheral Enable or Disable
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable);
 
 /**
  * @brief SPI DeInitialize

@@ -106,6 +106,29 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI) {
 }
 
 /**
+* @brief SPI Peripheral Enable or Disable
+*
+*/
+Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable) {
+
+  if(Enable <= ENABLE) {
+
+    uint32_t reg_buff;
+    reg_buff = hSPI->SPI_regdef->CR1;
+
+    reg_buff &= ~(SPI_PERI_BIT_WIDTH << SPI_PERI_BIT_POS);
+    reg_buff |= Enable << SPI_DATA_SIZE_BIT_POS;
+
+    hSPI->SPI_regdef->CR1 = reg_buff;
+
+    return DRV_OK;
+
+  } else
+    return DRV_ERROR;
+
+}
+
+/**
  * @brief SPI Peripheral CLK Control
  *
  */
