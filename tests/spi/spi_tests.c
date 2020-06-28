@@ -12,18 +12,21 @@
 #include "stm32g070xx_ll_hal.h"
 #include "driver_tests.h"
 
-static void spi_test_gpio_init();
-static void spi_test_peripheral_init();
+static void spi_test_spi2_gpio_init();
+static void spi_test_spi2_peripheral_init(SPI_Handle_t *);
 
 
 void spi_test_init_sent_data__pol() {
 
-  UNUSED(spi_test_gpio_init);
-  UNUSED(spi_test_peripheral_init);
+  SPI_Handle_t hSPI1;
+
+  UNUSED(spi_test_spi2_gpio_init);
+  UNUSED(spi_test_spi2_peripheral_init);
+  UNUSED(hSPI1);
 
 }
 
-void spi_test_gpio_init() {
+void spi_test_spi2_gpio_init() {
 
   /**
    * Alternate functions
@@ -62,11 +65,20 @@ void spi_test_gpio_init() {
   spi2_ph.GPIO_InitFields.pin = GPIO_PIN_14;
   LL_HAL_GPIO_Init(&spi2_ph);
 
-
 }
 
-void spi_test_peripheral_init() {
+void spi_test_spi2_peripheral_init(SPI_Handle_t *HSPI) {
 
+  HSPI->SPI_regdef = SPI2;
+  HSPI->SPI_Init.bus_config = SPI_FULL_DUPLEX_BUS;
+  HSPI->SPI_Init.clock_phase = SPI_CLK_POLARITY_0;
+  HSPI->SPI_Init.clock_polarity = SPI_CLK_PHASE_0;
+  HSPI->SPI_Init.clock_speed = SPI_BR_PRESCALER_2;
+  HSPI->SPI_Init.dff = SPI_DATA_SIZE_8_BITS;
+  HSPI->SPI_Init.mode = SPI_MASTER;
+  HSPI->SPI_Init.ssm = SPI_SSM_ENABLED;
 
+  LL_HAL_SPI_Init(HSPI);
+  // Enable SPI
 
 }
