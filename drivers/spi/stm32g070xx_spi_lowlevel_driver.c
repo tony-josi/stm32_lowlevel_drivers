@@ -172,7 +172,8 @@ Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t
         len -= 2;
         pTX_buff += 2;
 
-      }
+      } else
+        return DRV_ERROR;
     }
 
     return DRV_OK;
