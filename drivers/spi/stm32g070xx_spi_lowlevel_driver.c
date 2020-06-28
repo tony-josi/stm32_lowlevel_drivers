@@ -29,6 +29,9 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI) {
   drv_assert_param(hSPI);
   uint32_t reg_buff = 0;
 
+  /* Enable PCLK clock */
+  LL_HAL_SPI_PCLK_Cntrl(hSPI, ENABLE);
+
   /* Initialize the mode of communication */
   reg_buff = hSPI->SPI_regdef->CR1;
 
