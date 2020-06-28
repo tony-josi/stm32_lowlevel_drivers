@@ -15,9 +15,9 @@
 int main(void)
 {
 
-  //led_blink__gpio__pclk__init__toggle__deinit();
-  //led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
-  led_btn_gpio_it_init__exti_callback();
+  //gpio_test_led_blink__gpio__pclk__init__toggle__deinit();
+  //gpio_test_led_btn_onclick_blink__gpio__pclk__init__toggle__deinit();
+  //gpio_test_led_btn_gpio_it_init__exti_callback();
 
 	while(1) {
 

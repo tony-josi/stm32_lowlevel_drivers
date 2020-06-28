@@ -19,7 +19,7 @@ static void brute_delay(uint32_t delay) {
 }
 
 
-void led_blink__gpio__pclk__init__toggle__deinit() {
+void gpio_test_led_blink__gpio__pclk__init__toggle__deinit() {
 
   GPIO_Handle_t led;
   led.GPIO_regdef = GPIO_A;
@@ -55,7 +55,7 @@ void led_blink__gpio__pclk__init__toggle__deinit() {
 }
 
 
-void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit() {
+void gpio_test_led_btn_onclick_blink__gpio__pclk__init__toggle__deinit() {
 
   GPIO_Handle_t led, btn;
   led.GPIO_regdef = GPIO_A;
@@ -96,7 +96,7 @@ void led_btn_onclick_blink__gpio__pclk__init__toggle__deinit() {
 
 }
 
-void led_btn_gpio_it_init__exti_callback() {
+void gpio_test_led_btn_gpio_it_init__exti_callback() {
 
   GPIO_Handle_t GS_led, GS_btn;
 
