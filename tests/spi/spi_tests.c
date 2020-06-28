@@ -18,11 +18,12 @@ static void spi_test_spi2_peripheral_init(SPI_Handle_t *);
 
 void spi_test_init_sent_data__pol() {
 
-  SPI_Handle_t hSPI1;
+  SPI_Handle_t hSPI2;
 
-  UNUSED(spi_test_spi2_gpio_init);
-  UNUSED(spi_test_spi2_peripheral_init);
-  UNUSED(hSPI1);
+  spi_test_spi2_gpio_init();
+  spi_test_spi2_peripheral_init(&hSPI2);
+
+  // handle SSI / SSM
 
 }
 
@@ -79,6 +80,6 @@ void spi_test_spi2_peripheral_init(SPI_Handle_t *HSPI) {
   HSPI->SPI_Init.ssm = SPI_SSM_ENABLED;
 
   LL_HAL_SPI_Init(HSPI);
-  // Enable SPI
+  LL_HAL_SPI_Enable(HSPI, ENABLE);
 
 }

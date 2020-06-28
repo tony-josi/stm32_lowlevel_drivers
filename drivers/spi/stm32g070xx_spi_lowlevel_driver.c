@@ -132,16 +132,16 @@ Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable) {
  * @brief SPI Peripheral CLK Control
  *
  */
-Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
+Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable) {
 
   drv_assert_param(pSPI);
 
   /* Enable peripheral clock for the given SPI */
   if(Enable == ENABLE) {
 
-    if(pSPI == SPI1)
+    if(pSPI->SPI_regdef == SPI1)
       SPI1_PCLK_EN;
-    else if(pSPI == SPI2)
+    else if(pSPI->SPI_regdef == SPI2)
       SPI2_PCLK_EN;
     else
       return DRV_ERROR;
@@ -150,9 +150,9 @@ Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable) {
     /* Disable peripheral clock for the given SPI */
   } else if (Enable == DISABLE) {
 
-    if(pSPI == SPI1)
+    if(pSPI->SPI_regdef == SPI1)
       SPI1_PCLK_DI;
-    else if(pSPI == SPI2)
+    else if(pSPI->SPI_regdef == SPI2)
       SPI2_PCLK_DI;
     else
       return DRV_ERROR;
@@ -216,15 +216,15 @@ Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t
  * @brief SPI DeInitialize
  *
  */
-Drv_Status_t LL_HAL_SPI_Deinit(SPI_RegDef_Type *pSPI) {
+Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *pSPI) {
 
   drv_assert_param(pSPI);
 
   /* Check for corresponding SPI and reset
    * using appropriate macros */
-  if(pSPI == SPI1)
+  if(pSPI->SPI_regdef == SPI1)
     SPI1_RESET;
-  else if(pSPI == SPI2)
+  else if(pSPI->SPI_regdef == SPI2)
     SPI2_RESET;
   else
     return DRV_ERROR;

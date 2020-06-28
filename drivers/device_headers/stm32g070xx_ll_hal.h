@@ -16,5 +16,6 @@
 #include "stm32g0xx_device.h"
 #include "stm32g070xx_driver_def.h"
 #include "stm32g070xx_gpio_lowlevel_driver.h"
+#include "stm32g070xx_spi_lowlevel_driver.h"
 
 #endif /* __DEVICE_HEADERS_STM32G070XX_LL_HAL_H */

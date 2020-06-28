@@ -551,13 +551,13 @@ Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable);
  * @brief SPI DeInitialize
  *
  */
-Drv_Status_t LL_HAL_SPI_Deinit(SPI_RegDef_Type *pSPI);
+Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *pSPI);
 
 /**
  * @brief SPI Peripheral CLK Control
  *
  */
-Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_RegDef_Type *pSPI, uint8_t Enable);
+Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable);
 
 /**
  * @brief SPI Transmit in blocking mode
