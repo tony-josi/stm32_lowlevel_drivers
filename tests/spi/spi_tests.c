@@ -25,6 +25,15 @@ void spi_test_init_sent_data__pol() {
 
 void spi_test_gpio_init() {
 
+  /**
+   * Alternate functions
+   *
+   * SPI2_MOSI: PB11
+   * SPI2_NSS:  PB12
+   * SPI2_SCK:  PB13
+   * SPI2_MISO: PB14
+   *
+   */
 
 
 }
