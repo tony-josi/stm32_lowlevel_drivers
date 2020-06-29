@@ -233,11 +233,11 @@ typedef struct __SPI_Handle_t {
 #define SPI_SSI_SET                                   (1u)                 /*!< Internal slave select set */
 
 /**
- * @brief SPI Software slave management bit info
+ * @brief SPI Internal slave select bit info
  *
  */
-#define SPI_SSM_BIT_POS                               (9u)                /*!< SPI Software slave management bit position */
-#define SPI_SSM_BIT_WIDTH                             (1u)                 /*!< SPI Software slave management bit width */
+#define SPI_SSI_BIT_POS                               (8u)                /*!< SPI Internal slave select bit position */
+#define SPI_SSI_BIT_WIDTH                             (1u)                /*!< SPI Internal slave select bit width */
 
 
 /**
