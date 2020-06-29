@@ -19,11 +19,13 @@ static void spi_test_spi2_peripheral_init(SPI_Handle_t *);
 void spi_test_init_sent_data__pol() {
 
   SPI_Handle_t hSPI2;
+  char init_str[] = "CHRIST";
 
   spi_test_spi2_gpio_init();
   spi_test_spi2_peripheral_init(&hSPI2);
 
   // handle SSI / SSM
+  LL_HAL_SPI_Transmit(&hSPI2, (uint8_t *) init_str, sizeof(init_str));
 
 }
 
