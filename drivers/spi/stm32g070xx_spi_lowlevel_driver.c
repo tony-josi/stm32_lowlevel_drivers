@@ -13,6 +13,28 @@
  *  @bug            No known bugs.
  */
 
+/**
+ *
+ *  @brief
+ *
+ *  ---------
+ *  | NOTES |
+ *  ---------
+ *
+ *  -------------------------------------------------
+ *  | Notes on using SPI in Full duplex master mode |
+ *  -------------------------------------------------
+ *
+ *  To enable SPI in master mode please follow the following procedure:
+ *
+ *  For details and examples refer to the
+ *  test cases in tests/spi/spi_tests.c
+ *
+ *  ->
+ *
+ *
+ */
+
 #include "stm32g070xx_spi_lowlevel_driver.h"
 
 /**
