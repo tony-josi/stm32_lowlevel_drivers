@@ -17,9 +17,8 @@
  *
  *  @brief
  *
- *  ---------
- *  | NOTES |
- *  ---------
+ *    N O T E S
+ *  -------------
  *
  *  -------------------------------------------------
  *  | Notes on using SPI in Full duplex master mode |
@@ -29,8 +28,26 @@
  *
  *  For details and examples refer to the
  *  test cases in tests/spi/spi_tests.c
+ *                _____________________
  *
- *  ->
+ *
+ *  -> Initialize the GPIO's used by the SPI of interest by choosing
+ *     the alternate function and other configurations
+ *
+ *  -> Call the LL_HAL_SPI_Init() to initialize the SPI peripheral
+ *     with required configurations
+ *
+ *  -> If Software slave management is enabled during SPI
+ *     initialization via LL_HAL_SPI_Init(), then, use LL_HAL_SPI_SSI_Cntrl()
+ *     to explicitly control the NSS/CS line of the MCU to select is between
+ *     master/slave
+ *
+ *  -> Enable the SPI peripheral by calling LL_HAL_SPI_Enable()
+ *
+ *
+ *  NOTE: Its not required to explicitly call the LL_HAL_SPI_PCLK_Cntrl() to
+ *        initialize the peripheral clock as its already done inside the
+ *        LL_HAL_SPI_Init().
  *
  *
  */

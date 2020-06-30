@@ -24,7 +24,6 @@ void spi_test_init_sent_data__pol() {
   spi_test_spi2_gpio_init();
   spi_test_spi2_peripheral_init(&hSPI2);
 
-  LL_HAL_SPI_PCLK_Cntrl(&hSPI2, ENABLE);
   LL_HAL_SPI_Transmit(&hSPI2, (uint8_t *) init_str, sizeof(init_str));
 
 }
