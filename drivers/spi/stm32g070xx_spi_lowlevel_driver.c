@@ -35,7 +35,7 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI) {
   /* Initialize the mode of communication */
   reg_buff = hSPI->SPI_regdef->CR1;
 
-  if(hSPI->SPI_Init.mode < SPI_MASTER) {
+  if(hSPI->SPI_Init.mode <= SPI_MASTER) {
     reg_buff &= ~(SPI_MODE_BIT_WIDTH << SPI_MODE_BIT_POS);
     reg_buff |= hSPI->SPI_Init.mode << SPI_MODE_BIT_POS;
   }
@@ -117,7 +117,7 @@ Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable) {
     reg_buff = hSPI->SPI_regdef->CR1;
 
     reg_buff &= ~(SPI_PERI_BIT_WIDTH << SPI_PERI_BIT_POS);
-    reg_buff |= Enable << SPI_DATA_SIZE_BIT_POS;
+    reg_buff |= Enable << SPI_PERI_BIT_POS;
 
     hSPI->SPI_regdef->CR1 = reg_buff;
 

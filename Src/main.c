@@ -12,8 +12,7 @@
 #include "driver_tests.h"
 #include "stm32g070xx_ll_hal.h"
 
-int main(void)
-{
+int main(void) {
 
   /* GPIO Test Case Calls */
   /* -------------------- */
@@ -25,7 +24,7 @@ int main(void)
   /* SPI Test Case Calls */
   /* ------------------- */
 
-  //void spi_test_init_sent_data__pol();
+  spi_test_init_sent_data__pol();
 
 	while(1) {
 
