@@ -228,6 +228,28 @@ Drv_Status_t LL_HAL_SPI_SSI_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable) {
 
 
 /**
+ * @brief SPI SS output enable
+ *
+ */
+Drv_Status_t LL_HAL_SPI_SSOE_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable) {
+
+  drv_assert_param(pSPI);
+
+  if(Enable <= ENABLE) {
+    uint32_t reg_buff = 0;
+    reg_buff = pSPI->SPI_regdef->CR2;
+    reg_buff &= ~(SPI_SSOE_BIT_WIDTH << SPI_SSOE_BIT_POS);
+    reg_buff |= (Enable << SPI_SSOE_BIT_POS);
+    pSPI->SPI_regdef->CR2 = reg_buff;
+    return DRV_OK;
+  }
+
+  return DRV_ERROR;
+
+}
+
+
+/**
  * @brief SPI Transmit in blocking mode
  *
  */

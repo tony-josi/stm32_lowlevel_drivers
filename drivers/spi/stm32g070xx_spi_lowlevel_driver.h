@@ -239,6 +239,13 @@ typedef struct __SPI_Handle_t {
 #define SPI_SSI_BIT_POS                               (8u)                /*!< SPI Internal slave select bit position */
 #define SPI_SSI_BIT_WIDTH                             (1u)                /*!< SPI Internal slave select bit width */
 
+/**
+ * @brief SPI SS output enable
+ *
+ */
+#define SPI_SSOE_BIT_POS                               (2u)                /*!< SPI SS output enable */
+#define SPI_SSOE_BIT_WIDTH                             (1u)                /*!< SPI SS output enable */
+
 
 /**
  * @brief LSBFIRST: Frame format
@@ -566,6 +573,12 @@ Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *pSPI);
  *
  */
 Drv_Status_t LL_HAL_SPI_SSI_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable);
+
+/**
+ * @brief SPI Internal slave select
+ *
+ */
+Drv_Status_t LL_HAL_SPI_SSOE_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable);
 
 /**
  * @brief SPI Peripheral CLK Control
