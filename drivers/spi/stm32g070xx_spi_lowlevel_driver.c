@@ -147,6 +147,8 @@ Drv_Status_t LL_HAL_SPI_Init(SPI_Handle_t *hSPI) {
 /**
 * @brief SPI Peripheral Enable or Disable
 *
+* TODO: Enable timeout for __SPI_WAIT_UNTIL_BUSY()
+*
 */
 Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable) {
 

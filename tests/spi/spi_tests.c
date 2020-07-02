@@ -26,6 +26,8 @@ void spi_test_init_sent_data__pol() {
 
   LL_HAL_SPI_Transmit(&hSPI2, (uint8_t *) init_str, sizeof(init_str));
 
+  LL_HAL_SPI_Enable(&hSPI2, DISABLE);
+
 }
 
 void spi_test_spi2_gpio_init() {
