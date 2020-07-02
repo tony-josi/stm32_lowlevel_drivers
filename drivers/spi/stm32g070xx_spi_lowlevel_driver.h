@@ -550,6 +550,13 @@ typedef struct __SPI_Handle_t {
  */
 #define SPI_GET_FLAG_STATUS(spi_reg, bit_mask)        ((spi_reg) & (bit_mask))
 
+
+/**
+ * @brief SPI get status flag macro
+ *
+ */
+#define __SPI_WAIT_UNTIL_BUSY(hSPI)                   while((hSPI->SPI_regdef->CR1) & (SPI_BUSY_FLAG_BIT_POS << SPI_BUSY_FLAG_BIT_POS))
+
 /**
  * @brief SPI Initialize
  *

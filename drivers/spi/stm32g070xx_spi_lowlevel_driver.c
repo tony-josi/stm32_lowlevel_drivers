@@ -302,6 +302,8 @@ Drv_Status_t LL_HAL_SPI_Deinit(SPI_Handle_t *pSPI) {
 
   drv_assert_param(pSPI);
 
+  __SPI_WAIT_UNTIL_BUSY(pSPI);
+
   /* Check for corresponding SPI and reset
    * using appropriate macros */
   if(pSPI->SPI_regdef == SPI1)
