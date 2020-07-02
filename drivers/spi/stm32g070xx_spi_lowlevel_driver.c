@@ -44,6 +44,11 @@
  *
  *  -> Enable the SPI peripheral by calling LL_HAL_SPI_Enable()
  *
+ *  -> Use preferred mode to transmit data using the adequate functions
+ *     for example, LL_HAL_SPI_Transmit()
+ *
+ *  -> Disable the SPI peripheral using LL_HAL_SPI_Enable()
+ *
  *
  *  NOTE: Its not required to explicitly call the LL_HAL_SPI_PCLK_Cntrl() to
  *        initialize the peripheral clock as its already done inside the
