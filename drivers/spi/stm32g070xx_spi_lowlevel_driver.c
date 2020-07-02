@@ -152,6 +152,9 @@ Drv_Status_t LL_HAL_SPI_Enable(SPI_Handle_t *hSPI, uint8_t Enable) {
 
   if(Enable <= ENABLE) {
 
+    if(Enable == DISABLE)
+      __SPI_WAIT_UNTIL_BUSY(hSPI);
+
     uint32_t reg_buff;
     reg_buff = hSPI->SPI_regdef->CR1;
 
