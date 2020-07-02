@@ -321,7 +321,7 @@ Drv_Status_t LL_HAL_SPI_Receive(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t 
 
     while(len > 0) {
 
-      while(SPI_GET_FLAG_STATUS(pSPI->SPI_regdef->SR, (SPI_RXNXE_BIT_POS << SPI_RXNXE_BIT_WIDTH)) == SPI_SET);
+      while(SPI_GET_FLAG_STATUS(pSPI->SPI_regdef->SR, (SPI_RXNXE_BIT_POS << SPI_RXNXE_BIT_WIDTH)) == SPI_RESET);
 
       if(pSPI->SPI_Init.dff == SPI_DATA_SIZE_8_BITS) {
 
