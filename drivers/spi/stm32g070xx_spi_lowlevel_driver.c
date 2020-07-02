@@ -286,7 +286,7 @@ Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t
 
       } else if(pSPI->SPI_Init.dff == SPI_DATA_SIZE_16_BITS) {
 
-        pSPI->SPI_regdef->DR = (uint16_t) *((uint16_t *)pTX_buff);
+        pSPI->SPI_regdef->DR = (uint16_t) *((uint16_t *) pTX_buff);
         len -= 2;
         pTX_buff += 2;
 
@@ -302,6 +302,52 @@ Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t
   return DRV_ERROR;
 
 }
+
+
+/**
+ * @brief SPI Receive in blocking mode
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Receive(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t len) {
+
+  drv_assert_param(pSPI);
+
+  /*
+   * TODO: Add timeout
+   * TODO: Handle other data size or dff
+   * */
+
+  if(len > 0) {
+
+    while(len > 0) {
+
+      while(SPI_GET_FLAG_STATUS(pSPI->SPI_regdef->SR, (SPI_RXNXE_BIT_POS << SPI_RXNXE_BIT_WIDTH)) == SPI_SET);
+
+      if(pSPI->SPI_Init.dff == SPI_DATA_SIZE_8_BITS) {
+
+        *pTX_buff = (uint8_t) pSPI->SPI_regdef->DR;
+        --len;
+        ++pTX_buff;
+
+      } else if(pSPI->SPI_Init.dff == SPI_DATA_SIZE_16_BITS) {
+
+        *((uint16_t *) pTX_buff) = (uint16_t) pSPI->SPI_regdef->DR;
+        len -= 2;
+        pTX_buff += 2;
+
+      } else
+        /* Only supports 8bit & 16bit DS */
+        return DRV_ERROR;
+    }
+
+    return DRV_OK;
+
+  }
+
+  return DRV_ERROR;
+
+}
+
 
 
 /**

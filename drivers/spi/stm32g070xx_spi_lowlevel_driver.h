@@ -600,6 +600,13 @@ Drv_Status_t LL_HAL_SPI_PCLK_Cntrl(SPI_Handle_t *pSPI, uint8_t Enable);
 Drv_Status_t LL_HAL_SPI_Transmit(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t len);
 
 /**
+ * @brief SPI Receive in blocking mode
+ *
+ */
+Drv_Status_t LL_HAL_SPI_Receive(SPI_Handle_t *pSPI, uint8_t *pTX_buff, uint32_t len);
+
+
+/**
  * @brief SPI Transmit in interrupt mode
  *
  */
